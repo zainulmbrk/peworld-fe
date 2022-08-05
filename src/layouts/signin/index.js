@@ -8,10 +8,8 @@ const SigninLayout = () => {
       <div className={`${styles.signinLayout} row`}>
         <div className={`${styles.left} col-md-6`}>
           <div className={styles.title}>
-            <h2>New here?</h2>
+            <h2>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h2>
             <p>
-              Write down you details and start journey with us.
-              <br />
               Create a new account here
             </p>
             <Link href="/signup">
