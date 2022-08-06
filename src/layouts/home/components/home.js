@@ -1,8 +1,12 @@
 import styles from "./Home.module.scss"
 import { FiSearch } from "react-icons/fi"
 import { HiOutlineLocationMarker } from "react-icons/hi"
+import {useState} from "react"
 // import Image from "next/image"
-const Home = () => {
+const Home = ({data}) => {
+    const results = data?.data
+    const [query, setQuery] = useState("")
+
     return (<>
         <div className={styles.headers}>
             <div className="container">
@@ -15,7 +19,7 @@ const Home = () => {
             <div className="container">
                 <div className={styles.filter}>
                     <div className={styles.search}>
-                        <input type="search" placeholder="Search for any skill"></input>
+                        <input type="search" placeholder="Search for any skill" onChange={event => setQuery(event.target.value)}></input>
                         <FiSearch className={styles.icon} />
                     </div>
                     <div className={styles.verticalLine}>
@@ -41,13 +45,22 @@ const Home = () => {
         <div className={styles.contentCard}>
             <div className="container">
                 <div className={styles.wrap}>
-                    <div className={styles.cardUser}>
+                {results.filter(item =>{
+                    if (query === '') {
+                        return results
+                    } else if (item.product_name.toLowerCase().includes(query.toLowerCase())) {
+                        return results
+                    }
+                }).slice(0,4).map((item)=>{
+                    return(<>
+
+                    <div className={styles.cardUser} key={item.product_id}>
                         <div className={styles.image}>
-                            <img src="/assets/images/profile.png" />
+                            <img src={`http://localhost:1102/uploads/${item.cover}`} />
                         </div>
                         <div className={styles.info}>
                             <div className={styles.name}>
-                                <p>Harry Styles</p>
+                                <p>{item.product_name}</p>
                             </div>
                             <div className={styles.jobType}>
                                 <p>Web developer - Fulltime</p>
@@ -70,7 +83,9 @@ const Home = () => {
                         <div className={styles.hline}>
                         </div>
                     </div>
-                    <div className={styles.cardUser}>
+                    </>)
+                })}
+                    {/* <div className={styles.cardUser}>
                         <div className={styles.image}>
                         <img src="/assets/images/profile.png" />
                         </div>
@@ -156,7 +171,7 @@ const Home = () => {
                     <div className={styles.horizontalLine}>
                         <div className={styles.hline}>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
             </div>

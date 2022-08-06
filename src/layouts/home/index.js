@@ -1,8 +1,8 @@
 import Home from "./components/home";
 
-const Homepage = () =>{
+const Homepage = ({data}) =>{
     return(<>
-        <Home/>
+        <Home data={data} />
     </>)
 }
 export default Homepage
