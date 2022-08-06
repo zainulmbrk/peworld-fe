@@ -17,13 +17,14 @@
       margin-left: 4em;
 
       h2 {
+        text-align: center;
         font-weight: 600;
-        font-size: 30px;
+        font-size: 25px;
         color: #fff;
       }
       p {
         text-align: center;
-        font-size: 14px;
+        font-size: 18px;
         color: #fff;
       }
       button {
@@ -73,7 +74,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      
+
+      img {
+        cursor: pointer;
+      }
+
       button {
         width: 100px;
         height: 35px;
@@ -83,12 +88,12 @@
         outline: none;
         font-weight: 600;
         background: none;
-        transition: .3s ease-in-out;
+        transition: 0.3s ease-in-out;
         display: none;
 
         &:hover {
-            background: var(--primary);
-            color: #fff;
+          background: var(--primary);
+          color: #fff;
         }
       }
     }
@@ -165,18 +170,27 @@
           gap: 1em;
           margin-top: 2em;
           .social {
-            img {
-              border: 3px solid #4481eb;
-              padding: 5px;
-              border-radius: 50%;
-              width: 45px;
-              height: 45px;
-              cursor: pointer;
-              transition: 0.3s ease-in-out;
+            background: var(--primary);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            transition: .3s ease-in-out;
+            cursor: pointer;
 
-              &:hover {
-                background: #4481eb;
+            &:hover {
+              background: #fff;
+              .socialIcon {
+                color: #444;
               }
+            }
+
+            .socialIcon {
+              font-size: 18px;
+              color: #fff;
             }
           }
         }
@@ -191,16 +205,16 @@
       display: none;
     }
     .right {
-        h1 {
-            margin-top: 1em;
-        }
+      h1 {
+        margin-top: 1em;
+      }
       .logo {
         font-size: 20px;
         padding: 0;
 
         button {
-            color: var(--primary);
-            display: block;
+          color: var(--primary);
+          display: block;
         }
       }
       form {

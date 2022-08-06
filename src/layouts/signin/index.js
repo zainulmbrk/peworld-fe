@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Signin.module.scss";
 import Link from "next/link";
+import {FaFacebookF, FaGoogle, FaTwitter, FaLinkedinIn} from 'react-icons/fa'
 
 const SigninLayout = () => {
   return (
@@ -8,10 +9,8 @@ const SigninLayout = () => {
       <div className={`${styles.signinLayout} row`}>
         <div className={`${styles.left} col-md-6`}>
           <div className={styles.title}>
-            <h2>New here?</h2>
+            <h2>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h2>
             <p>
-              Write down you details and start journey with us.
-              <br />
               Create a new account here
             </p>
             <Link href="/signup">
@@ -23,7 +22,7 @@ const SigninLayout = () => {
         </div>
         <div className={`${styles.right} col-md-6`}>
           <div className={styles.logo}>
-            <img src="/logo/logo.svg" alt="logo" />
+            <Link href='/#'><img src="/logo/logo.svg" alt="logo" /></Link>
             <button>Signup</button>
           </div>
           <h1>Sign In</h1>
@@ -44,22 +43,22 @@ const SigninLayout = () => {
               <div className={styles.socialBox}>
                 <Link href="/#">
                   <div className={styles.social}>
-                    <img src="/icons/facebook.svg" alt="facebook" />
+                    <FaFacebookF className={styles.socialIcon}/>
                   </div>
                 </Link>
                 <Link href="/#">
                   <div className={styles.social}>
-                    <img src="/icons/google.svg" alt="google" />
+                    <FaGoogle className={styles.socialIcon}/>
                   </div>
                 </Link>
                 <Link href="/#">
                   <div className={styles.social}>
-                    <img src="/icons/twitter.svg" alt="twitter" />
+                    <FaTwitter className={styles.socialIcon}/>
                   </div>
                 </Link>
                 <Link href="/#">
                   <div className={styles.social}>
-                    <img src="/icons/linkedin.svg" alt="linkedin" />
+                    <FaLinkedinIn className={styles.socialIcon}/>
                   </div>
                 </Link>
               </div>
