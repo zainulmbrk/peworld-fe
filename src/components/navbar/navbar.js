@@ -29,7 +29,7 @@ const Navbar = () => {
               <Link href="/signin">
                 <div className={styles.navlink}>Masuk</div>
               </Link>
-              <Link href="/#">
+              <Link href="/direct">
                 <div className={styles.navlink}>Daftar</div>
               </Link>
             </div>
