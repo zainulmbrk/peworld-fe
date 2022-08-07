@@ -1,0 +1,73 @@
+.navbarLogin {
+  width: 100%;
+  display: flex;
+  background: #fff;
+  position: fixed;
+  box-shadow: 0px 1px 5px 0px rgb(204, 204, 204);
+  z-index: 1;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 0;
+
+    .imgbox {
+      display: flex;
+      width: 50%;
+      align-items: center;
+      cursor: pointer;
+    }
+    .navmenu {
+      display: flex;
+
+      .navlink {
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+          font-size: 25px;
+          margin: 0 1em;
+          cursor: pointer;
+        }
+        .profileImg {
+          margin-left: 1em;
+          cursor: pointer;
+
+          img {
+            width: 30px;
+            border-radius: 50%;
+            height: 30px;
+          }
+        }
+      }
+    }
+    .navIcon {
+      display: none;
+      .icon {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbarLogin {
+    .logo {
+      .navmenu {
+        .navlink {
+          .icon {
+            margin: 0 0.8em;
+          }
+          .profileImg {
+            margin-left: 0.8em;
+          }
+        }
+      }
+    }
+  }
+}
