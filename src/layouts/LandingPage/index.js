@@ -6,10 +6,14 @@ import Header from './components/Header'
 import SkillTalent from './components/SkillTalent'
 import Testimony from './components/Testimony'
 import WhyUs from './components/WhyUs'
+import Head from 'next/head'
 
 const LandingpageLayout = () => {
   return (
     <>
+    <Head>
+        <title>Peworld</title>
+    </Head>
     <Navbar />
     <Header />
     <WhyUs />
