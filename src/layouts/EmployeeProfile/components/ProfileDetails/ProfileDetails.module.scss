@@ -1,0 +1,147 @@
+.detailsLayout {
+  position: relative;
+  margin-top: 5em;
+  padding: 1.5em;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 1px 5px 0px rgb(207, 207, 207);
+
+  .profileImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  .profileInfo {
+    margin-top: 1.5em;
+    h4 {
+      font-size: 25px;
+      font-weight: 600;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 500;
+      color: #444;
+      margin-bottom: 0.5em;
+    }
+    h5 {
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.527);
+      margin-bottom: 1em;
+    }
+    p {
+      margin: 0;
+      font-size: 15px;
+      color: rgba(0, 0, 0, 0.527);
+
+      &:nth-child(4) {
+        margin-bottom: 0.8em;
+      }
+
+      &:nth-child(6) {
+        margin-top: 1em;
+      }
+
+      span {
+        margin-right: 0.8em;
+        .profileIcon {
+          font-size: 20px;
+        }
+      }
+    }
+    button {
+      margin-top: 2em;
+      border-radius: 5px;
+      width: 100%;
+      height: 55px;
+      border: 2px solid var(--primary);
+      outline: none;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 18px;
+      background: var(--primary);
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        background: var(--secondary);
+        border: 2px solid var(--secondary);
+      }
+    }
+  }
+  .profileSkills {
+    margin-top: 2em;
+    h2 {
+      font-weight: 600;
+      font-size: 25px;
+    }
+    .skillBox {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      margin-top: 1.5em;
+
+      .skillName {
+        color: #fff;
+        font-weight: 500;
+        padding: 5px 15px;
+        border-radius: 5px;
+        background: rgba(251, 176, 23, 0.6);
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          background: var(--secondary);
+        }
+      }
+    }
+  }
+  .profileSocial {
+    margin-top: 3em;
+
+    p {
+      padding: 0em 0;
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.527);
+
+      span {
+        margin-right: 1em;
+        .socialIcon {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px){
+    .detailsLayout {
+        .profileInfo {
+            h4 {
+                text-align: center;
+            }
+            h3 {
+                text-align: center;
+            }
+            h5 {
+                text-align: center;
+            }
+            p {
+                &:nth-child(4) {
+                    padding-left: 6em;
+                }
+                &:nth-child(5) {
+                    padding-left: 6em;
+                }
+                &:nth-child(6) {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
