@@ -76,3 +76,26 @@
     }
   }
 }
+
+@media screen and (max-width: 768px){
+    .regDirect {
+        h1 {
+            font-size: 35px;
+        }
+
+        .regBox {
+            flex-direction: column;
+            padding: 0 2em;
+            gap: 2em;
+            .regDirectOption {
+                width: 100%;
+                font-size: 22px;
+
+            }
+            .regDirectOptionRec {
+                width: 100%;
+                font-size: 22px;
+            }
+        }
+    }
+}
