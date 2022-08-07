@@ -13,7 +13,7 @@ const SigninLayout = () => {
             <p>
               Create a new account here
             </p>
-            <Link href="/signup">
+            <Link href="/direct">
               <button>Sign Up</button>
             </Link>
           </div>
