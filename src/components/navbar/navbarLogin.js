@@ -1,9 +1,55 @@
-import React from 'react'
+import React, { useState } from "react";
+import styles from "./NavbarLogin.module.scss";
+import Link from "next/link";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { MdOutlineNotifications, MdOutlineEmail } from "react-icons/md";
 
 const NavbarLogin = () => {
-  return (
-    <div>NavbarLogin</div>
-  )
-}
+  const [toggle, setToggle] = useState(false);
 
-export default NavbarLogin
+  return (
+    <>
+      <nav className={styles.navbarLogin}>
+        <div className="container">
+          <div className={styles.logo}>
+            <Link href="/">
+              <div className={styles.imgbox}>
+                <img src="/logo/logo.svg" alt="logo" title="Peworld" />
+              </div>
+            </Link>
+            <div
+              className={
+                toggle
+                  ? `${styles.navmenu} ${styles.active}`
+                  : `${styles.navmenu}`
+              }
+            >
+              <Link href="/#">
+                <div className={styles.navlink}>
+                  <MdOutlineNotifications className={styles.icon} />
+                </div>
+              </Link>
+              <Link href="/#">
+                <div className={styles.navlink}>
+                  <MdOutlineEmail className={styles.icon} />
+                </div>
+              </Link>
+              <Link href="/#">
+                <div className={styles.navlink}>
+                  <div className={styles.profileImg}>
+                    <img src="/icons/profile.svg" alt="profile" />
+                  </div>
+                </div>
+              </Link>
+            </div>
+            <div className={styles.navIcon} onClick={() => setToggle(!toggle)}>
+              {toggle ? <FaTimes /> : <FaBars />}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
+};
+
+export default NavbarLogin;
