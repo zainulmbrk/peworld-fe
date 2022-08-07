@@ -1,0 +1,92 @@
+.testimony {
+  margin: 4em 0;
+
+  h1 {
+    font-size: 35px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .testiBox {
+    padding: 5em 15em;
+
+    .testiCard {
+      width: 270px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 2px solid #fff;
+      padding: 1em 0;
+      box-shadow: 0px 1px 5px 0px rgb(201, 200, 200);
+      transition: .3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        border: 2px solid var(--primary);
+      }
+
+      .testiImg {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+
+        img {
+          width: 90px;
+          border-radius: 50%;
+          padding: 3px;
+          border: 2px solid #fbb017;
+          height: 90px;
+        }
+      }
+
+      .userDetails {
+        margin-top: 1em;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h2 {
+          font-size: 20px;
+          font-weight: 600;
+          text-align: center;
+          line-height: 30px;
+        }
+        h3 {
+          font-size: 14px;
+          font-weight: 500;
+          color: #999;
+          text-align: center;
+          line-height: 30px;
+        }
+        p {
+          width: 60%;
+          line-height: 25px;
+          text-align: center;
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+    .testimony {
+        margin: 6em 0;
+
+        .testiBox {
+            width: 100%;
+            padding: 5em 5em;
+        }
+    }
+}
+@media screen and (max-width: 468px) {
+    .testimony {
+        .testiBox {
+            width: 100%;
+            padding: 3em 1.5em;
+        }
+    }
+}
