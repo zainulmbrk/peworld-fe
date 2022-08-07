@@ -11,10 +11,10 @@ const SigninLayout = () => {
           <div className={styles.title}>
             <h2>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h2>
             <p>
-              Create a new account here
+              Buat akun disini
             </p>
             <Link href="/direct">
-              <button>Sign Up</button>
+              <button>Daftar</button>
             </Link>
           </div>
           <div className={styles.leftBg}></div>
@@ -23,7 +23,7 @@ const SigninLayout = () => {
         <div className={`${styles.right} col-md-6`}>
           <div className={styles.logo}>
             <Link href='/#'><img src="/logo/logo.svg" alt="logo" /></Link>
-            <button>Signup</button>
+            <Link href='/direct'><button>Daftar</button></Link>
           </div>
           <h1>Sign In</h1>
           <form>
