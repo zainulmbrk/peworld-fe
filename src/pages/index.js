@@ -1,9 +1,9 @@
-import SigninLayout from '../layouts/signin'
+import Landingpage from './landingpage'
 
 export default function Home() {
   return (
     <>
-      <SigninLayout/>
+      <Landingpage/>
     </>
   )
 }
