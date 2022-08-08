@@ -34,7 +34,7 @@ const SigninLayout = () => {
             <label>Password</label>
             <br />
             <input type="password" placeholder="Enter your password" />
-            <Link href="/#">
+            <Link href="/forgotpassword">
               <p>Forgot your password?</p>
             </Link>
             <button>Sign In</button>
