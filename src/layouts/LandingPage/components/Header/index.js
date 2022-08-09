@@ -7,7 +7,6 @@ import Cookie from "js-cookie";
 const Header = () => {
   const router = useRouter()
   const role = Cookie.get('profile_role')
-  console.log(role)
   const rutePekerja = () => {
     router.push('/profile')
   }
