@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import styles from "./Chatroom.module.scss";
 import Footer from "../../components/footer";

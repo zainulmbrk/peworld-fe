@@ -29,10 +29,119 @@
         justify-content: center;
         align-items: center;
 
+        .notifBox {
+          display: none;
+          width: 20em;
+          border-radius: 5px;
+          height: 25em;
+          top: 3.4em;
+          right: 18.9em;
+          position: absolute;
+          background: #fff;
+          box-shadow: 0px 1px 5px 0px rgb(110, 110, 110);
+
+          h4 {
+            font-size: 12px;
+            margin: 1em;
+            font-weight: 600;
+          }
+          h2 {
+            margin-top: 11em;
+            font-weight: 600;
+            color: #444;
+            letter-spacing: 0.1px;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          .notifContent {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 1em;
+            transition: 0.2s ease-in-out;
+
+            &:hover {
+              background: var(--third);
+
+              .notifText {
+                h4 {
+                  color: #fff;
+                }
+                h5 {
+                  color: #fff;
+                }
+                p {
+                  color: #fff;
+                }
+              }
+            }
+
+            .notifImage {
+              img {
+                padding: 2px;
+                border: 3px solid var(--primary);
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+              }
+            }
+            .notifText {
+              margin-left: 0.5em;
+              h4 {
+                font-size: 12px;
+                margin: 0;
+                font-weight: 700;
+                letter-spacing: 0.1px;
+              }
+              h5 {
+                font-size: 500px;
+                font-size: 12px;
+                letter-spacing: 0.1px;
+                margin: 0;
+              }
+              p {
+                margin: 0;
+                font-size: 10px;
+                font-weight: 400;
+                color: #777;
+              }
+            }
+          }
+          .vLine {
+            width: 100%;
+            height: 1px;
+            background: rgb(192, 192, 192);
+          }
+        }
+        .notifBox.active {
+          display: block;
+        }
+
+        span {
+          width: 10px;
+          height: 10px;
+          top: 1.5em;
+          right: 13.2em;
+          background: red;
+          border-radius: 50%;
+          position: absolute;
+        }
+
         .icon {
           font-size: 25px;
           margin: 0 1em;
           cursor: pointer;
+          transition: 0.1s ease-in-out;
+
+          &:hover {
+            color: var(--primary);
+          }
         }
         .profileImg {
           margin-left: 1em;
@@ -42,6 +151,40 @@
             width: 30px;
             border-radius: 50%;
             height: 30px;
+          }
+
+          .profilePanel {
+            display: none;
+            width: 10em;
+            border-radius: 5px;
+            height: 10em;
+            top: 3.7em;
+            right: 8.3em;
+            background: #fff;
+            position: absolute;
+            box-shadow: 0px 1px 5px 0px rgb(110, 110, 110);
+            
+            .panelBox {
+              .link {
+                padding: 1em;
+                font-size: 12px;
+                transition: .2s ease-in-out;
+  
+                
+                &:hover {
+                  background: var(--third);
+                  color: #fff;
+                }
+              }
+              .line {
+                width: 100%;
+                height: 1px;
+                background: rgb(202, 202, 202);
+              }
+            }
+          }
+          .profilePanel.active {
+            display: block;
           }
         }
       }
@@ -60,11 +203,37 @@
     .logo {
       .navmenu {
         .navlink {
+          span {
+            right: 5.2em;
+          }
+          .notifBox {
+            width: 14em;
+            height: 21.5em;
+            right: 5em;
+
+            h2 {
+              margin-top: 5em;
+            }
+
+            .notifContent {
+              align-items: flex-start;
+              .notifImage {
+                img {
+                  width: 30px;
+                  height: 30px;
+                }
+              }
+            }
+          }
           .icon {
             margin: 0 0.8em;
           }
           .profileImg {
             margin-left: 0.8em;
+
+            .profilePanel {
+              right: 1em;
+            }
           }
         }
       }
