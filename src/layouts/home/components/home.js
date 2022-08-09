@@ -119,12 +119,7 @@ const Home = () => {
                             <span>{item.profile_job_type}</span>
                           </h5>
                         </div>
-                        {/* <div className={styles.currentJob}>
-                          <div className={styles.job}>
-                          </div>
-                          <div className={styles.jobType}>
-                          </div>
-                        </div> */}
+
                         <div className={styles.location}>
                           <span>
                             <HiOutlineLocationMarker className={styles.icon} />

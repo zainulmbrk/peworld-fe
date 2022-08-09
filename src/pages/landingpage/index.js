@@ -4,7 +4,7 @@ import LandingpageLayout from '../../layouts/LandingPage'
 const Landingpage = () => {
   return (
     <>
-    <LandingpageLayout />
+      <LandingpageLayout />
     </>
   )
 }

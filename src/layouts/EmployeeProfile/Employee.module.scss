@@ -1,6 +1,8 @@
 .profileLayout {
   width: 100%;
   padding-top: 3em;
+  background:  #E5E5E5;
+  padding-bottom: 5em;
 
   &::before {
     content: "";
@@ -17,16 +19,15 @@
     position: relative;
     width: 100%;
     background: #fff;
-    box-shadow: 0px 1px 5px 0px rgb(207, 207, 207);
 
     .portoTitle {
       display: flex;
       column-gap: 3em;
 
       h3 {
-        font-size: 24px;
-        font-weight: 500;
-        color: #999;
+        font-size: 22px;
+        font-weight: 600;
+        color: rgba(175, 174, 174, 0.795);
         cursor: pointer;
       }
       h3.active {
@@ -48,14 +49,28 @@
       margin-top: 2.5em;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 1em 2em;
+      gap: 2em 1em;
 
       .portoCard {
         cursor: pointer;
+        border-bottom: 3px solid var(--primary);
+        transition: transform 350ms;
+
+        &:hover {
+          transform: scale(1.1);
+          background: var(--primary);
+
+          p {
+            color: #fff;
+            font-weight: 500;
+          }
+        }
 
         img {
           width: 200px;
-          height: 220px;
+          height: 150px;
+          object-fit: cover;
+
         }
         p {
           margin-top: 1em;
@@ -75,21 +90,21 @@
                 margin-left: 1em;
                 padding: 0.5em 0;
                 h3 {
-                    font-size: 22px;
+                    font-size: 20px;
                     font-weight: 600;
                 }
                 h4 {
                     margin: 0.5em 0;
-                    font-size: 16px;
+                    font-size: 14px;
                     font-weight: 500;
                 }
                 h5 {
-                    font-size: 14px;
+                    font-size: 13px;
                     font-weight: 500;
-                    color: #888;
+                    color: rgb(161, 161, 161);
                 }
                 p {
-                    font-size: 14px;
+                    font-size: 13px;
                 }
             }
         }
@@ -111,13 +126,6 @@
       }
       .listPorto {
         gap: 1em;
-
-        .portoCard {
-          img {
-            width: 180px;
-            height: 150px;
-          }
-        }
       }
     }
   }
