@@ -14,7 +14,7 @@ const LandingpageLayout = () => {
     <Head>
         <title>Peworld</title>
     </Head>
-    <Navbar />
+    <Navbar/>
     <Header />
     <WhyUs />
     <SkillTalent />

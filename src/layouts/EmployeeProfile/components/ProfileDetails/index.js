@@ -5,6 +5,7 @@ import { TbPhone } from "react-icons/tb";
 import { FiGithub, FiGitlab } from 'react-icons/fi'
 import { BsInstagram } from 'react-icons/bs'
 import axios from 'axios'
+import Link from 'next/link'
 
 const ProfileDetailsLayout = () => {
   const [profile, setProfile] = useState([]);
@@ -27,6 +28,9 @@ const ProfileDetailsLayout = () => {
       <div className={styles.detailsLayout}>
         <div className={styles.profileImage}>
           <img src="/images/img6.png" alt="profile" />
+        </div>
+        <div className={styles.emailVerif}>
+          <Link href='/'>Email not activated</Link>
         </div>
         <div className={styles.profileInfo}>
           <h4>Louis Hamilton</h4>

@@ -1,24 +1,24 @@
 .chatroom {
   padding-top: 7em;
   padding-bottom: 3em;
-  background: #e5e5e5;
+  background: #222;
 
   .left {
     .leftBox {
-      background: #fff;
+      background: rgba($color: #000, $alpha: 0.3);
       border-radius: 10px;
       padding: 1.5em;
       .chatBox {
         h1 {
           font-size: 24px;
           font-weight: 600;
-          color: #333;
+          color: #fff;
         }
       }
       .verticalLine {
-        height: 2px;
+        height: 1px;
         width: 100%;
-        background: rgb(224, 224, 224);
+        background: rgb(158, 158, 158);
         margin: 1.7em 0;
       }
       .user {
@@ -45,7 +45,7 @@
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 2px;
-            color: #333;
+            color: #fff;
           }
           p {
             margin: 0;
@@ -59,7 +59,7 @@
   }
   .right {
     .rightBox {
-      background: #fff;
+      background: rgba($color: #000, $alpha: 0.3);
       border-radius: 10px;
       padding: 1.5em;
 
@@ -76,15 +76,15 @@
         h2 {
           font-size: 22px;
           margin: 0;
-          color: #444;
+          color: #fff;
           font-weight: 600;
           padding-left: 0.5em;
         }
       }
       .verticalLine {
-        height: 2px;
+        height: 1px;
         width: 100%;
-        background: rgb(224, 224, 224);
+        background: rgb(158, 158, 158);
         margin: 1em 0;
       }
       .chatContent {
