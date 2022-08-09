@@ -1,5 +1,7 @@
 .wrapPage {
   background-color: #ebedf0;
+  padding-top: 3em;
+  padding-bottom: 5em;
   // margin-top: 5em;
   .header {
     display: flex;
@@ -33,6 +35,7 @@
     }
     .profileInfo {
       margin-top: 1.5em;
+
       h4 {
         font-size: 25px;
         font-weight: 600;
@@ -53,7 +56,7 @@
         margin: 0;
         font-size: 15px;
         color: rgba(0, 0, 0, 0.527);
-
+        width: 100%;
         &:nth-child(4) {
           margin-bottom: 0.8em;
         }
