@@ -3,64 +3,24 @@ import styles from './Home.module.scss'
 import { FiSearch } from 'react-icons/fi'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { useState, useEffect } from 'react'
-// import { GetProfile } from '../../../redux/actions/home'
-// import { useDispatch, useSelector } from 'react-redux'
+import { GetProfile, GetSearchProfile } from '../../../redux/actions/home'
+import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 const Home = () => {
   //   const results = data?.data
   const router = useRouter()
-  //   const [query, setQuery] = useState('')
-  const [employee, setEmployee] = useState({
-    page: 1,
-    limit: 4,
-    order_by: 'skill_name',
-    sort: 'desc',
-  })
 
-  const [data, setData] = useState({
-    results: {},
-  })
-
+  const dispatch = useDispatch()
+  const data = useSelector((state) => state.profile)
+  const [sort, setSort] = useState({ limit: 4 })
   useEffect(() => {
-    axios({
-      method: 'GET',
-      url: `http://localhost:5000/api/v1/profile/sort?page=${page}&limit=${limit}&order_by=${order_by}&sort=${sort}`,
-    }).then((res) => {
-      setData({ results: res.data.data })
-    })
-  }, [data])
+    dispatch(GetProfile())
+  }, [sort])
 
-  console.log(data, 'inibos')
-
-  //   const [sort, setSort] = useState({
-  //     order: '',
-  //     sortby: '',
-  //   })
-
-  //   const [search, setSearch] = useState({
-  //     limit: 4,
-  //     skill_location: '',
-  //   })
-  //   const dispatch = useDispatch()
-  //   const data = useSelector((state) => state.profile)
-
-  //   useEffect(() => {
-  //     const { skill_location } = search
-  //     axios({
-  //       method: 'GET',
-  //       url: `http://localhost:5000/api/v1/profile/search${
-  //         skill_location ? `?skill_location=${skill_location}` : ''
-  //       }`,
-  //     }).then((res) => {
-  //       setSearch(res.data)
-  //     })
-  //   }, [search])
-  //   useEffect(() => {
-  //     dispatch(GetProfile())
-  //   }, [sort])
-
+  //search
+  const [search, setSearch] = useState('')
   return (
     <>
       <div className={styles.headers}>
@@ -78,7 +38,7 @@ const Home = () => {
                 type="search"
                 placeholder="Search for any skill"
                 onChange={(event) => setSearch(event.target.value)}
-              ></input>
+              />
               <FiSearch className={styles.icon} />
             </div>
             <div className={styles.verticalLine}>
@@ -102,7 +62,7 @@ const Home = () => {
                     onClick={() =>
                       setSort((prevState) => ({
                         ...prevState,
-                        sortby: 'title',
+                        sortby: 'profile_location',
                       }))
                     }
                   >
@@ -130,50 +90,65 @@ const Home = () => {
       <div className={styles.contentCard}>
         <div className="container">
           <div className={styles.wrap}>
-            {data.results.map((item, index) => {
-              return (
-                <>
-                  <div className={styles.cardUser} key={index}>
-                    <div className={styles.image}>
-                      <img
-                        src={`http://localhost:5000/uploads/${item.profile_picture}`}
-                      />
+            {data?.results
+              ?.filter((item) => {
+                if (search === '') {
+                  return data.results
+                } else if (
+                  item.profile_location
+                    .toLowerCase()
+                    .includes(search.toLowerCase())
+                ) {
+                  return data.results
+                }
+              })
+              .map((item, index) => {
+                return (
+                  <>
+                    <div className={styles.cardUser} key={index}>
+                      <div className={styles.image}>
+                        <img
+                          src={`http://localhost:5000/uploads/${item.profile_picture}`}
+                        />
+                      </div>
+                      <div className={styles.info}>
+                        <div className={styles.name}>
+                          <h4>{item.profile_name}</h4>
+                          <h5>
+                            {item.profile_job} -{' '}
+                            <span>{item.profile_job_type}</span>
+                          </h5>
+                        </div>
+                        {/* <div className={styles.currentJob}>
+                          <div className={styles.job}>
+                          </div>
+                          <div className={styles.jobType}>
+                          </div>
+                        </div> */}
+                        <div className={styles.location}>
+                          <span>
+                            <HiOutlineLocationMarker className={styles.icon} />
+                          </span>
+                          {item.profile_location}
+                        </div>
+                        <div className={styles.skills}>
+                          {/* {data.results.split(',').map((item) => { */}
+                          <button>{item.skill}</button>
+                          {/* })} */}
+                        </div>
+                      </div>
+                      <div className={styles.btnProfile}>
+                        <Link href={`/profile/${item.profile_id}`}>
+                          <button>See Profile</button>
+                        </Link>
+                      </div>
                     </div>
-                    <div className={styles.info}>
-                      <div className={styles.name}>
-                        <p>{item.profile_name}</p>
-                      </div>
-                      <div className={styles.jobType}>
-                        <p>Web developer - Fulltime</p>
-                      </div>
-                      <div className={styles.location}>
-                        <span>
-                          <HiOutlineLocationMarker className={styles.icon} />
-                        </span>
-                        {item.profile_location}
-                      </div>
-                      <div className={styles.skills}>
-                        {setEmployee.split(',').map((skil) => {
-                          return (
-                            <>
-                              <button>{skil.skill}</button>
-                            </>
-                          )
-                        })}
-                      </div>
+                    <div className={styles.horizontalLine}>
+                      <div className={styles.hline}></div>
                     </div>
-                    <div className={styles.btnProfile}>
-                      <Link href={`/profile`}>
-                        <button>See Profile</button>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className={styles.horizontalLine}>
-                    <div className={styles.hline}></div>
-                  </div>
-                </>
-              )
-            })}
+                  </>
+                )
+              })}
           </div>
         </div>
       </div>
