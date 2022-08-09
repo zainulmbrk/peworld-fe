@@ -2,10 +2,14 @@ import React from "react";
 import styles from "./Signin.module.scss";
 import Link from "next/link";
 import {FaFacebookF, FaGoogle, FaTwitter, FaLinkedinIn} from 'react-icons/fa'
+import Head from 'next/head'
 
 const SigninLayout = () => {
   return (
     <>
+      <Head>
+        <title>Sign In - Peworld</title>
+      </Head>
       <div className={`${styles.signinLayout} row`}>
         <div className={`${styles.left} col-md-6`}>
           <div className={styles.title}>
