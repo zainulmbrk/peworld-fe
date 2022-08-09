@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from "next/router";
 import axios from "../../utils/axios";
+import Head from "next/head";
 
 const SigninLayout = () => {
   const router = useRouter()
@@ -19,6 +20,7 @@ const SigninLayout = () => {
         Cookie.set("token", res.data.data.token)
         Cookie.set("profile_id", res.data.data.profile_id)
         Cookie.set("profile_role", res.data.data.profile_role)
+        Cookie.set("profile_email", res.data.data.profile_email)
         router.push('/')
       }).catch((err) => {
         toast.error(err.response.data.message)
@@ -29,6 +31,9 @@ const SigninLayout = () => {
   }
   return (
     <>
+      <Head>
+        <title>Sign In - Peworld</title>
+      </Head>
       <div className={`${styles.signinLayout} row`}>
         <div className={`${styles.left} col-md-6`}>
           <div className={styles.title}>
