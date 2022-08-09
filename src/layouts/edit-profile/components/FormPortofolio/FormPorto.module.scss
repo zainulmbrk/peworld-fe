@@ -1,0 +1,103 @@
+.cardPortofolioForm {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 2em;
+  margin-top: 2em;
+  margin-bottom: 5em;
+  border-radius: 5px;
+  .title {
+    font-weight: 600;
+  }
+  .horizontalLine {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    .hline {
+      width: 100%;
+      height: 1px;
+      background-color: lightgrey;
+      margin-bottom: 1em;
+    }
+  }
+
+  .portofolioForm {
+    display: flex;
+    flex-direction: column;
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 1em;
+    }
+    input {
+      margin-bottom: 2em;
+      padding: 5px 10px;
+      letter-spacing: 0.5px;
+      height: 3em;
+      font-size: 14px;
+      border: 1px solid lightgray;
+      outline: none;
+      border-radius: 5px;
+      &::placeholder {
+        color: #999;
+      }
+    }
+  }
+  .portofolioFormImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    label {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 1em;
+    }
+    input {
+      margin-bottom: 2em;
+      padding: 1em 10px;
+      letter-spacing: 0.5px;
+      height: 300px;
+      font-size: 14px;
+      border: 1px dashed lightgray;
+      outline: none;
+      border-radius: 5px;
+
+      #file {
+        display: inline-block;
+        width: 100%;
+        padding: 120px 0 0 0;
+        height: 100px;
+        overflow: hidden;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background: url("/public/assets/images/profile.png") center center
+          no-repeat #e4e4e4;
+        border-radius: 20px;
+        background-size: 60px 60px;
+      }
+    }
+  }
+  .btnSavePortofolio {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      width: 100%;
+      height: 3em;
+      background-color: #fff;
+      color: #fbb017;
+      font-weight: 600;
+      border: 1px solid #fbb017;
+      outline: none;
+      transition: 0.3s ease-in-out;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #fbb017;
+        outline: none;
+        color: #fff;
+      }
+    }
+  }
+}
