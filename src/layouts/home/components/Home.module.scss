@@ -151,9 +151,23 @@
       padding: 10px;
 
       .name {
-        font-weight: bold;
+        // padding: ;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        h4 {
+          font-size: 20px;
+          font-weight: 600;
+          margin: 0;
+        }
+        h5 {
+          font-size: 18px;
+          font-weight: 500;
+          margin: 0;
+
+          span {
+            font-size: 18px;
+          }
+        }
       }
 
       .jobType {
@@ -320,14 +334,37 @@
           margin-left: 10px;
           .name {
             // padding: ;
+            display: flex;
+            flex-direction: column;
+            background: limegreen;
+            h4 {
+              font-size: 20px;
+              font-weight: 600;
+            }
+            h5 {
+              font-size: 18px;
+              font-weight: 500;
+            }
             p {
               font-size: 14px;
             }
           }
-          .jobType {
-            p {
-              font-size: 12px;
-            }
+          .currentJob {
+            display: flex;
+            flex-direction: row;
+            background-color: #5e50a1;
+            // .job {
+            //   p {
+            //     font-size: 12px;
+            //     margin: 0;
+            //   }
+            // }
+            // .jobType {
+            //   p {
+            //     font-size: 12px;
+            //     margin: 0;
+            //   }
+            // }
           }
           .location {
             font-size: 12px;

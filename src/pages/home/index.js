@@ -1,14 +1,10 @@
-import Homepage from "../../layouts/home"
+import Homepage from '../../layouts/home'
 
-const Home = ({data})=>{
-    return(<>
-        <Homepage data={data} />
-    </>)
+const Home = () => {
+  return (
+    <>
+      <Homepage />
+    </>
+  )
 }
 export default Home
-
-export async function getServerSideProps(){
-    const res = await fetch(`http://localhost:1102/api/v1/product/`)
-    const data = await res.json()
-  return { props: { data } }
-}

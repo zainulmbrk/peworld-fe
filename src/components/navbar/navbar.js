@@ -13,7 +13,9 @@ const Navbar = () => {
           <div className={styles.logo}>
             <Link href="/">
               <div className={styles.imgbox}>
-                <img src="/logo/logo.svg" alt="logo" title="Peworld" />
+                <picture>
+                  <img src="/logo/logo.svg" alt="logo" title="Peworld" />
+                </picture>
               </div>
             </Link>
             <div

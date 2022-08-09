@@ -5,26 +5,26 @@ import FormExperience from './FormExperience'
 import FormPortofolio from './FormPortofolio'
 import FormSkill from './FormSkill'
 
-const EditProfileEmployee = () => {
-  return (
-    <>
-      <div className={styles.wrapPage}>
-        <div className={styles.wrapHead}></div>
-        <div className="container">
-          <div className="row">
-            <div className={`${styles.leftCard} col-md-4`}>
-              <ProfileDetailsLayout />
-            </div>
-            <div className={`${styles.cardForm} col-md-8`}>
-              <FormEditBiodata />
-              <FormSkill />
-              <FormExperience />
-              <FormPortofolio />
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  )
-}
+const EditProfileEmployee = (data, dataskill) => {
+	return (
+		<>
+			<div className={styles.wrapPage}>
+				<div className={styles.wrapHead}></div>
+				<div className='container'>
+					<div className='row'>
+						<div className={`${styles.leftCard} col-md-4`}>
+							<ProfileDetailsLayout />
+						</div>
+						<div className={`${styles.cardForm} col-md-8`}>
+							<FormEditBiodata data={data} />
+							<FormSkill data={data} />
+							<FormExperience />
+							<FormPortofolio />
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
+};
 export default EditProfileEmployee
