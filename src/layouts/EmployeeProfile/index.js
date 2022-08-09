@@ -99,16 +99,16 @@ const EmployeeProfileLayout = () => {
                             ornare quis urna. Curabitur eu lacus fringilla,
                             vestibulum risus at.
                           </p>
-                        </div>
-                      </div>
-                    </div>
+                        </div >
+                      </div >
+                    </div >
                   </>
                 )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </div >
+            </div >
+          </div >
+        </div >
+      </div >
       <Footer />
     </>
   );
