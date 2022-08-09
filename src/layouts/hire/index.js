@@ -1,9 +1,9 @@
 import Hiring from './components/hiring'
 
-const HiringPeople = () => {
+const HiringPeople = ({ data }) => {
   return (
     <>
-      <Hiring />
+      <Hiring data={data} />
     </>
   )
 }

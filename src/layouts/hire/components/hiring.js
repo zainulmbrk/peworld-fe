@@ -1,8 +1,10 @@
-import ProfileDetailsLayout from '../../EmployeeProfile/components/ProfileDetails'
 import styles from './Hiring.module.scss'
 import { MdOutlineLocationOn, MdOutlineMail } from 'react-icons/md'
 import { TbPhone } from 'react-icons/tb'
-const Hiring = () => {
+const Hiring = ({ data }) => {
+  const results = data
+  console.log(results, 'go')
+
   return (
     <>
       <div className={styles.wrapPage}>

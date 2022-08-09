@@ -1,10 +1,8 @@
-import { combineReducers } from "redux"
-import Profile from "./Profile"
-import SingleProfile from './Update';
+import { combineReducers } from 'redux'
+import { AllProfileFetch, SearchProfileFetch } from '../reducers/home'
 
-const rootReducer = combineReducers({
-	profile: Profile,
-	singleprofile: SingleProfile,
-});
-
-export default rootReducer
+const rootReducers = combineReducers({
+  profile: AllProfileFetch,
+  search: SearchProfileFetch,
+})
+export default rootReducers
