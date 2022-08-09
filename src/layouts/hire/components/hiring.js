@@ -1,5 +1,7 @@
 import styles from './Hiring.module.scss'
-const Hiring = () => {
+const Hiring = ({ data }) => {
+  const results = data
+  console.log(results, 'go')
   return (
     <>
       <div className={styles.wrapPage}>

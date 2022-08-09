@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import Footer from "../../components/footer";
-import Navbar from "../../components/navbar/navbar";
-import ProfileDetailsLayout from "./components/ProfileDetails";
-import styles from "./Employee.module.scss";
+import React, { useState } from 'react'
+import Footer from '../../components/footer'
+import Navbar from '../../components/navbar/navbar'
+import ProfileDetailsLayout from './components/ProfileDetails'
+import styles from './Employee.module.scss'
 
-const EmployeeProfileLayout = () => {
-  const [toggle, setToggle] = useState(true);
+const EmployeeProfileLayout = ({ data }) => {
+  const results = data.data
+  console.log(results, 'iinin')
+  const [toggle, setToggle] = useState(true)
   return (
     <>
       <Navbar />
@@ -13,13 +15,23 @@ const EmployeeProfileLayout = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              <ProfileDetailsLayout />
+              <ProfileDetailsLayout data={data} />
             </div>
             <div className="col-md-8">
               <div className={styles.portofolio}>
                 <div className={styles.portoTitle}>
-                  <h3 className={toggle ? `${styles.active}` : ""} onClick={() => setToggle(true)}>Portofolio</h3>
-                  <h3 className={toggle ? "" :`${styles.active}`} onClick={() => setToggle(false)}>Pengalaman kerja</h3>
+                  <h3
+                    className={toggle ? `${styles.active}` : ''}
+                    onClick={() => setToggle(true)}
+                  >
+                    Portofolio
+                  </h3>
+                  <h3
+                    className={toggle ? '' : `${styles.active}`}
+                    onClick={() => setToggle(false)}
+                  >
+                    Pengalaman kerja
+                  </h3>
                 </div>
                 {toggle ? (
                   <div className={styles.listPorto}>
@@ -61,7 +73,12 @@ const EmployeeProfileLayout = () => {
                           <h5>
                             July 2019 - January 2020 - <span>6 months</span>
                           </h5>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Vestibulum erat orci, mollis nec gravida sed,
+                            ornare quis urna. Curabitur eu lacus fringilla,
+                            vestibulum risus at.
+                          </p>
                         </div>
                       </div>
                       <div className={styles.expDetails}>
@@ -74,7 +91,12 @@ const EmployeeProfileLayout = () => {
                           <h5>
                             July 2019 - January 2020 - <span>6 months</span>
                           </h5>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Vestibulum erat orci, mollis nec gravida sed,
+                            ornare quis urna. Curabitur eu lacus fringilla,
+                            vestibulum risus at.
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -87,7 +109,7 @@ const EmployeeProfileLayout = () => {
       </div>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default EmployeeProfileLayout;
+export default EmployeeProfileLayout
