@@ -36,6 +36,8 @@ const ForgotpassLayout = () => {
             <button>Send</button>
           </form>
         </div>
+        <div className={styles.leftBg}></div>
+        <img src="/logo/log.svg" alt="" />
       </div>
     </>
   );

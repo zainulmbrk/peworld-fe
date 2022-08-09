@@ -1,4 +1,4 @@
-.forgotpassLayout {
+.confirmpassLayout {
   width: 100%;
   height: 100vh;
   position: relative;
@@ -15,19 +15,6 @@
       align-items: center;
       margin-top: 3em;
       margin-left: 4em;
-
-      h2 {
-        text-align: center;
-        font-weight: 600;
-        font-size: 25px;
-        color: #fff;
-      }
-      p {
-        margin-top: 1em;
-        text-align: center;
-        font-size: 18px;
-        color: #fff;
-      }
     }
     .leftBg {
       position: absolute;
@@ -36,7 +23,7 @@
       top: -10%;
       right: 48%;
       transform: translateY(-55%);
-      background: var(--primary);
+      background: var(--secondary);
       transition: 1.8s ease-in-out;
       border-radius: 50%;
     }
@@ -44,7 +31,7 @@
       position: relative;
       z-index: 1;
       width: 70%;
-      margin-top: -2em;
+      margin-top: 7em;
       margin-left: 6em;
       height: 100%;
     }
@@ -65,14 +52,27 @@
         cursor: pointer;
       }
     }
-    h1 {
-      text-align: center;
-      font-weight: 700;
-      margin-top: 1em;
-      color: #444;
+    .cpTitle {
+      margin-top: 4em;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h1 {
+        text-align: center;
+        font-weight: 700;
+        font-size: 35px;
+        color: #444;
+      }
+      p {
+        width: 70%;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+      }
     }
     form {
-      margin: 7em;
+      margin: 3em 7em;
       label {
         font-weight: 600;
         font-size: 14px;
@@ -101,17 +101,17 @@
         height: 50px;
         font-weight: 600;
         font-size: 16px;
-        background: var(--primary);
+        background: var(--secondary);
         color: #fff;
         border-radius: 30px;
         border: none;
         outline: none;
-        border: 2px solid var(--primary);
+        border: 2px solid var(--secondary);
         transition: 0.3s ease-in-out;
 
         &:hover {
           background: #fff;
-          color: var(--primary);
+          color: var(--secondary);
         }
       }
     }
@@ -119,7 +119,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .forgotpassLayout {
+  .confirmpassLayout {
     .left {
       display: none;
     }
@@ -131,8 +131,21 @@
         font-size: 20px;
         padding: 0;
       }
+      .cpTitle {
+        margin: 0;
+        h1 {
+          width: 80%;
+          font-size: 30px;
+        }
+        p {
+          width: 100%;
+          text-align: center;
+          font-size: 14px;
+          color: #666;
+        }
+      }
       form {
-        margin: 6em 1em;
+        margin: 3em 1em;
       }
     }
   }
