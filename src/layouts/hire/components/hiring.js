@@ -2,7 +2,7 @@ import styles from './Hiring.module.scss'
 import { MdOutlineLocationOn, MdOutlineMail } from 'react-icons/md'
 import { TbPhone } from 'react-icons/tb'
 const Hiring = ({ data }) => {
-  const results = data
+  const results = data.data
   console.log(results, 'go')
 
   return (
@@ -11,47 +11,46 @@ const Hiring = ({ data }) => {
         <div className="container">
           <div className="row">
             <div className={`${styles.leftCard} col-md-4`}>
-              <div className={styles.detailsLayout}>
-                <div className={styles.profileImage}>
-                  <img src="/images/img6.png" alt="profile" />
-                </div>
-                <div className={styles.profileInfo}>
-                  <h4>Louis Hamilton</h4>
-                  <h3>Web Developer</h3>
-                  <h5>Freelancer</h5>
-                  <p>
-                    <span>
-                      <MdOutlineLocationOn className={styles.profileIcon} />
-                    </span>
-                    Purwokerto, Jawa Tengah
-                  </p>
-                  <p>
-                    <span>
-                      <TbPhone className={styles.profileIcon} />
-                    </span>
-                    0812 - 3456 - 789
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Vestibulum erat orci, mollis nec gravida sed, ornare quis
-                    urna. Curabitur eu lacus fringilla, vestibulum risus at.
-                  </p>
-                </div>
-                <div className={styles.profileSkills}>
-                  <h2>Skills</h2>
-                  <div className={styles.skillBox}>
-                    <div className={styles.skillName}>Phyton</div>
-                    <div className={styles.skillName}>Laravel</div>
-                    <div className={styles.skillName}>Golang</div>
-                    <div className={styles.skillName}>JavaScript</div>
-                    <div className={styles.skillName}>PHP</div>
-                    <div className={styles.skillName}>HTML</div>
-                    <div className={styles.skillName}>C++</div>
-                    <div className={styles.skillName}>Kotlin</div>
-                    <div className={styles.skillName}>Swift</div>
-                  </div>
-                </div>
-              </div>
+              {results.map((item) => {
+                return (
+                  <>
+                    <div className={styles.detailsLayout} key={item.profile_id}>
+                      <div className={styles.profileImage}>
+                        <img
+                          src={`http://localhost:5000/uploads/${item.profile_picture}`}
+                          alt="profile"
+                        />
+                      </div>
+                      <div className={styles.profileInfo}>
+                        <h4>{item.profile_name}</h4>
+                        <h3>{item.profile_job}</h3>
+                        <h5>{item.profile_job_type}</h5>
+                        <p>
+                          <span>
+                            <MdOutlineLocationOn
+                              className={styles.profileIcon}
+                            />
+                          </span>
+                          {item.profile_location}
+                        </p>
+                        <p>
+                          <span>
+                            <TbPhone className={styles.profileIcon} />
+                          </span>
+                          {item.profile_phone_number}
+                        </p>
+                        <p>{item.profile_description}</p>
+                      </div>
+                      <div className={styles.profileSkills}>
+                        <h2>Skills</h2>
+                        <div className={styles.skillBox}>
+                          <div className={styles.skillName}>{item.skill}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )
+              })}
             </div>
             <div className={`${styles.msg} col-md-8`}>
               <div className={styles.header}>
