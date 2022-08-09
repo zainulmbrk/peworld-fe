@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ProfileDetails.module.scss";
 import { MdOutlineLocationOn, MdOutlineMail } from "react-icons/md";
 import { TbPhone } from "react-icons/tb";
 import { FiGithub, FiGitlab } from 'react-icons/fi'
 import { BsInstagram } from 'react-icons/bs'
+import axios from 'axios'
 
 const ProfileDetailsLayout = () => {
+  const [profile, setProfile] = useState([]);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:5000/api/v1/profiles",
+    })
+      .then((res) => {
+        setProfile(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
       <div className={styles.detailsLayout}>
@@ -23,7 +39,7 @@ const ProfileDetailsLayout = () => {
             erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu
             lacus fringilla, vestibulum risus at.
           </p>
-          <button>Hire</button>
+          {}<button>Hire</button>
         </div>
         <div className={styles.profileSkills}>
             <h2>Skills</h2>

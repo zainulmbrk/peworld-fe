@@ -1,0 +1,167 @@
+.cardFormExperience {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 2em;
+  margin-top: 2em;
+  border-radius: 5px;
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .horizontalLine {
+    width: 100%;
+    // height: 1%;
+    display: flex;
+    align-items: center;
+    // margin: 0 0.5em;
+    padding: 0;
+    .hline {
+      width: 100%;
+      height: 1px;
+      background-color: lightgrey;
+      margin-bottom: 1em;
+    }
+  }
+  .companyExperience {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    // flex-direction: column;
+    .formCompany {
+      display: flex;
+      flex-direction: column;
+      width: 45%;
+
+      label {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 1em;
+      }
+
+      input {
+        margin-bottom: 2em;
+        padding: 5px 10px;
+        letter-spacing: 0.5px;
+        height: 3em;
+        font-size: 14px;
+        border: 1px solid lightgray;
+        outline: none;
+        border-radius: 5px;
+        &::placeholder {
+          color: #999;
+        }
+      }
+    }
+  }
+  .date {
+    display: flex;
+    justify-content: space-between;
+    .formExperience {
+      display: flex;
+      flex-direction: column;
+      width: 45%;
+      
+      label {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 1em;
+      }
+      input {
+        margin-bottom: 2em;
+        padding: 5px 10px;
+        letter-spacing: 0.5px;
+        height: 3em;
+        font-size: 14px;
+        border: 1px solid lightgray;
+        outline: none;
+        border-radius: 5px;
+        &::placeholder {
+          color: #999;
+        }
+      }
+    }
+  }
+  .description {
+    .formExperience {
+      display: flex;
+      flex-direction: column;
+      label {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 1em;
+      }
+      textarea {
+        margin-bottom: 2em;
+        letter-spacing: 0.5px;
+        padding: 10px;
+        height: 10em;
+        font-size: 14px;
+        border-radius: 5px;
+        outline: none;
+        border: 1px solid lightgray;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+      }
+    }
+  }
+  .btnSaveExperience {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      padding: 0.5em 1em;
+      background-color: #fbb017;
+      color: #ffffff;
+      border: 1px solid #fbb017;
+      outline: none;
+      transition: 0.3s ease-in-out;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #fff;
+        outline: none;
+        color: #fbb017;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px){
+  .cardFormExperience {
+    .title {
+      p {
+        font-size: 20px;
+      }
+    }
+    form {
+      .companyExperience {
+        flex-direction: column;
+
+        .formCompany {
+          width: 100%;
+
+          label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 1em;
+          }
+        }
+      }
+      .date {
+        .formExperience {
+          width: 48%;
+          display: flex;
+          justify-content: space-between;
+
+          label {
+            margin-bottom: 1em;
+            font-size: 14px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
