@@ -9,7 +9,9 @@ const CompanyProfile = () => {
         <div className={styles.wrap}>
             <div className={"container"}>
                 <div className={styles.headers}>
-                    <img src="/assets/images/profile.png" />
+                    <picture>
+                        <img src="/assets/images/profile.png" alt="profile" />
+                    </picture>
                 </div>
                 <div className={styles.content}>
                     <div className={styles.dataCompany}>

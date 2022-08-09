@@ -10,7 +10,7 @@ export async function getServerSideProps(context) {
         destination: "/",
         permanent: true,
       },
-    };
+    }
   }
   return {
     props: { data: dataCookie },

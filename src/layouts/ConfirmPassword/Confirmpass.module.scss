@@ -1,0 +1,152 @@
+.confirmpassLayout {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+
+  .left {
+    .title {
+      width: 70%;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 3em;
+      margin-left: 4em;
+    }
+    .leftBg {
+      position: absolute;
+      width: 100vw;
+      height: 250vh;
+      top: -10%;
+      right: 48%;
+      transform: translateY(-55%);
+      background: var(--secondary);
+      transition: 1.8s ease-in-out;
+      border-radius: 50%;
+    }
+    img {
+      position: relative;
+      z-index: 1;
+      width: 70%;
+      margin-top: 7em;
+      margin-left: 6em;
+      height: 100%;
+    }
+  }
+  .right {
+    .logo {
+      margin-top: 0.5em;
+      width: 100%;
+      padding: 0 1em;
+      font-size: 30px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      img {
+        width: 100px;
+        cursor: pointer;
+      }
+    }
+    .cpTitle {
+      margin-top: 4em;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h1 {
+        text-align: center;
+        font-weight: 700;
+        font-size: 35px;
+        color: #444;
+      }
+      p {
+        width: 70%;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+      }
+    }
+    form {
+      margin: 3em 7em;
+      label {
+        font-weight: 600;
+        font-size: 14px;
+        color: #444;
+      }
+      input {
+        width: 100%;
+        border-radius: 30px;
+        height: 50px;
+        padding: 0 2em;
+        color: #444;
+        font-weight: 500;
+        outline: none;
+        background: rgb(240, 240, 240);
+        border: none;
+        font-size: 14px;
+        margin: 1em 0;
+
+        &::placeholder {
+          color: #999;
+        }
+      }
+      button {
+        margin-top: 1em;
+        width: 100%;
+        height: 50px;
+        font-weight: 600;
+        font-size: 16px;
+        background: var(--secondary);
+        color: #fff;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        border: 2px solid var(--secondary);
+        transition: 0.3s ease-in-out;
+
+        &:hover {
+          background: #fff;
+          color: var(--secondary);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .confirmpassLayout {
+    .left {
+      display: none;
+    }
+    .right {
+      h1 {
+        margin-top: 2em;
+      }
+      .logo {
+        font-size: 20px;
+        padding: 0;
+      }
+      .cpTitle {
+        margin: 0;
+        h1 {
+          width: 80%;
+          font-size: 30px;
+        }
+        p {
+          width: 100%;
+          text-align: center;
+          font-size: 14px;
+          color: #666;
+        }
+      }
+      form {
+        margin: 3em 1em;
+      }
+    }
+  }
+}

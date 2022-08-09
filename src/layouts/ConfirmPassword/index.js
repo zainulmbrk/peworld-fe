@@ -1,0 +1,42 @@
+import React from 'react'
+import Link from 'next/link'
+import styles from './Confirmpass.module.scss'
+
+const ConfirmpassLayout = () => {
+  return (
+    <div className={`${styles.confirmpassLayout} row`}>
+      <div className={`${styles.left} col-md-6`}>
+        <div className={styles.leftBg}></div>
+        <picture>
+          <img src="/icons/confirmpass.svg" alt="" />
+        </picture>
+      </div>
+      <div className={`${styles.right} col-md-6`}>
+        <div className={styles.logo}>
+          <Link href="/#">
+            <picture>
+              <img src="/logo/logo.svg" alt="logo" />
+            </picture>
+          </Link>
+        </div>
+        <div className={styles.cpTitle}>
+          <h1>Please login with your account</h1>
+          <p>We have an an email containing a password reset instruction toyour email. please check your email.</p>
+        </div>
+        <form>
+          <label>Email</label>
+          <br />
+          <input type="text" name='email' placeholder="Enter your email" />
+          <br />
+          <label>Password</label>
+          <br />
+          <input type="password" placeholder="Enter your password" />
+          <br />
+          <button>Send</button>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+export default ConfirmpassLayout

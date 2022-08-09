@@ -15,3 +15,39 @@
 .slick-slide {
   padding: 0.5em 1em;
 }
+.control-btn .next,
+.control-btn .prev {
+  position: absolute;
+  top: 40%;
+  width: 40px;
+  height: 40px;
+  line-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: var(--primary);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.control-btn .prev {
+  left: -3em;
+}
+.control-btn .next {
+  right: -3em;
+}
+.control-btn .next .btn-icon,
+.control-btn .prev .btn-icon {
+  font-size: 20px;
+  transition: 0.3s;
+  color: #fafafa;
+}
+.control-btn .prev .btn-icon {
+  margin-left: -5px;
+}
+@media screen and (max-width: 468px) {
+  .control-btn .next,
+  .control-btn .prev {
+    display: none;
+  }
+}

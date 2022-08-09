@@ -14,7 +14,9 @@ const NavbarLogin = () => {
           <div className={styles.logo}>
             <Link href="/">
               <div className={styles.imgbox}>
-                <img src="/logo/logo.svg" alt="logo" title="Peworld" />
+                <picture>
+                  <img src="/logo/logo.svg" alt="logo" title="Peworld" />
+                </picture>
               </div>
             </Link>
             <div
@@ -37,7 +39,9 @@ const NavbarLogin = () => {
               <Link href="/#">
                 <div className={styles.navlink}>
                   <div className={styles.profileImg}>
-                    <img src="/icons/profile.svg" alt="profile" />
+                    <picture>
+                      <img src="/icons/profile.svg" alt="profile" />
+                    </picture>
                   </div>
                 </div>
               </Link>

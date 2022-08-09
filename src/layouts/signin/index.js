@@ -41,11 +41,13 @@ const SigninLayout = () => {
             </Link>
           </div>
           <div className={styles.leftBg}></div>
-          <img src="/logo/log.svg" alt="" />
+          <picture>
+            <img src="/logo/log.svg" alt="" />
+          </picture>
         </div>
         <div className={`${styles.right} col-md-6`}>
           <div className={styles.logo}>
-            <Link href='/#'><img src="/logo/logo.svg" alt="logo" /></Link>
+            <Link href='/#'><picture><img src="/logo/logo.svg" alt="logo" /></picture></Link>
             <Link href='/direct'><button>Daftar</button></Link>
           </div>
           <h1>Sign In</h1>

@@ -7,15 +7,16 @@ const Footer = () => {
     <div className={styles.footer}>
       <div className={`${styles.footerContent} container`}>
         <div className={styles.logo}>
-            <Link href='/#'><img src="/logo/logowhite.svg" alt="" /></Link>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
+          <Link href='/#'>
+            <picture><img src="/logo/logowhite.svg" alt="" /></picture></Link>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
         </div>
         <div className={styles.bottom}>
-            <div className={styles.copyright}>2020 Peworld. All right reserved</div>
-            <div className={styles.bottomLeft}>
-                <div className={styles.content}>Telepon</div>
-                <div className={styles.content}>Email</div>
-            </div>
+          <div className={styles.copyright}>2020 Peworld. All right reserved</div>
+          <div className={styles.bottomLeft}>
+            <div className={styles.content}>Telepon</div>
+            <div className={styles.content}>Email</div>
+          </div>
         </div>
       </div>
     </div>

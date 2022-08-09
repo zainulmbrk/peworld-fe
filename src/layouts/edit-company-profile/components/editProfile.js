@@ -11,7 +11,9 @@ const EditCompanyProfile = () => {
             <div className={styles.dataProfile}>
               <div className={styles.cardData}>
                 <div className={styles.imgProfile}>
-                  <img src="/assets/images/profile.png" />
+                  <picture>
+                    <img src="/assets/images/profile.png" alt='profile' />
+                  </picture>
                 </div>
                 <div className={styles.companyName}>
                   <h5>PT. Martabat Jaya Abadi</h5>

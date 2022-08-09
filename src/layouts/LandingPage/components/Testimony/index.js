@@ -1,24 +1,48 @@
 import React from "react";
 import styles from "./Testimony.module.scss";
 import Slider from "react-slick";
+import { TbChevronLeft, TbChevronRight } from 'react-icons/tb'
 
 const Testimony = () => {
+  const NextArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div className="control-btn" onClick={onClick}>
+        <button className="next">
+            <TbChevronRight className="btn-icon"/> 
+        </button>
+      </div>
+    );
+  };
+
+  const PrevArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div className="control-btn" onClick={onClick}>
+        <button className="prev">
+          <TbChevronLeft className="btn-icon"/>
+        </button>
+      </div>
+    );
+  };
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    autoplay: true,
+    autoplay: false,
     slidesToShow: 3,
     slidesToScroll: 3,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
-    ]
+      },
+    ],
   };
   return (
     <div className={styles.testimony}>
