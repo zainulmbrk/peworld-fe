@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState } from 'react'
-import styles from './NavbarLogin.module.scss'
+import styles from './navbarLogin.module.scss'
 import Link from 'next/link'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { MdOutlineNotifications, MdOutlineEmail } from 'react-icons/md'
