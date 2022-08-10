@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import styles from "./NavbarLogin.module.scss";
+import styles from "./navbarLogin.module.scss";
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { MdOutlineNotifications, MdOutlineEmail } from "react-icons/md";
 import Cookies from "js-cookie";
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
+
 const NavbarLogin = () => {
   const router = useRouter();
   const profile_id = Cookies.get("profile_id");
@@ -14,7 +15,12 @@ const NavbarLogin = () => {
   const RouteProfile = () => {
     router.push(`/companyprofile`);
   };
-
+  const handleLogout = () => {
+    Cookies.remove("profile_id"),
+      Cookies.remove("token"),
+      Cookies.remove("profile_role"),
+      Cookies.remove("profile_email")
+  }
   return (
     <>
       <nav className={styles.navbarLogin}>
@@ -97,19 +103,14 @@ const NavbarLogin = () => {
                       </div>
                       <div className={styles.line}></div>
                       <Link href='/'>
-                      <div
-                        className={styles.link}
-                        onClick={
-                          (Cookies.remove("profile_id"),
-                          Cookies.remove("token"),
-                          Cookies.remove("profile_role"),
-                          Cookies.remove("profile_email"))
-                        }
-                      >
-                        Logout
-                      </div>
+                        <div
+                          className={styles.link}
+                          onClick={handleLogout}
+                        >
+                          Logout
+                        </div>
                       </Link>
-                      
+
                     </div>
                   </div>
                 </div>
