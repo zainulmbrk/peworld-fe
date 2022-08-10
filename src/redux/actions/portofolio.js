@@ -39,3 +39,46 @@ export const GetPortofolio = (profile_id) => {
 		};
 	}
 };
+
+const DeletePortofolioRequest = () => {
+	return {
+		type: 'DELETE_PORTOFOLIO_REQUEST',
+	};
+};
+
+const DeletePortofolioSuccess = (data) => {
+	return {
+		type: 'DELETE_PORTOFOLIO_SUCCESS',
+		payload: data,
+	};
+};
+
+const DeletePortofolioError = (error) => {
+	return {
+		type: 'DELETE_PORTOFOLIO_ERROR',
+		payload: error,
+	};
+};
+
+export const DeletePortofolio = (profile_id, portofolio_id, token) => {
+	console.log(profile_id, portofolio_id, token, 'ini data delete porto');
+	if (typeof window !== 'undefined') {
+		return (dispatch) => {
+			dispatch(DeletePortofolioRequest());
+			axios({
+				method: 'DELETE',
+				url: `http://localhost:5000/api/v1/portofolio?profile_id=${profile_id}&portofolio_id=${portofolio_id}`,
+				headers: {
+					authorization: `Bearer ${token}`,
+				},
+			})
+				.then((res) => {
+					dispatch(DeletePortofolioSuccess(res.data));
+				})
+				.catch((err) => {
+					dispatch(DeletePortofolioError(err.response));
+				});
+		};
+	}
+};
+
