@@ -32,7 +32,7 @@ const Header = () => {
           )}
         </div>
         <div className={`${styles.right} col-md-6`}>
-          <img src="/images/img3.png" alt="" />
+          <img src="/images/img3.png" alt="background" />
         </div>
       </div>
     </div>
