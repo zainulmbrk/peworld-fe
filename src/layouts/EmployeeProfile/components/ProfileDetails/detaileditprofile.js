@@ -24,7 +24,7 @@ const ProfileDetailsLayoutEdit = ({ data }) => {
 					return (
 						<>
 							<div className={styles.profileImage} key={item.profile_id}>
-								<Image
+								<img
 									className='bg-warning rounded-circle'
 									// loader={myLoader(item.product_picture)}
 									src={`http://localhost:5000/uploads/${item.profile_picture}`}
