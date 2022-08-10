@@ -103,5 +103,5 @@ const FormEditBiodata = (data) => {
 			</div>
 		</>
 	);
-};;
+}
 export default FormEditBiodata;

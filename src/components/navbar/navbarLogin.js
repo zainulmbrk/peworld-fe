@@ -1,12 +1,11 @@
-/** @format */
+import React, { useState } from "react";
+import styles from "./navbarLogin.module.scss";
+import Link from "next/link";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { MdOutlineNotifications, MdOutlineEmail } from "react-icons/md";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router"
 
-import React, { useState } from 'react';
-import styles from './navbarLogin.module.scss';
-import Link from 'next/link';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { MdOutlineNotifications, MdOutlineEmail } from 'react-icons/md';
-import Cookies from 'js-cookie';
-import { useRouter } from 'next/router';
 const NavbarLogin = () => {
 	const router = useRouter();
 	const profile_id = Cookies.get('profile_id');

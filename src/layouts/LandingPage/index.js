@@ -12,9 +12,7 @@ import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 const LandingpageLayout = () => {
 	const router = useRouter();
-	// router.replace(`/User/homeuser`);
 	const profile_id = Cookies.get('profile_id');
-	console.log(profile_id, 'ini profile id nya');
 	return (
 		<>
 			{profile_id ? (
