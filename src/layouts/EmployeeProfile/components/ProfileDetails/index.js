@@ -11,6 +11,7 @@ import Image from 'next/image';
 const ProfileDetailsLayout = ({ data }) => {
 	const profile_id = Cookies.get('profile_id');
 	const role = Cookies.get('profile_role');
+	const skillsplit = data.data[0].skill.split(',');
 	const results = data.data;
 	return (
 		<>
@@ -61,11 +62,19 @@ const ProfileDetailsLayout = ({ data }) => {
 									</>
 								)}
 							</div>
-							<div className={styles.profileSkills}>
-								<h2>Skills</h2>
-								<div className={styles.skillBox}>
-									<div className={styles.skillName}>{item.skill}</div>
+							<div className={`${styles.profileSkills} d-flex  flex-wrap`}>
+								<div className='col-12'>
+									<h2>Skills</h2>
 								</div>
+								{skillsplit?.map((item, index) => {
+									return (
+										<>
+											<div className={`${styles.skillBox} me-2`}>
+												<div className={styles.skillName}>{item}</div>
+											</div>
+										</>
+									);
+								})}
 							</div>
 							<div className={styles.profileSocial}>
 								<p>

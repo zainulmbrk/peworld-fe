@@ -21,10 +21,14 @@ export async function getServerSideProps(context) {
 	const res3 = await fetch(
 		`http://localhost:5000/api/v1/portofolio?profile_id=${context.params.editprofile}`
 	);
+	const res4 = await fetch(
+		`http://localhost:5000/api/v1/experience/id?profile_id=${context.params.editprofile}`
+	);
 	const data = await res.json();
 	const dataskill = await res2.json();
 	const dataporto = await res3.json();
-	return { props: { data, dataskill, dataporto } };
+	const dataexperience = await res4.json();
+	return { props: { data, dataskill, dataporto, dataexperience } };
 }
 
 export default EditProfiles;
