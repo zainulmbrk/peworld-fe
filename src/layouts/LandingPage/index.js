@@ -7,22 +7,45 @@ import SkillTalent from './components/SkillTalent'
 import Testimony from './components/Testimony'
 import WhyUs from './components/WhyUs'
 import Head from 'next/head'
-
+import NavbarLogin from '../../components/navbar/navbarLogin';
+import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 const LandingpageLayout = () => {
-  return (
-    <>
-    <Head>
-        <title>Peworld</title>
-    </Head>
-    <Navbar />
-    <Header />
-    <WhyUs />
-    <SkillTalent />
-    <Testimony />
-    <GetStarted />
-    <Footer/>
-    </>
-  )
-}
+	const router = useRouter();
+	// router.replace(`/User/homeuser`);
+	const profile_id = Cookies.get('profile_id');
+	console.log(profile_id, 'ini profile id nya');
+	return (
+		<>
+			{profile_id ? (
+				<>
+					<Head>
+						<title>Peworld</title>
+					</Head>
+					<NavbarLogin />
+					<Header />
+					<WhyUs />
+					<SkillTalent />
+					<Testimony />
+					<GetStarted />
+					<Footer />
+				</>
+			) : (
+				<>
+					<Head>
+						<title>Peworld</title>
+					</Head>
+					<Navbar />
+					<Header />
+					<WhyUs />
+					<SkillTalent />
+					<Testimony />
+					<GetStarted />
+					<Footer />
+				</>
+			)}
+		</>
+	);
+};
 
 export default LandingpageLayout
