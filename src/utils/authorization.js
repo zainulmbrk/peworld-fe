@@ -8,6 +8,16 @@ export function getDataCookie(context) {
     } else {
       dataCookie.isLogin = false
     }
+    if (dataCookie.profile_role == 'perekrut') {
+      dataCookie.isPerekrut = true
+    } else {
+      dataCookie.isPerekrut = false
+    }
+    if (dataCookie.profile_role == 'pekerja') {
+      dataCookie.isPekerja = true
+    } else {
+      dataCookie.isPekerja = false
+    }
     resolve(dataCookie)
   });
 }

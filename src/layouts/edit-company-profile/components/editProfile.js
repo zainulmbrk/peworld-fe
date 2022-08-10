@@ -1,21 +1,43 @@
 import styles from './EditProfile.module.scss'
-import { HiOutlineLocationMarker } from 'react-icons/hi'
+import { HiOutlineLocationMarker, HiPencil } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { GetCompany } from '../../../redux/actions/company'
 import Cookies from 'js-cookie'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from '../../../utils/axios'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 
-const EditCompanyProfile = ({ data }) => {
+
+const EditCompanyProfile = () => {
+  const router = useRouter()
+  let company = useSelector((s) => s.company)
+  const dataCompany = company.data
   const dispatch = useDispatch()
+  const [Refetch, setRefetch] = useState();
+
   useEffect(() => {
     dispatch(GetCompany())
   }, [dispatch])
 
-  const [formEditData, setFormEditData] = useState({})
-  // formEditData 
+  const [formAddData, setFormAddData] = useState({})
+  const formData = new FormData()
+  formData.append('profile_name', formAddData.profile_name)
+  formData.append('profile_company', formAddData.profile_company)
+  formData.append('profile_sub_company', formAddData.profile_sub_company)
+  formData.append('profile_instagram', formAddData.profile_instagram)
+  formData.append('profile_github', formAddData.profile_github)
+  formData.append('profile_linkedin', formAddData.profile_linkedin)
+  formData.append('profile_location', formAddData.profile_location)
+  formData.append('profile_phone_number', formAddData.profile_phone_number)
+  formData.append('profile_description', formAddData.profile_description)
+  formData.append('profile_picture', formAddData.profile_picture)
+
+  for (const value of formData.values()) {
+    console.log(value)
+  }
   const handleUpdateCompany = async (e) => {
     e.preventDefault()
     const id = Cookies.get('profile_id')
@@ -23,7 +45,7 @@ const EditCompanyProfile = ({ data }) => {
     try {
       const result = await axios({
         method: 'PATCH',
-        data: formEditData,
+        data: formData,
         url: `/profile/perekrut?profile_id=${id}`,
         headers: {
           authorization: `Bearer ${token}`
@@ -31,33 +53,45 @@ const EditCompanyProfile = ({ data }) => {
       })
       if (result.data.success) {
         toast.success('Successfully Updated')
-        setRefetch(!refetch)
+        setRefetch(!Refetch)
       } else {
         toast.error('Failed, Try Again')
       }
-
     } catch (err) {
-      console.log(err)
-      // toast.error(err.response.data.message)
+      // console.log(err)
+      toast.error(err.response.data.message)
     }
   }
-
-  console.log(formEditData)
+  const ruteBack = () => {
+    router.push('/companyprofile')
+  }
+  const inputFile = useRef(null);
+  const onClickInput = () => {
+    inputFile.current.click()
+  }
+  console.log(formAddData.profile_picture)
   return (
     <>
+      <Head>
+        <title>Edit Profile Company</title>
+      </Head>
       <div className={styles.wrapPage}>
         <div className={styles.wrapHead}></div>
-        {data.length > 0 ? data.map((company, index) => {
+        {dataCompany.length > 0 ? dataCompany.map((company, index) => {
           return (
             <div className="container" key={index}>
               <div className={styles.wrapCard}>
                 <div className={styles.dataProfile}>
-
                   <div className={styles.cardData} >
                     <div className={styles.imgProfile}>
                       <picture>
-                        <img src={`${company.profile_picture}`} alt='profile' />
+                        <img src={formAddData.profile_picture ? `${formAddData.profile_picture.name}` : `http://localhost:5000/uploads/${company.profile_picture}`} alt='profile' className={styles.imgProfileWrapper} />
                       </picture>
+                      <input type="file" onChange={(e) => setFormAddData(prevState => ({ ...prevState, profile_picture: e.target.files[0] }))} name="image" id="image" ref={inputFile} hidden />
+                      <div className="hover-pointer text-center" onClick={() => onClickInput()}>
+                        <HiPencil />
+                        Edit
+                      </div>
                     </div>
                     <div className={styles.companyName}>
                       <h5>{company.profile_company}</h5>
@@ -80,7 +114,7 @@ const EditCompanyProfile = ({ data }) => {
 
                   <div className={styles.action}>
                     <button className={styles.save} onClick={(e) => handleUpdateCompany(e)}>Simpan</button>
-                    <button className={styles.back}>Kembali</button>
+                    <button className={styles.back} onClick={ruteBack}>Kembali</button>
                   </div>
                 </div>
                 <div className={styles.formEdit}>
@@ -94,56 +128,56 @@ const EditCompanyProfile = ({ data }) => {
                     <form onSubmit={(e) => handleUpdateCompany(e)}>
                       <div className={styles.companyForm}>
                         <label>Nama Perusahaan</label>
-                        <input type="text" placeholder="Masukan nama perusahaan" value={formEditData.profile_company} onChange={(e) => {
-                          setFormEditData(prevState => ({ ...prevState, profile_company: e.target.value }))
+                        <input type="text" placeholder="Masukan nama perusahaan" defaultValue={company.profile_company} onChange={(e) => {
+                          setFormAddData(prevState => ({ ...prevState, profile_company: e.target.value }))
                         }} />
                       </div>
                       <div className={styles.companyForm}>
                         <label>Bidang</label>
                         <input
                           type="text"
-                          placeholder="Masukan bidang perusahaan ex: Financial" value={formEditData.profile_sub_company} onChange={(e) => {
-                            setFormEditData(prevState => ({ ...prevState, profile_sub_company: e.target.value }))
+                          placeholder="Masukan bidang perusahaan ex: Financial" defaultValue={company.profile_sub_company} onChange={(e) => {
+                            setFormAddData(prevState => ({ ...prevState, profile_sub_company: e.target.value }))
                           }}
                         />
                       </div>
                       <div className={styles.companyForm}>
                         <label>Domisili</label>
-                        <input type="text" placeholder="Masukan Domisili" value={formEditData.profile_location} onChange={(e) => {
-                          setFormEditData(prevState => ({ ...prevState, profile_location: e.target.value }))
+                        <input type="text" placeholder="Masukan Domisili" defaultValue={company.profile_location} onChange={(e) => {
+                          setFormAddData(prevState => ({ ...prevState, profile_location: e.target.value }))
                         }} />
                       </div>
                       <div className={styles.companyForm}>
                         <label>Deskripsi singkat</label>
                         <textarea
                           type="textarea"
-                          placeholder="Tuliskan deskripsi angkat" value={formEditData.profile_description} onChange={(e) => {
-                            setFormEditData(prevState => ({ ...prevState, profile_description: e.target.value }))
+                          placeholder="Tuliskan deskripsi angkat" defaultValue={company.profile_description} onChange={(e) => {
+                            setFormAddData(prevState => ({ ...prevState, profile_description: e.target.value }))
                           }}
                         />
                       </div>
                       <div className={styles.companyForm}>
                         <label>Email</label>
-                        <input type="text" placeholder="Masukan email" value={formEditData.profile_email} onChange={(e) => {
-                          setFormEditData(prevState => ({ ...prevState, profile_email: e.target.value }))
+                        <input type="text" placeholder="Masukan email" defaultValue={company.profile_email} onChange={(e) => {
+                          setFormAddData(prevState => ({ ...prevState, profile_email: e.target.value }))
                         }} />
                       </div>
                       <div className={styles.companyForm}>
                         <label>Instagram</label>
-                        <input type="text" placeholder="Masukan Username IG" value={formEditData.profile_instagram} onChange={(e) => {
-                          setFormEditData(prevState => ({ ...prevState, profile_instagram: e.target.value }))
+                        <input type="text" placeholder="Masukan Username IG" defaultValue={company.profile_instagram} onChange={(e) => {
+                          setFormAddData(prevState => ({ ...prevState, profile_instagram: e.target.value }))
                         }} />
                       </div>
                       <div className={styles.companyForm}>
                         <label>Nomor Telepon</label>
-                        <input type="text" placeholder="Masukan nomor telepon" value={formEditData.profile_phone_number} onChange={(e) => {
-                          setFormEditData(prevState => ({ ...prevState, profile_phone_number: e.target.value }))
+                        <input type="text" placeholder="Masukan nomor telepon" defaultValue={company.profile_phone_number} onChange={(e) => {
+                          setFormAddData(prevState => ({ ...prevState, profile_phone_number: e.target.value }))
                         }} />
                       </div>
                       <div className={styles.companyForm}>
                         <label>Linkedin</label>
-                        <input type="text" placeholder="Masukan nama Linkedin" value={formEditData.profile_linkedin} onChange={(e) => {
-                          setFormEditData(prevState => ({ ...prevState, profile_linkedin: e.target.value }))
+                        <input type="text" placeholder="Masukan nama Linkedin" defaultValue={company.profile_linkedin} onChange={(e) => {
+                          setFormAddData(prevState => ({ ...prevState, profile_linkedin: e.target.value }))
                         }} />
                       </div>
                     </form>
