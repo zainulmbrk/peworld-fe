@@ -4,18 +4,28 @@ import Link from "next/link";
 import Head from "next/head";
 import axios from '../../utils/axios'
 import Cookies from "js-cookie";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ForgotpassLayout = () => {
   const [email, setEmail] = useState({ profile_email: '' })
-  useEffect(() => {
-    axios.get(`/auth/send-email-reset-pass/${email}`)
+  console.log(email.profile_email, 'opop')
+  const handleClick = (e) => {
+    e.preventDefault()
+    const { profile_email } = email
+    axios.get(`/auth/send-email-reset-pass/${profile_email}`)
       .then((res) => {
-
+        console.log(res)
+        Cookies.set('profile_key', res.data.data)
+        Cookies.set('profile_email', email.profile_email)
+        toast.success(res.data.message)
+      }).catch((err) => {
+        toast.error(err.response.message)
       })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [email])
+  }
+  const handleChangeText = (e) => {
+    setEmail({ ...email, [e.target.name]: e.target.value })
+  }
   return (
     <>
       <Head>
@@ -43,14 +53,15 @@ const ForgotpassLayout = () => {
           <form>
             <label>Email</label>
             <br />
-            <input type="text" name="profile_email" placeholder="Enter your email" />
+            <input type="text" name="profile_email" placeholder="Enter your email" onChange={handleChangeText} />
             <br />
-            <button>Send</button>
+            <button onClick={handleClick}>Send</button>
           </form>
         </div>
         <div className={styles.leftBg}></div>
         <img src="/logo/log.svg" alt="" />
       </div>
+      <ToastContainer autoClose={2000} />
     </>
   );
 };
