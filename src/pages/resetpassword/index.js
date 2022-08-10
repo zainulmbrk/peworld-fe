@@ -4,7 +4,7 @@ import ResetpassLayout from '../../layouts/ResetPassword'
 const Resetpassword = () => {
   return (
     <>
-     <ResetpassLayout />   
+      <ResetpassLayout />
     </>
   )
 }
