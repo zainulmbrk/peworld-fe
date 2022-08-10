@@ -64,7 +64,7 @@ const SigninLayout = () => {
             <label>Password</label>
             <br />
             <input type="password" name="profile_password" placeholder="Enter your password" onChange={handleChangeText} />
-            <Link href="/#">
+            <Link href="/forgotpassword">
               <p>Forgot your password?</p>
             </Link>
             <button onClick={handleSubmit}>Sign In</button>

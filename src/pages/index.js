@@ -1,9 +1,10 @@
 import Landingpage from './landingpage'
 
 export default function Home() {
-  return (
-    <>
-      <Landingpage/>
-    </>
-  )
+
+	return (
+		<>
+			<Landingpage />
+		</>
+	);
 }

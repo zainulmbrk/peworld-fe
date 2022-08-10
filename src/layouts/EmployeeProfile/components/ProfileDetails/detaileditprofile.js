@@ -1,29 +1,35 @@
-import React from 'react'
-import styles from './ProfileDetails.module.scss'
-import { MdOutlineLocationOn, MdOutlineMail } from 'react-icons/md'
-import { TbPhone } from 'react-icons/tb'
-import { FiGithub, FiGitlab } from 'react-icons/fi'
-import { BsInstagram } from 'react-icons/bs'
-import Link from 'next/link'
+/** @format */
+
+import React from 'react';
+import styles from './ProfileDetails.module.scss';
+import { MdOutlineLocationOn, MdOutlineMail } from 'react-icons/md';
+import { TbPhone } from 'react-icons/tb';
+import { FiGithub, FiGitlab } from 'react-icons/fi';
+import { BsInstagram } from 'react-icons/bs';
+import Link from 'next/link';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
-const ProfileDetailsLayout = ({ data }) => {
+const ProfileDetailsLayoutEdit = ({ data }) => {
+	const { asPath } = useRouter();
 	const profile_id = Cookies.get('profile_id');
 	const role = Cookies.get('profile_role');
-	const results = data.data;
+	const results = data.data.data;
+	console.log(asPath, 'ini pathnya');
 	return (
 		<>
 			<div className={styles.detailsLayout}>
-				{results.map((item) => {
+				{results.data?.data?.map((item) => {
 					return (
 						<>
 							<div className={styles.profileImage} key={item.profile_id}>
 								<Image
-									className='rounded-circle'
+									className='bg-warning rounded-circle'
+									// loader={myLoader(item.product_picture)}
 									src={`http://localhost:5000/uploads/${item.profile_picture}`}
-									width={'150'}
-									height={'150'}
+									width={'300'}
+									height={'300'}
 								/>
 							</div>
 							<div className={styles.profileInfo}>
@@ -47,24 +53,33 @@ const ProfileDetailsLayout = ({ data }) => {
 									Vestibulum erat orci, mollis nec gravida sed, ornare quis
 									urna. Curabitur eu lacus fringilla, vestibulum risus at.
 								</p>
-								{role == 'pekerja' ? (
-									<>
-										<Link href={`/editprofile/${profile_id}`}>
-											<button>Edit Profile</button>
-										</Link>
-									</>
+								{role == 'pekerja' && asPath == `/editprofile/${profile_id}` ? (
+									<></>
 								) : (
 									<>
-										<Link href={`/hire/${item.profile_id}`}>
-											<button>Hire</button>
-										</Link>
+										{role == 'pekerja' &&
+										asPath != `/editprofile/${profile_id}` ? (
+											<>
+												<Link href={`/editprofile/${profile_id}`}>
+													<button>Edit Profile</button>
+												</Link>
+											</>
+										) : (
+											<>
+												<Link href={`/hire/${item.profile_id}`}>
+													<button>Hire</button>
+												</Link>
+											</>
+										)}
 									</>
 								)}
 							</div>
 							<div className={styles.profileSkills}>
 								<h2>Skills</h2>
 								<div className={styles.skillBox}>
-									<div className={styles.skillName}>{item.skill}</div>
+									<div className='col-12 flex-wrap'>
+										<div className={styles.skillName}>{item.skill}</div>
+									</div>
 								</div>
 							</div>
 							<div className={styles.profileSocial}>
@@ -101,4 +116,4 @@ const ProfileDetailsLayout = ({ data }) => {
 	);
 };
 
-export default ProfileDetailsLayout
+export default ProfileDetailsLayoutEdit;
