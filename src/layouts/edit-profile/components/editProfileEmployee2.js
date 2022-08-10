@@ -1,12 +1,14 @@
-import ProfileDetailsLayout from '../../EmployeeProfile/components/ProfileDetails'
-import styles from './EditProfileEmployee.module.scss'
-import FormEditBiodata from './FormEditBiodata'
-import FormExperience from './FormExperience'
-import FormPortofolio from './FormPortofolio'
-import FormSkill from './FormSkill'
+/** @format */
+
+import ProfileDetailsLayout from '../../EmployeeProfile/components/ProfileDetails';
+import styles from './EditProfileEmployee.module.scss';
+import FormEditBiodata from './FormEditBiodata';
+import FormExperience from './FormExperience';
+import FormPortofolio from './FormPortofolio';
+import FormSkill from './FormSkill';
 import ProfileDetailsLayoutEdit from '../../EmployeeProfile/components/ProfileDetails/detaileditprofile';
 
-const EditProfileEmployee = (data, dataskill) => {
+const EditProfileEmployee2 = (data, dataskill) => {
 	return (
 		<>
 			<div className={styles.wrapPage}>
@@ -20,7 +22,7 @@ const EditProfileEmployee = (data, dataskill) => {
 							<FormEditBiodata data={data} />
 							<FormSkill data={data} />
 							<FormExperience />
-							<FormPortofolio />
+							<FormPortofolio data={data} />
 						</div>
 					</div>
 				</div>
@@ -28,4 +30,4 @@ const EditProfileEmployee = (data, dataskill) => {
 		</>
 	);
 };
-export default EditProfileEmployee;
+export default EditProfileEmployee2;

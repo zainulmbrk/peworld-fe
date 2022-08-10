@@ -1,8 +1,9 @@
 const initialState = {
-  loading: false,
-  data: {},
-  error: null,
-}
+	loading: false,
+	data: {},
+	results: [],
+	error: null,
+};
 
 export const AllProfileFetch = (state = initialState, action = {}) => {
   switch (action.type) {
