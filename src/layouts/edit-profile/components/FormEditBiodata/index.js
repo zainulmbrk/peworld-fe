@@ -5,28 +5,10 @@ import { useEffect, useState } from 'react';
 import { GetSingleProfile } from '../../../../redux/actions/UpdateProfile';
 const FormEditBiodata = (data) => {
 	const resultdata = data.data.data.data.data.data[0];
-	console.log(resultdata, 'data bawaanananaaas');
 	const dispatch = useDispatch();
 	const [Refetch, setRefetch] = useState();
-	// const datasingleprofile = useSelector((state) => state.singleprofile);
-	const a = resultdata.skill.split(',');
-
-	// useEffect(() => {
-	// 	dispatch(GetSingleProfile(3));
-	// }, []);
-
 	return (
 		<>
-			{/* {a.map((item, index) => {
-				console.log(item);
-				return (
-					<>
-						<div>
-							<button>{item}</button>
-						</div>
-					</>
-				);
-			})} */}
 			<div className={styles.formEditBiodata}>
 				<div className={styles.cardFormBiodata}>
 					<div className={styles.title}>
@@ -58,7 +40,7 @@ const FormEditBiodata = (data) => {
 								<>
 									<select>
 										<option style={{ height: '50px' }}>Freelance</option>
-										<option>Freelance</option>
+										<option>Fulltime</option>
 									</select>
 								</>
 							) : (
@@ -122,5 +104,5 @@ const FormEditBiodata = (data) => {
 			</div>
 		</>
 	);
-};
+};;
 export default FormEditBiodata;
