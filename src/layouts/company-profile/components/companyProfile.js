@@ -5,7 +5,7 @@ import { BsInstagram } from 'react-icons/bs'
 import { BsTelephone } from 'react-icons/bs'
 import { FaLinkedinIn } from 'react-icons/fa'
 const CompanyProfile = ({ data }) => {
-  const results = data.result
+  const results = data.data
   console.log(results, 'inilo')
   return (
     <>
