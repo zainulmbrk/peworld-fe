@@ -7,11 +7,16 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 const NavbarLogin = () => {
 	const router = useRouter();
-	const profile_id = Cookies.get('profile_id');
+  const profile_id = Cookies.get('profile_id');
+	const profile_role = Cookies.get('profile_role');
+
 	const [toggle, setToggle] = useState(false);
 	const [panel, setPanel] = useState(false);
-	const RouteProfile = () => {
+	const RouteProfilePerekrut = () => {
 		router.push(`/companyprofile`);
+	};
+	const RouteProfilePekerja = () => {
+		router.push(`/profile/${profile_id}`);
 	};
 
 	return (
@@ -96,11 +101,27 @@ const NavbarLogin = () => {
 											}
 										>
 											<div className={styles.panelBox}>
-												<div className={styles.link} onClick={RouteProfile}>
-													Profile
-												</div>
+												{profile_role == 'pekerja' ? (
+													<>
+														<div
+															className={styles.link}
+															onClick={RouteProfilePekerja}
+														>
+															Profile
+														</div>
+													</>
+												) : (
+													<>
+														<div
+															className={styles.link}
+															onClick={RouteProfilePerekrut}
+														>
+															Profile
+														</div>
+													</>
+												)}
 												<div className={styles.line}></div>
-												<button
+												{/* <button
 													className={styles.link}
 													onClick={
 														(Cookies.remove('profile_id'),
@@ -110,7 +131,8 @@ const NavbarLogin = () => {
 													}
 												>
 													Logout
-												</button>
+												</button> */}
+												Logout
 											</div>
 										</div>
 									</div>

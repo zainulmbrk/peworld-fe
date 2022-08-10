@@ -2,9 +2,21 @@ import React from "react";
 import styles from "./FormPorto.module.scss";
 import Image from 'next/image';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { DeletePortofolio } from '../../../../redux/actions/portofolio';
+
 const FormPortofolio = (data) => {
+	const dispatch = useDispatch();
+	const profile_id = Cookies.get('profile_id');
+	const token = Cookies.get('token');
 	const dataporto = data.data.data.data.dataporto.data;
-	console.log(dataporto, 'isi portonya');
+	console.log(dataporto, 'ini data porto');
+	const handledelete = (profile_id, portofolio_id, token, portofolio_name) => {
+		if (window.confirm(`${portofolio_name} Akan Dihapus ?`)) {
+			dispatch(DeletePortofolio(profile_id, portofolio_id, token));
+		}
+	};
 	return (
 		<>
 			<div className={styles.cardPortofolioForm}>
@@ -30,7 +42,22 @@ const FormPortofolio = (data) => {
 											<button className=' btn btn-outline-success col-4 me-3 '>
 												Edit
 											</button>
-											<button className=' btn btn-outline-danger col-4 '>
+											<button
+												className=' btn btn-outline-danger col-4 '
+												onClick={() => {
+													handledelete(
+														profile_id,
+														item.portofolio_id,
+														token,
+														item.portofolio_name
+													);
+													alert(
+														item.profile_id,
+														item.portofolio_id,
+														item.portofolio_name
+													);
+												}}
+											>
 												Delete
 											</button>
 										</div>

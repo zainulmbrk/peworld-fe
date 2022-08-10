@@ -9,9 +9,17 @@ const initialState = {
 			portofolio_repo: '',
 		},
 	],
+	error: '',
+};
+const initialStateDelete = {
+	success: '',
+	message: '',
+	loading: false,
+	result: {},
+	error: '',
 };
 
-const Portofolio = (state = initialState, action = {}) => {
+export const Portofolio = (state = initialState, action = {}) => {
 	switch (action.type) {
 		case 'GET_PORTOFOLIO_REQUEST':
 			return { ...state, loading: true };
@@ -24,5 +32,17 @@ const Portofolio = (state = initialState, action = {}) => {
 			return state;
 	}
 };
+export const DeletePortofolio = (state = initialStateDelete, action = {}) => {
+	switch (action.type) {
+		case 'DELETE_PORTOFOLIO_REQUEST':
+			return { ...state, loading: true };
+		case 'DELETE_PORTOFOLIO_ERROR':
+			return { ...state, loading: false, error: action.payload };
+		case 'DELETE_PORTOFOLIO_SUCCESS':
+			return { ...state, loading: false, result: action.payload };
 
-export default Portofolio;
+		default:
+			return state;
+	}
+};
+

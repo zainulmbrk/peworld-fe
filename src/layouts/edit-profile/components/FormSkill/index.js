@@ -1,8 +1,24 @@
 import React from "react";
 import styles from './FormSkill.module.scss'
+import { useState } from 'react';
+import { DeleteSkill } from '../../../../redux/actions/skill';
+import { useDispatch } from 'react-redux';
+import Cookies from 'js-cookie';
 
 const FormSkill = (dataskill) => {
 	const resultskill = dataskill.data.data.data.dataskill.data;
+	const profile_id = Cookies.get('profile_id');
+	const token = Cookies.get('token');
+	const dispatch = useDispatch();
+	const [skill, setskill] = useState({
+		skill_id: 1,
+		skill_name: 'S',
+	});
+	const handledelete = (profile_id, skill_id, token, skill_name) => {
+		if (window.confirm(`${skill_name} Akan Dihapus ?`)) {
+			dispatch(DeleteSkill(profile_id, skill_id, token));
+		}
+	};
 	return (
 		<>
 			<div className={styles.cardFormSkill}>
@@ -28,7 +44,17 @@ const FormSkill = (dataskill) => {
 												<button className='btn btn-outline-success me-2 skill col-6'>
 													Edit
 												</button>
-												<button className='btn btn-outline-danger skill col-6'>
+												<button
+													className='btn btn-outline-danger skill col-6'
+													onClick={() => {
+														handledelete(
+															profile_id,
+															item.skill_id,
+															token,
+															item.skill_name
+														);
+													}}
+												>
 													Delete
 												</button>
 											</div>
