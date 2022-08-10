@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { AllProfileFetch, SearchProfileFetch } from '../reducers/home'
 import { Portofolio, DeletePortofolio } from './Portofolio';
-import Skill from './skill';
+import { Skill, EditSkill, AddSkill } from './skill';
 
 const rootReducers = combineReducers({
 	profile: AllProfileFetch,
@@ -9,5 +9,7 @@ const rootReducers = combineReducers({
 	portofolio: Portofolio,
 	skill: Skill,
 	deleteportofolio: DeletePortofolio,
+	editskill: EditSkill,
+	addskill: AddSkill,
 });
 export default rootReducers

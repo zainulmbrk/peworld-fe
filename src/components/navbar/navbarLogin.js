@@ -15,7 +15,7 @@ const NavbarLogin = () => {
   const [toggle, setToggle] = useState(false)
   const [panel, setPanel] = useState(false)
   const RouteProfilePerekrut = () => {
-    router.push(`/companyprofile`)
+    router.push(`/companyprofile/${profile_id}`);
   }
   const RouteProfilePekerja = () => {
     router.push(`/profile/${profile_id}`)

@@ -21,7 +21,7 @@ const EditProfileEmployee2 = (data, dataskill) => {
 						<div className={`${styles.cardForm} col-md-8`}>
 							<FormEditBiodata data={data} />
 							<FormSkill data={data} />
-							<FormExperience />
+							<FormExperience data={data} />
 							<FormPortofolio data={data} />
 						</div>
 					</div>
