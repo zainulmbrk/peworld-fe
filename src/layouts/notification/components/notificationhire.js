@@ -1,34 +1,14 @@
-import axios from 'axios'
-import styles from './Home.module.scss'
+import styles from './Notification.module.scss'
 import { FiSearch } from 'react-icons/fi'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
-import { useState, useEffect } from 'react'
-import { GetProfile, GetSearchProfile } from '../../../redux/actions/home'
-import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 
-const Home = () => {
-  const router = useRouter()
-  const dispatch = useDispatch()
+const NotificationHire = ({ data }) => {
+  const results = data.data
+  console.log(results, 'inicuy')
 
-  let tampungskill = []
-  let tampungsplit = []
-
-  const data = useSelector((state) => state.profile)
-  console.log(data?.results[0]?.skill, 'jsdh')
-  for (let i = 0; i < data?.results?.length; i++) {
-    tampungskill[i] = data.results[i].skill
-    tampungsplit[i] = tampungskill[i].split(',')
-  }
-  const [sort, setSort] = useState({ limit: 4 })
-  useEffect(() => {
-    dispatch(GetProfile())
-  }, [sort])
-
-  //search
-  const [search, setSearch] = useState('')
   return (
     <>
       <div className={styles.headers}>
@@ -95,69 +75,55 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className={styles.contentCard}>
+      <div className={styles.cardContent}>
         <div className="container">
           <div className={styles.wrap}>
-            {data?.results
-              ?.filter((item) => {
-                if (search === '') {
-                  return data.results
-                } else if (
-                  item.skill.toLowerCase().includes(search.toLowerCase())
-                ) {
-                  return data.results
-                }
-              })
-              .map((item, index) => {
-                console.log(item, 'ini item ke', index)
-                return (
-                  <>
-                    <div className={styles.cardUser} key={index}>
-                      <div className={styles.image}>
-                        <Image
-                          className="rounded-circle "
-                          src={`http://localhost:5000/uploads/${item.profile_picture}`}
-                          width={'150'}
-                          height={'150'}
-                        />
+            {results.map((item) => {
+              return (
+                <>
+                  <div
+                    className={styles.cardUser}
+                    key={item.notification_from_id}
+                  >
+                    <div className={styles.image}>
+                      <Image
+                        src={`http://localhost:5000/uploads/${item.profile_picture}`}
+                        width={50}
+                        height={50}
+                      />
+                    </div>
+                    <div className={styles.info}>
+                      <div className={styles.name}>
+                        <h4>{item.notification_from_name}</h4>
+                        {/* <h5>
+                          {item.profile_job} -{' '}
+                          <span>{item.profile_job_type}</span>
+                        </h5> */}
                       </div>
-                      <div className={styles.info}>
-                        <div className={styles.name}>
-                          <h4>{item.profile_name}</h4>
-                          <h5>
-                            {item.profile_job} -{' '}
-                            <span>{item.profile_job_type}</span>
-                          </h5>
-                        </div>
 
-                        <div className={styles.location}>
-                          <span>
-                            <HiOutlineLocationMarker className={styles.icon} />
-                          </span>
-                          {item.profile_location}
-                        </div>
-                        <div className={styles.skills}>
-                          {tampungsplit[index]?.map((item2, index2) => {
-                            return (
-                              <>
-                                <button>{item2}</button>
-                              </>
-                            )
-                          })}
-                        </div>
+                      <div className={styles.location}>
+                        <span>
+                          <HiOutlineLocationMarker className={styles.icon} />
+                        </span>
+                        Jakarta
                       </div>
-                      <div className={styles.btnProfile}>
-                        <Link href={`/profile/${item.profile_id}`}>
-                          <button>See Profile</button>
-                        </Link>
+                      <div className={styles.skills}>
+                        {`${item.notification_from_name} `}
+                        {item.notification_message}
                       </div>
                     </div>
-                    <div className={styles.horizontalLine}>
-                      <div className={styles.hline}></div>
+                    <div className={styles.btnProfile}>
+                      <Link href="#">
+                        <button>See Profile</button>
+                      </Link>
                     </div>
-                  </>
-                )
-              })}
+                  </div>
+                </>
+              )
+            })}
+            <div className={styles.horizontalLine}>
+              <div className={styles.hline}></div>
+            </div>
           </div>
         </div>
       </div>
@@ -197,4 +163,4 @@ const Home = () => {
     </>
   )
 }
-export default Home
+export default NotificationHire

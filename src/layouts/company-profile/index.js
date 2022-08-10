@@ -1,15 +1,15 @@
-import CompanyProfile from "./components/companyProfile";
-import NavbarLogin from '../../components/navbar/navbarLogin';
-import Footer from '../../components/footer';
+import CompanyProfile from './components/companyProfile'
+import NavbarLogin from '../../components/navbar/navbarLogin'
+import Footer from '../../components/footer'
 
-const ProfileCompany = () => {
-	return (
-		<>
-			<NavbarLogin />
-			<CompanyProfile />
-			<Footer />
-		</>
-	);
-};
+const ProfileCompany = ({ data }) => {
+  return (
+    <>
+      <NavbarLogin />
+      <CompanyProfile data={data} />
+      <Footer />
+    </>
+  )
+}
 
 export default ProfileCompany
