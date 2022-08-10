@@ -1,12 +1,12 @@
 import Footer from '../../components/footer'
-import Navbar from '../../components/navbar/navbar'
+import NavbarLogin from '../../components/navbar/navbarLogin'
 import NotificationHire from './components/notificationhire'
 
-const NotificationLayout = () => {
+const NotificationLayout = ({ data }) => {
   return (
     <>
-      <Navbar />
-      <NotificationHire />
+      <NavbarLogin />
+      <NotificationHire data={data} />
       <Footer />
     </>
   )

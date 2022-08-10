@@ -2,9 +2,13 @@ import styles from './Notification.module.scss'
 import { FiSearch } from 'react-icons/fi'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 import Link from 'next/link'
 
-const NotificationHire = () => {
+const NotificationHire = ({ data }) => {
+  const results = data.data
+  console.log(results, 'inicuy')
+
   return (
     <>
       <div className={styles.headers}>
@@ -74,35 +78,49 @@ const NotificationHire = () => {
       <div className={styles.cardContent}>
         <div className="container">
           <div className={styles.wrap}>
-            <div className={styles.cardUser}>
-              <div className={styles.image}>
-                <img src="/assets/images/profile.png" />
-              </div>
-              <div className={styles.info}>
-                <div className={styles.name}>
-                  <h4>Jokowi</h4>
-                  <h5>
-                    Web Developver - <span>Fuultime</span>
-                  </h5>
-                </div>
+            {results.map((item) => {
+              return (
+                <>
+                  <div
+                    className={styles.cardUser}
+                    key={item.notification_from_id}
+                  >
+                    <div className={styles.image}>
+                      <Image
+                        src={`http://localhost:5000/uploads/${item.profile_picture}`}
+                        width={50}
+                        height={50}
+                      />
+                    </div>
+                    <div className={styles.info}>
+                      <div className={styles.name}>
+                        <h4>{item.notification_from_name}</h4>
+                        {/* <h5>
+                          {item.profile_job} -{' '}
+                          <span>{item.profile_job_type}</span>
+                        </h5> */}
+                      </div>
 
-                <div className={styles.location}>
-                  <span>
-                    <HiOutlineLocationMarker className={styles.icon} />
-                  </span>
-                  Jakarta
-                </div>
-                <div className={styles.skills}>
-                  <button>React</button>
-                  <button>Kotlin</button>
-                </div>
-              </div>
-              <div className={styles.btnProfile}>
-                <Link href="#">
-                  <button>See Profile</button>
-                </Link>
-              </div>
-            </div>
+                      <div className={styles.location}>
+                        <span>
+                          <HiOutlineLocationMarker className={styles.icon} />
+                        </span>
+                        Jakarta
+                      </div>
+                      <div className={styles.skills}>
+                        {`${item.notification_from_name} `}
+                        {item.notification_message}
+                      </div>
+                    </div>
+                    <div className={styles.btnProfile}>
+                      <Link href="#">
+                        <button>See Profile</button>
+                      </Link>
+                    </div>
+                  </div>
+                </>
+              )
+            })}
             <div className={styles.horizontalLine}>
               <div className={styles.hline}></div>
             </div>
