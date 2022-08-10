@@ -10,8 +10,6 @@ const Company = ({ data }) => {
   )
 }
 
-export default Company
-
 export async function getServerSideProps(context) {
   let token = Cookies.get('token')
   const res = await fetch(
@@ -26,3 +24,5 @@ export async function getServerSideProps(context) {
   const data = await res.json()
   return { props: { data } }
 }
+
+export default Company
