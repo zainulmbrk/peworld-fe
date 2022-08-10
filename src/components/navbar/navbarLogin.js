@@ -7,20 +7,25 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router"
 
 const NavbarLogin = () => {
-  const router = useRouter();
-  const profile_id = Cookies.get("profile_id");
-  const [toggle, setToggle] = useState(false);
-  const [panel, setPanel] = useState(false);
+  const router = useRouter()
+  const profile_id = Cookies.get('profile_id')
+  const profile_role = Cookies.get('profile_role')
 
-  const RouteProfile = () => {
-    router.push(`/companyprofile`);
-  };
-  const handleLogout = () => {
-    Cookies.remove("profile_id"),
-      Cookies.remove("token"),
-      Cookies.remove("profile_role"),
-      Cookies.remove("profile_email")
+  const [toggle, setToggle] = useState(false)
+  const [panel, setPanel] = useState(false)
+  const RouteProfilePerekrut = () => {
+    router.push(`/companyprofile/${profile_id}`)
   }
+  const RouteProfilePekerja = () => {
+    router.push(`/profile/${profile_id}`)
+  }
+  const handleLogout = () => {
+    Cookies.remove('profile_id'),
+      Cookies.remove('token'),
+      Cookies.remove('profile_role'),
+      Cookies.remove('profile_email')
+  }
+
   return (
     <>
       <nav className={styles.navbarLogin}>
@@ -43,7 +48,7 @@ const NavbarLogin = () => {
               <div className={styles.navlink}>
                 <MdOutlineNotifications
                   className={styles.icon}
-                  onClick={() => setToggle(!toggle)}
+                  onClick={() => router.push(`/notification/${profile_id}`)}
                 />
                 <div
                   className={
@@ -77,12 +82,14 @@ const NavbarLogin = () => {
                   <h2>SEE MORE</h2>
                 </div>
               </div>
+
               <div className={styles.navlink}>
                 <Link href="/chatroom">
                   <MdOutlineEmail className={styles.icon} />
                 </Link>
                 <span></span>
               </div>
+
               <div className={styles.navlink}>
                 <div className={styles.profileImg}>
                   <img
@@ -98,19 +105,32 @@ const NavbarLogin = () => {
                     }
                   >
                     <div className={styles.panelBox}>
-                      <div className={styles.link} onClick={RouteProfile}>
-                        Profile
-                      </div>
+                      {profile_role == 'pekerja' ? (
+                        <>
+                          <div
+                            className={styles.link}
+                            onClick={RouteProfilePekerja}
+                          >
+                            Profile
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div
+                            className={styles.link}
+                            onClick={RouteProfilePerekrut}
+                          >
+                            Profile
+                          </div>
+                        </>
+                      )}
                       <div className={styles.line}></div>
-                      <Link href='/'>
-                        <div
-                          className={styles.link}
-                          onClick={handleLogout}
-                        >
+
+                      <Link href="/">
+                        <div className={styles.link} onClick={handleLogout}>
                           Logout
                         </div>
                       </Link>
-
                     </div>
                   </div>
                 </div>
@@ -123,7 +143,7 @@ const NavbarLogin = () => {
         </div>
       </nav>
     </>
-  );
-};
+  )
+}
 
-export default NavbarLogin;
+export default NavbarLogin
