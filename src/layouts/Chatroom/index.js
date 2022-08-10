@@ -4,15 +4,20 @@ import styles from "./Chatroom.module.scss";
 import Footer from "../../components/footer";
 import { RiSendPlaneFill } from "react-icons/ri";
 import Navbar from "../../components/navbar/navbar";
+import { BsCheckAll } from "react-icons/bs";
+import NavbarLogin from "../../components/navbar/navbarLogin";
+import Cookies from 'js-cookie';
 
 const ChatroomLayout = () => {
-    const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(false);
+  const profile_id = Cookies.get('profile_id');
+
   return (
     <>
       <Head>
         <title>Chatroom</title>
       </Head>
-      <Navbar />
+      {profile_id ? <NavbarLogin /> : <Navbar />}
       <div className={styles.chatroom}>
         <div className="container">
           <div className="row">
@@ -22,7 +27,7 @@ const ChatroomLayout = () => {
                   <h1>Chat</h1>
                 </div>
                 <div className={styles.verticalLine}></div>
-                <div className={styles.user} onClick={()=> setToggle(!toggle)}>
+                <div className={styles.user} onClick={() => setToggle(!toggle)}>
                   <div className={styles.userImage}>
                     <img src="/icons/user.svg" alt="user" />
                   </div>
@@ -34,17 +39,69 @@ const ChatroomLayout = () => {
               </div>
             </div>
             <div className={`${styles.right} col-md-8`}>
-              <div className={toggle ? `${styles.rightBox} ${styles.active}` : `${styles.rightBox}`}>
+              <div
+                className={
+                  toggle
+                    ? `${styles.rightBox} ${styles.active}`
+                    : `${styles.rightBox}`
+                }
+              >
                 <div className={styles.chatRoom}>
                   <div className={styles.userInfo}>
                     <img src="/icons/user.svg" alt="user" />
                     <h2>Jonas Adam</h2>
                   </div>
-                  <div className={styles.verticalLine}></div>
-                  <div className={styles.chatContent}></div>
+                  <div className={styles.chatroomBox}>
+                    <div className={styles.chatroomBoxContent}>
+                      <div className={styles.textContent}>
+                        <p>Permisi kak, mau tanya</p>
+                        <div className={styles.statusInfo}>
+                          <BsCheckAll
+                            className={`${styles.statusIcon} ${styles.active}`}
+                          />
+                          02.14 PM
+                        </div>
+                      </div>
+                      <div className={styles.userPict}>
+                        <img src="/icons/profile.svg" alt="person" />
+                      </div>
+                    </div>
+                    <div className={styles.hrLine}>
+                      <div className={styles.line}></div>
+                    </div>
+                    <div className={styles.chatroomBoxStaff}>
+                      <div className={styles.userPict}>
+                        <img src="/icons/profile.svg" alt="person" />
+                      </div>
+                      <div className={styles.textContent}>
+                        <p>Iya, silahkan</p>
+                        <div className={styles.statusInfo}>
+                          <BsCheckAll
+                            className={`${styles.statusIcon} ${styles.active}`}
+                          />
+                          02.14 PM
+                        </div>
+                      </div>
+                    </div>
+                    <div className={styles.hrLine}>
+                      <div className={styles.line}></div>
+                    </div>
+                    <div className={styles.chatroomBoxContent}>
+                      <div className={styles.textContent}>
+                        <p>GAJADI MAKASIH!!!</p>
+                        <div className={styles.statusInfo}>
+                          <BsCheckAll className={`${styles.statusIcon}`} />
+                          02.14 PM
+                        </div>
+                      </div>
+                      <div className={styles.userPict}>
+                        <img src="/icons/profile.svg" alt="person" />
+                      </div>
+                    </div>
+                  </div>
                   <div className={styles.typeMessages}>
                     <div className={styles.typeBox}>
-                      <input type="text" placeholder="Type a messages..."/>
+                      <input type="text" placeholder="Type a messages..." />
                       <div className={styles.icon}>
                         <RiSendPlaneFill className={styles.sendIcon} />
                       </div>
