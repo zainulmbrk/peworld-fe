@@ -99,12 +99,6 @@ const NavbarLogin = () => {
                       <Link href='/'>
                       <div
                         className={styles.link}
-                        onClick={
-                          (Cookies.remove("profile_id"),
-                          Cookies.remove("token"),
-                          Cookies.remove("profile_role"),
-                          Cookies.remove("profile_email"))
-                        }
                       >
                         Logout
                       </div>

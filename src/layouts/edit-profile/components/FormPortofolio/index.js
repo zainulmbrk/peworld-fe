@@ -5,6 +5,15 @@ import Link from 'next/link';
 const FormPortofolio = (data) => {
 	const dataporto = data.data.data.data.dataporto.data;
 	console.log(dataporto, 'isi portonya');
+
+    const handleEdit = (prevData) => {
+        // setFormEditData({
+        //   ...prevData,
+        //   releaseDate: moment(prevData.releaseDate).format("YYYY-MM-DD"),
+        // });
+      };
+    
+
 	return (
 		<>
 			<div className={styles.cardPortofolioForm}>
@@ -27,7 +36,7 @@ const FormPortofolio = (data) => {
 											</Link>
 										</div>
 										<div className='col-12 d-flex pt-2'>
-											<button className=' btn btn-outline-success col-4 me-3 '>
+											<button className=' btn btn-outline-success col-4 me-3' onClick={() => handleEdit()} data-bs-toggle="modal" data-bs-target="#editPorto">
 												Edit
 											</button>
 											<button className=' btn btn-outline-danger col-4 '>
@@ -36,7 +45,7 @@ const FormPortofolio = (data) => {
 										</div>
 									</div>
 									<div className=' col-3 d-flex justify-content-center pt-4'>
-										<Image
+										<img
 											className='col-12 '
 											// loader={myLoader(item.product_picture)}
 											src={`http://localhost:5000/uploads/${item.portofolio_picture}`}
@@ -75,8 +84,70 @@ const FormPortofolio = (data) => {
 					</div>
 				</form>
 			</div>
+
+            <div
+        className="modal fade"
+        id="editPorto"
+        tabIndex="-1"
+        aria-labelledby="editPortoLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="editPortoLabel">
+                Edit Skill
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <form onSubmit={(e) => handleUpdateMovie(e)}>
+              <div className="modal-body">
+                <div className="mb-3">
+                  <label htmlFor="exampleInputEmail1" className="form-label">
+                    Portofolio name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    // value={formEditData.title}
+                    // onChange={(e) => {
+                    //   setFormEditData((prevState) => ({
+                    //     ...prevState,
+                    //     title: e.target.value,
+                    //   }));
+                    // }}
+                  />
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                >
+                  Save changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
 		</>
+        
 	);
+    
 };
 
 export default FormPortofolio;

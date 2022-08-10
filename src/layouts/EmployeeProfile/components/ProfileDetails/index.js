@@ -19,7 +19,7 @@ const ProfileDetailsLayout = ({ data }) => {
 					return (
 						<>
 							<div className={styles.profileImage} key={item.profile_id}>
-								<Image
+								<img
 									className='rounded-circle'
 									src={`http://localhost:5000/uploads/${item.profile_picture}`}
 									width={'150'}
