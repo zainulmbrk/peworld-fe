@@ -1,9 +1,40 @@
+import axios from 'axios'
 import styles from './Hiring.module.scss'
 import { MdOutlineLocationOn, MdOutlineMail } from 'react-icons/md'
 import { TbPhone } from 'react-icons/tb'
+import { useState } from 'react'
+import Cookies from 'js-cookie'
 const Hiring = ({ data }) => {
   const results = data.data
   console.log(results, 'go')
+  let from_profile_id = Cookies.get('profile_id')
+  let to_profile_id = results[0].profile_id
+  console.log(from_profile_id, to_profile_id, 'ini gus')
+  let token = Cookies.get('token')
+  const [message, setMessage] = useState({
+    notification_message: '',
+  })
+  const handleMessage = (event) => {
+    event.preventDefault()
+    axios({
+      method: 'POST',
+      url: `http://localhost:5000/api/v1/notification/hire?from_profile_id=${from_profile_id}&to_profile_id=${to_profile_id}`,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (res.data.data) {
+          alert('pesan sudah terkirim')
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+  const handleAddMsg = (event) => {
+    setMessage({ ...message, notification_message: event.target.value })
+  }
 
   return (
     <>
@@ -64,7 +95,7 @@ const Hiring = ({ data }) => {
                 </p>
               </div>
               <div className={styles.message}>
-                <form>
+                <form onSubmit={handleMessage}>
                   <div className={styles.messageForm}>
                     <label>Tujuan tentang pesan ini</label>
                     <select
@@ -82,12 +113,13 @@ const Hiring = ({ data }) => {
                     <textarea
                       type="textarea"
                       placeholder="Deskripsikan/jelaskan lebih detail"
+                      onChange={handleAddMsg}
                     />
                   </div>
                 </form>
               </div>
               <div className={styles.action}>
-                <button>Kirim</button>
+                <button onClick={handleMessage}>Kirim</button>
               </div>
             </div>
           </div>
