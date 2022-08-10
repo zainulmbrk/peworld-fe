@@ -1,5 +1,7 @@
-import React from "react";
-import styles from './FormSkill.module.scss'
+/** @format */
+
+import React from 'react';
+import styles from './FormSkill.module.scss';
 import { useState } from 'react';
 import { DeleteSkill } from '../../../../redux/actions/skill';
 import { useDispatch } from 'react-redux';

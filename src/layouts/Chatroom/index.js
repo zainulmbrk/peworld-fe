@@ -6,6 +6,7 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import Navbar from "../../components/navbar/navbar";
 
 const ChatroomLayout = () => {
+    const [toggle, setToggle] = useState(false)
   return (
     <>
       <Head>
@@ -21,7 +22,7 @@ const ChatroomLayout = () => {
                   <h1>Chat</h1>
                 </div>
                 <div className={styles.verticalLine}></div>
-                <div className={styles.user}>
+                <div className={styles.user} onClick={()=> setToggle(!toggle)}>
                   <div className={styles.userImage}>
                     <img src="/icons/user.svg" alt="user" />
                   </div>
@@ -33,7 +34,7 @@ const ChatroomLayout = () => {
               </div>
             </div>
             <div className={`${styles.right} col-md-8`}>
-              <div className={styles.rightBox}>
+              <div className={toggle ? `${styles.rightBox} ${styles.active}` : `${styles.rightBox}`}>
                 <div className={styles.chatRoom}>
                   <div className={styles.userInfo}>
                     <img src="/icons/user.svg" alt="user" />

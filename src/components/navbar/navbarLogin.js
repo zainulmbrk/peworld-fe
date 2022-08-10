@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import styles from "./NavbarLogin.module.scss";
-import Link from "next/link";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { MdOutlineNotifications, MdOutlineEmail } from "react-icons/md";
+/** @format */
+
+import React, { useState } from 'react';
+import styles from './NavbarLogin.module.scss';
+import Link from 'next/link';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { MdOutlineNotifications, MdOutlineEmail } from 'react-icons/md';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 const NavbarLogin = () => {
 	const router = useRouter();
-  const profile_id = Cookies.get('profile_id');
+	const profile_id = Cookies.get('profile_id');
 	const profile_role = Cookies.get('profile_role');
 
 	const [toggle, setToggle] = useState(false);
@@ -17,6 +19,12 @@ const NavbarLogin = () => {
 	};
 	const RouteProfilePekerja = () => {
 		router.push(`/profile/${profile_id}`);
+	};
+	const handleLogout = () => {
+		Cookies.remove('profile_id'),
+			Cookies.remove('token'),
+			Cookies.remove('profile_role'),
+			Cookies.remove('profile_email');
 	};
 
 	return (
@@ -38,106 +46,96 @@ const NavbarLogin = () => {
 									: `${styles.navmenu}`
 							}
 						>
-							<Link href='/#'>
-								<div className={styles.navlink}>
-									<MdOutlineNotifications
-										className={styles.icon}
-										onClick={() => setToggle(!toggle)}
+							<div className={styles.navlink}>
+								<MdOutlineNotifications
+									className={styles.icon}
+									onClick={() => setToggle(!toggle)}
+								/>
+								<div
+									className={
+										toggle
+											? `${styles.notifBox} ${styles.active}`
+											: `${styles.notifBox}`
+									}
+								>
+									<h4>Notification</h4>
+									<div className={styles.notifContent}>
+										<div className={styles.notifImage}>
+											<img src='/icons/profile.svg' alt='profile' />
+										</div>
+										<div className={styles.notifText}>
+											<h4>Louis Hamilton</h4>
+											<h5>has sent you hire request</h5>
+											<p>a minute ago</p>
+										</div>
+									</div>
+									<div className={styles.vLine}></div>
+									<div className={styles.notifContent}>
+										<div className={styles.notifImage}>
+											<img src='/icons/profile.svg' alt='profile' />
+										</div>
+										<div className={styles.notifText}>
+											<h4>Louis Hamilton</h4>
+											<h5>has sent you hire request</h5>
+											<p>a minute ago</p>
+										</div>
+									</div>
+									<h2>SEE MORE</h2>
+								</div>
+							</div>
+
+							<div className={styles.navlink}>
+								<Link href='/chatroom'>
+									<MdOutlineEmail className={styles.icon} />
+								</Link>
+								<span></span>
+							</div>
+
+							<div className={styles.navlink}>
+								<div className={styles.profileImg}>
+									<img
+										src='/icons/profile.svg'
+										alt='profile'
+										onClick={() => setPanel(!panel)}
 									/>
 									<div
 										className={
-											toggle
-												? `${styles.notifBox} ${styles.active}`
-												: `${styles.notifBox}`
+											panel
+												? `${styles.profilePanel} ${styles.active}`
+												: `${styles.profilePanel}`
 										}
 									>
-										<h4>Notification</h4>
-										<div className={styles.notifContent}>
-											<div className={styles.notifImage}>
-												<img src='/icons/profile.svg' alt='profile' />
-											</div>
-											<div className={styles.notifText}>
-												<h4>Louis Hamilton</h4>
-												<h5>has sent you hire request</h5>
-												<p>a minute ago</p>
-											</div>
-										</div>
-										<div className={styles.vLine}></div>
-										<div className={styles.notifContent}>
-											<div className={styles.notifImage}>
-												<img src='/icons/profile.svg' alt='profile' />
-											</div>
-											<div className={styles.notifText}>
-												<h4>Louis Hamilton</h4>
-												<h5>has sent you hire request</h5>
-												<p>a minute ago</p>
-											</div>
-										</div>
-										<h2>SEE MORE</h2>
-									</div>
-								</div>
-							</Link>
-							<Link href='/#'>
-								<div className={styles.navlink}>
-									<Link href='/chatroom'>
-										<MdOutlineEmail className={styles.icon} />
-									</Link>
-									<span></span>
-								</div>
-							</Link>
-							<Link href='/#'>
-								<div className={styles.navlink}>
-									<div className={styles.profileImg}>
-										<img
-											src='/icons/profile.svg'
-											alt='profile'
-											onClick={() => setPanel(!panel)}
-										/>
-										<div
-											className={
-												panel
-													? `${styles.profilePanel} ${styles.active}`
-													: `${styles.profilePanel}`
-											}
-										>
-											<div className={styles.panelBox}>
-												{profile_role == 'pekerja' ? (
-													<>
-														<div
-															className={styles.link}
-															onClick={RouteProfilePekerja}
-														>
-															Profile
-														</div>
-													</>
-												) : (
-													<>
-														<div
-															className={styles.link}
-															onClick={RouteProfilePerekrut}
-														>
-															Profile
-														</div>
-													</>
-												)}
-												<div className={styles.line}></div>
-												{/* <button
-													className={styles.link}
-													onClick={
-														(Cookies.remove('profile_id'),
-														Cookies.remove('token'),
-														Cookies.remove('profile_role'),
-														Cookies.remove('profile_email'))
-													}
-												>
+										<div className={styles.panelBox}>
+											{profile_role == 'pekerja' ? (
+												<>
+													<div
+														className={styles.link}
+														onClick={RouteProfilePekerja}
+													>
+														Profile
+													</div>
+												</>
+											) : (
+												<>
+													<div
+														className={styles.link}
+														onClick={RouteProfilePerekrut}
+													>
+														Profile
+													</div>
+												</>
+											)}
+											<div className={styles.line}></div>
+
+											<Link href='/'>
+												<div className={styles.link} onClick={handleLogout}>
 													Logout
-												</button> */}
-												Logout
-											</div>
+												</div>
+											</Link>
 										</div>
 									</div>
 								</div>
-							</Link>
+							</div>
 						</div>
 						<div className={styles.navIcon} onClick={() => setToggle(!toggle)}>
 							{toggle ? <FaTimes /> : <FaBars />}
