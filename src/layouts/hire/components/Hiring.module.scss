@@ -19,7 +19,7 @@
     position: relative;
     margin-top: 5em;
     padding: 1.5em;
-    border-radius: 5px;
+    border-radius: 10px;
     background: #fff;
     box-shadow: 0px 1px 5px 0px rgb(207, 207, 207);
 
@@ -138,9 +138,10 @@
   }
 
   .msg {
-    // background-color: #444;
+    background: #fff;
+    border-radius: 20px;
     margin-top: 5em;
-    padding-left: 35px;
+    padding: 1em 2em;
     .message {
       margin-top: 3em;
       .messageForm {
