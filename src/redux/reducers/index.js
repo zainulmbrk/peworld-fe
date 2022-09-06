@@ -3,6 +3,7 @@ import { AllProfileFetch, SearchProfileFetch } from '../reducers/home'
 import Company from './company';
 import { Portofolio, DeletePortofolio } from './Portofolio';
 import { Skill, EditSkill, AddSkill } from './skill';
+import { GetExperience, AddExperience } from './experience';
 
 const rootReducers = combineReducers({
 	profile: AllProfileFetch,
@@ -13,5 +14,7 @@ const rootReducers = combineReducers({
 	deleteportofolio: DeletePortofolio,
 	editskill: EditSkill,
 	addskill: AddSkill,
+	getexperience: GetExperience,
+	addexperience: AddExperience,
 });
 export default rootReducers

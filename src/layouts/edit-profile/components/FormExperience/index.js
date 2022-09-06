@@ -1,8 +1,60 @@
 import React from "react";
 import styles from './FormExp.module.scss'
-
+import { useDispatch } from 'react-redux';
+import Cookies from 'js-cookie';
+import { useEffect, useState } from 'react';
+import {
+	DeleteExperience,
+	EditExperience,
+	AddExperience,
+} from '../../../../redux/actions/experience';
 const FormExperience = (data) => {
+	const dispatch = useDispatch();
+	const profile_id = Cookies.get('profile_id');
 	const experience = data.data.data.data.dataexperience.data;
+	const handledelete = (profile_id, experience_id, experience_name) => {
+		if (window.confirm(`${experience_name} Akan Dihapus ?`)) {
+			dispatch(DeleteExperience(profile_id, experience_id));
+			window.location.reload();
+		}
+	};
+	const [idexperience, setidexperience] = useState({
+		experience_id: 2,
+	});
+	const [dataexperience, setdataexperience] = useState({
+		experience_company: '',
+		experience_position: '',
+		experience_date_start: '',
+		experience_date_end: '',
+		experience_description: '',
+	});
+	const [dataaddxperience, setdataaddexperience] = useState({
+		experience_company: '',
+		experience_position: '',
+		experience_date_start: '',
+		experience_date_end: '',
+		experience_description: '',
+	});
+	const handleEdit = (prevData) => {
+		dispatch(
+			EditExperience(profile_id, idexperience.experience_id, dataexperience)
+		);
+		window.location.reload();
+	};
+	const handleAdd = (prevData) => {
+		dispatch(
+			AddExperience(
+				profile_id,
+				dataaddxperience.experience_company,
+				dataaddxperience.experience_position,
+				dataaddxperience.experience_date_start,
+				dataaddxperience.experience_date_end,
+				dataaddxperience.experience_description
+			)
+		),
+			window.location.reload();
+	};
+
 	return (
 		<>
 			<div className={styles.cardFormExperience}>
@@ -17,30 +69,58 @@ const FormExperience = (data) => {
 						<>
 							<div className='col-12 card border-dark p-2 mb-3'>
 								<div className='col-12 d-flex'>
-									<div className='text-danger'> Company = </div>
+									<div className='text-danger'> Company = &nbsp; </div>
 									{item.experience_company}
 								</div>
 								<div className='col-12 d-flex'>
-									<div className='text-danger'> Posisi = </div>
+									<div className='text-danger'> Posisi = &nbsp; </div>
 									{item.experience_position}
 								</div>
 								<div className='col-12 d-flex'>
-									<div className='text-danger'> From = </div>
-									{item.experience_date_start}
+									<div className='text-danger'> From = &nbsp;</div>
+									{item.experience_date_start.slice(0, 10)}
 								</div>
 								<div className='col-12 d-flex'>
-									<div className='text-danger'> Until = </div>
-									{item.experience_date_end}
+									<div className='text-danger'> Until = &nbsp;</div>
+									{item.experience_date_end.slice(0, 10)}
 								</div>
 								<div className='col-12 d-flex'>
-									<div className='text-danger'> Description = </div>
+									<div className='text-danger'> Description = &nbsp;</div>
 									{item.experience_description}
 								</div>
 								<div className='col d-flex mt-3'>
-									<button className='col-3 btn btn-outline-success me-4 '>
+									<button
+										className='col-3 btn btn-outline-success me-4 '
+										data-bs-toggle='modal'
+										data-bs-target='#editExperience'
+										onClick={(e) => {
+											setdataexperience((prevState) => ({
+												...prevState,
+												experience_company: item.experience_company,
+												experience_position: item.experience_position,
+												experience_date_start: item.experience_date_start,
+												experience_date_end: item.experience_date_end,
+												experience_description: item.experience_description,
+											}));
+											setidexperience((prevState) => ({
+												...prevState,
+												experience_id: item.experience_id,
+											}));
+										}}
+									>
 										Edit
 									</button>
-									<button className='col-3  btn btn-outline-danger '>
+									<button
+										className='col-3  btn btn-outline-danger '
+										onClick={() => {
+											handledelete(
+												profile_id,
+												item.experience_id,
+												item.experience_company
+											),
+												console.log(item, 'ini itemnya');
+										}}
+									>
 										Delete
 									</button>
 								</div>
@@ -48,25 +128,61 @@ const FormExperience = (data) => {
 						</>
 					);
 				})}
-				<form>
+				<div>
 					<div className={styles.companyExperience}>
 						<div className={styles.formCompany}>
 							<label>Nama Perusahaan</label>
-							<input type='text' placeholder='Nama Perusahaan' />
+							<input
+								type='text'
+								placeholder='Nama Perusahaan'
+								onChange={(e) => {
+									setdataaddexperience((prevState) => ({
+										...prevState,
+										experience_company: e.target.value,
+									}));
+								}}
+							/>
 						</div>
 						<div className={styles.formCompany}>
 							<label>Posisi</label>
-							<input type='text' placeholder='Posisi' />
+							<input
+								type='text'
+								placeholder='Posisi'
+								onChange={(e) => {
+									setdataaddexperience((prevState) => ({
+										...prevState,
+										experience_position: e.target.value,
+									}));
+								}}
+							/>
 						</div>
 					</div>
 					<div className={styles.date}>
 						<div className={styles.formExperience}>
 							<label>Tanggal Masuk</label>
-							<input type='date' placeholder='DD-MM-YYYY'></input>
+							<input
+								type='date'
+								placeholder='DD-MM-YYYY'
+								onChange={(e) => {
+									setdataaddexperience((prevState) => ({
+										...prevState,
+										experience_date_start: e.target.value,
+									}));
+								}}
+							></input>
 						</div>
 						<div className={styles.formExperience}>
 							<label>Tanggal Keluar</label>
-							<input type='date' placeholder='DD-MM-YYYY'></input>
+							<input
+								type='date'
+								placeholder='DD-MM-YYYY'
+								onChange={(e) => {
+									setdataaddexperience((prevState) => ({
+										...prevState,
+										experience_date_end: e.target.value,
+									}));
+								}}
+							></input>
 						</div>
 					</div>
 					<div className={styles.description}>
@@ -75,13 +191,171 @@ const FormExperience = (data) => {
 							<textarea
 								type='textarea'
 								placeholder='Deskripsikan pekerjaan anda'
+								onChange={(e) => {
+									setdataaddexperience((prevState) => ({
+										...prevState,
+										experience_description: e.target.value,
+									}));
+								}}
 							/>
 						</div>
 					</div>
 					<div className={styles.btnSaveExperience}>
-						<button>Simpan</button>
+						<button
+							onClick={() => {
+								handleAdd();
+							}}
+						>
+							Simpan
+						</button>
 					</div>
-				</form>
+				</div>
+			</div>
+			<div
+				className='modal fade'
+				id='editExperience'
+				tabIndex='-1'
+				aria-labelledby='editexperienceLabel'
+				aria-hidden='true'
+			>
+				<div className='modal-dialog'>
+					<div className='modal-content'>
+						<div className='modal-header'>
+							<h5 className='modal-title' id='editexperienceLabel'>
+								Edit experience
+							</h5>
+							<button
+								type='button'
+								className='btn-close'
+								data-bs-dismiss='modal'
+								aria-label='Close'
+							></button>
+						</div>
+						<form onSubmit={(e) => handleEdit(e)}>
+							<div className='modal-body'>
+								<div className='mb-3'>
+									<label htmlFor='exampleInputEmail1' className='form-label'>
+										Company
+									</label>
+									<input
+										type='text'
+										className='form-control'
+										id='exampleInputEmail1'
+										defaultValue={dataexperience.experience_company}
+										// value={formEditData.title}
+
+										onChange={(e) => {
+											setdataexperience((prevState) => ({
+												...prevState,
+												experience_company: e.target.value,
+											}));
+										}}
+									/>
+								</div>
+								<div className='mb-3'>
+									<label htmlFor='exampleInputEmail1' className='form-label'>
+										Position
+									</label>
+									<input
+										type='text'
+										className='form-control'
+										id='exampleInputEmail1'
+										defaultValue={dataexperience.experience_position}
+										// value={formEditData.title}
+
+										onChange={(e) => {
+											setdataexperience((prevState) => ({
+												...prevState,
+												experience_position: e.target.value,
+											}));
+										}}
+									/>
+								</div>
+								<div className='mb-3'>
+									<label htmlFor='exampleInputEmail1' className='form-label'>
+										Date In
+									</label>
+									<input
+										type='text'
+										className='form-control'
+										id='exampleInputEmail1'
+										defaultValue={dataexperience.experience_date_start.slice(
+											0,
+											10
+										)}
+										// value={formEditData.title}
+
+										onChange={(e) => {
+											setdataexperience((prevState) => ({
+												...prevState,
+												experience_company: e.target.value,
+											}));
+										}}
+									/>
+								</div>
+								<div className='mb-3'>
+									<label htmlFor='exampleInputEmail1' className='form-label'>
+										Date Out
+									</label>
+									<input
+										type='text'
+										className='form-control'
+										id='exampleInputEmail1'
+										defaultValue={dataexperience.experience_date_end.slice(
+											0,
+											10
+										)}
+										// value={formEditData.title}
+
+										onChange={(e) => {
+											setdataexperience((prevState) => ({
+												...prevState,
+												experience_company: e.target.value,
+											}));
+										}}
+									/>
+								</div>
+								<div className='mb-3'>
+									<label htmlFor='exampleInputEmail1' className='form-label'>
+										Description
+									</label>
+									<input
+										type='text'
+										className='form-control'
+										id='exampleInputEmail1'
+										defaultValue={dataexperience.experience_description}
+										// value={formEditData.title}
+
+										onChange={(e) => {
+											setdataexperience((prevState) => ({
+												...prevState,
+												experience_company: e.target.value,
+											}));
+										}}
+									/>
+								</div>
+							</div>
+							<div className='modal-footer'>
+								<button
+									type='button'
+									className='btn btn-secondary'
+									data-bs-dismiss='modal'
+								>
+									Close
+								</button>
+								<button
+									type='button'
+									className='btn btn-primary'
+									onClick={() => {
+										handleEdit();
+									}}
+								>
+									Save changes
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</>
 	);
