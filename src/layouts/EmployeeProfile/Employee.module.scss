@@ -1,7 +1,7 @@
 .profileLayout {
   width: 100%;
   padding-top: 3em;
-  background:  #E5E5E5;
+  background: #e5e5e5;
   padding-bottom: 5em;
 
   &::before {
@@ -22,7 +22,7 @@
 
     .portoTitle {
       display: flex;
-      column-gap: 3em;
+      column-gap: 2em;
 
       h3 {
         font-size: 22px;
@@ -47,14 +47,16 @@
     .listPorto {
       display: flex;
       margin-top: 2.5em;
-      justify-content: center;
+      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 2em 1em;
+      gap: 2em 0.5em;
 
       .portoCard {
         cursor: pointer;
         border-bottom: 3px solid var(--primary);
         transition: transform 350ms;
+        width: 200px;
+        height: 300px;
 
         &:hover {
           transform: scale(1.1);
@@ -66,48 +68,58 @@
           }
         }
 
-        img {
+        .portoImg {
           width: 200px;
           height: 150px;
-          object-fit: cover;
-
-        }
-        p {
-          margin-top: 1em;
-          text-align: center;
-          font-size: 14px;
-          font-weight: 500;
+          img {
+            width: 200px;
+            height: 240px;
+            object-fit: cover;
+          }
+          p {
+            margin-top: 1em;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+          }
         }
       }
     }
     .experience {
-        margin-top: 2em;
-        .expDetails {
-            padding: 1em;
-            display: flex;
+      margin-top: 2em;
 
-            .expInfo {
-                margin-left: 1em;
-                padding: 0.5em 0;
-                h3 {
-                    font-size: 20px;
-                    font-weight: 600;
-                }
-                h4 {
-                    margin: 0.5em 0;
-                    font-size: 14px;
-                    font-weight: 500;
-                }
-                h5 {
-                    font-size: 13px;
-                    font-weight: 500;
-                    color: rgb(161, 161, 161);
-                }
-                p {
-                    font-size: 13px;
-                }
-            }
+      .expDetails {
+        padding: 1em;
+        display: flex;
+
+        .expImage {
+          img {
+            width: 60px;
+            height: 60px;
+          }
         }
+
+        .expInfo {
+          margin-left: 1em;
+          h3 {
+            font-size: 20px;
+            font-weight: 600;
+          }
+          h4 {
+            margin: 0.5em 0;
+            font-size: 14px;
+            font-weight: 500;
+          }
+          h5 {
+            font-size: 13px;
+            font-weight: 500;
+            color: rgb(161, 161, 161);
+          }
+          p {
+            font-size: 13px;
+          }
+        }
+      }
     }
   }
 }
@@ -126,6 +138,11 @@
       }
       .listPorto {
         gap: 1em;
+        padding: 0 0.5em;
+        justify-content: center;
+        .portoCard {
+          margin-top: 2em;
+        }
       }
     }
   }

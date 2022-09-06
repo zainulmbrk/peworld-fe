@@ -55,18 +55,21 @@ const EmployeeProfileLayout = ({ data }) => {
 											return (
 												<>
 													<div className={styles.portoCard}>
-														<Image
-															className=''
-															src={`http://localhost:5000/uploads/${item.portofolio_picture}`}
-															width={'250'}
-															height={'300'}
-														/>
-														<p>{item.portofolio_name}</p>
-														<p>
+														<div className={styles.portoImg}>
+															<img
+																className=''
+																src={`http://localhost:5000/uploads/${item.portofolio_picture}`}
+																width={'250'}
+																height={'300'}
+															/>
+
+															<p>{item.portofolio_name}</p>
+														</div>
+														{/* <p>
 															<a href={item.portofolio_repo}>
 																{item.portofolio_repo}
 															</a>
-														</p>
+														</p> */}
 													</div>
 													;
 												</>
@@ -76,33 +79,60 @@ const EmployeeProfileLayout = ({ data }) => {
 								) : (
 									<>
 										<div className={styles.experience}>
-											{dataexperience?.data?.data?.map((item, index) => {
-												return (
-													<>
-														<div className={styles.expDetails}>
-															<div className={styles.expImage}>
-																<img src='/images/img8.png' alt='experience' />
-															</div>
-															<div className={styles.expInfo}>
-																<h3>{item.experience_position}</h3>
-																<h4>{item.experience_company}</h4>
-																<h5>
-																	<div className='text-danger'>
-																		Masuk :
-																		{item.experience_date_start.slice(0, 10)}{' '}
-																	</div>
-																	<div className='text-danger'>
-																		Keluar :
-																		{item.experience_date_end.slice(0, 10)}{' '}
-																	</div>
-																</h5>
-																<p>{item.experience_description}</p>
-															</div>
-														</div>
-														;
-													</>
-												);
-											})}
+											<div className={styles.expDetails}>
+												<div className={styles.expImage}>
+													<img src='/images/bg.jpg' alt='experience' />
+												</div>
+												<div className={styles.expInfo}>
+													<h3>Fullstack Developer</h3>
+													<h4>Happy Deer Corp</h4>
+													<h5>
+														July 2019 - January 2020 - <span>6 months</span>
+													</h5>
+													<p>
+														Lorem ipsum dolor sit amet, consectetur adipiscing
+														elit. Vestibulum erat orci, mollis nec gravida sed,
+														ornare quis urna. Curabitur eu lacus fringilla,
+														vestibulum risus at.
+													</p>
+												</div>
+											</div>
+											<div className={styles.expDetails}>
+												<div className={styles.expImage}>
+													<img src='/images/bg.jpg' alt='experience' />
+												</div>
+												<div className={styles.expInfo}>
+													<h3>Frontend Developer</h3>
+													<h4>PT Anti Hidup Sehat</h4>
+													<h5>
+														July 2019 - January 2020 - <span>6 months</span>
+													</h5>
+													<p>
+														Lorem ipsum dolor sit amet, consectetur adipiscing
+														elit. Vestibulum erat orci, mollis nec gravida sed,
+														ornare quis urna. Curabitur eu lacus fringilla,
+														vestibulum risus at.
+													</p>
+												</div>
+											</div>
+											<div className={styles.expDetails}>
+												<div className={styles.expImage}>
+													<img src='/images/bg.jpg' alt='experience' />
+												</div>
+												<div className={styles.expInfo}>
+													<h3>UI/UX Designer</h3>
+													<h4>PT Anti Hidup Sehat</h4>
+													<h5>
+														July 2019 - January 2020 - <span>6 months</span>
+													</h5>
+													<p>
+														Lorem ipsum dolor sit amet, consectetur adipiscing
+														elit. Vestibulum erat orci, mollis nec gravida sed,
+														ornare quis urna. Curabitur eu lacus fringilla,
+														vestibulum risus at.
+													</p>
+												</div>
+											</div>
 										</div>
 									</>
 								)}

@@ -27,30 +27,31 @@
       margin-top: -3.5em;
     }
 
-    .companyName {
-      display: flex;
-      justify-content: center;
-      margin-top: 4em;
-    }
-
-    .companyType {
-      display: flex;
-      justify-content: center;
-      font-size: 14px;
-    }
-
-    .companyLocation {
-      display: flex;
-      font-size: 14px;
-      color: #d1d0d0;
-      column-gap: 5px;
-      align-items: center;
-      justify-content: center;
-
-      .icon {
-        font-size: 16px;
+    .dataCompany {
+      .companyName {
         display: flex;
+        justify-content: center;
+        margin-top: 4em;
+      }
+
+      .companyType {
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+      }
+
+      .companyLocation {
+        display: flex;
+        font-size: 14px;
+        column-gap: 5px;
         align-items: center;
+        justify-content: center;
+
+        .icon {
+          font-size: 16px;
+          display: flex;
+          align-items: center;
+        }
       }
     }
 

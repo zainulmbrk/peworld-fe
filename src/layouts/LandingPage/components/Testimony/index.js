@@ -49,7 +49,7 @@ const Testimony = () => {
       <h1>Their opinion about Peworld</h1>
       <div className={styles.testiBox}>
         <Slider {...settings}>
-          <div className={styles.testiCard}>
+          <div className={styles.testiCard} data-aos="fade-right" data-aos-delay="400">
             <div className={styles.testiImg}>
               <img src="/images/img4.png" alt="person" />
             </div>
@@ -62,7 +62,7 @@ const Testimony = () => {
               </p>
             </div>
           </div>
-          <div className={styles.testiCard}>
+          <div className={styles.testiCard} data-aos="fade-down" data-aos-delay="900">
             <div className={styles.testiImg}>
               <img src="/images/img5.png" alt="person" />
             </div>
@@ -72,7 +72,7 @@ const Testimony = () => {
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
           </div>
-          <div className={styles.testiCard}>
+          <div className={styles.testiCard} data-aos="fade-left" data-aos-delay="600">
             <div className={styles.testiImg}>
               <img src="/images/img6.png" alt="person" />
             </div>
