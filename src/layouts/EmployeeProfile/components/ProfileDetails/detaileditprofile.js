@@ -12,6 +12,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 const ProfileDetailsLayoutEdit = ({ data }) => {
+	console.log(data.data.data.dataskill.data, 'data data data');
+	const tampungskill = data.data.data.dataskill.data;
 	const { asPath } = useRouter();
 	const profile_id = Cookies.get('profile_id');
 	const role = Cookies.get('profile_role');
@@ -25,7 +27,7 @@ const ProfileDetailsLayoutEdit = ({ data }) => {
 						<>
 							<div className={styles.profileImage} key={item.profile_id}>
 								<img
-									className='bg-warning rounded-circle'
+									className='bg-lightrounded-circle'
 									// loader={myLoader(item.product_picture)}
 									src={`http://localhost:5000/uploads/${item.profile_picture}`}
 									width={'300'}
@@ -74,13 +76,19 @@ const ProfileDetailsLayoutEdit = ({ data }) => {
 									</>
 								)}
 							</div>
-							<div className={styles.profileSkills}>
+							<div className={`${styles.profileSkills}`}>
 								<h2>Skills</h2>
-								<div className={styles.skillBox}>
-									<div className='col-12 flex-wrap'>
-										<div className={styles.skillName}>{item.skill}</div>
-									</div>
-								</div>
+								{tampungskill?.map((item, index) => {
+									return (
+										<>
+											<div className={`${styles.skillBox}`}>
+												<div className={`${styles.skillName}`}>
+													{item.skill_name}
+												</div>
+											</div>
+										</>
+									);
+								})}
 							</div>
 							<div className={styles.profileSocial}>
 								<p>
