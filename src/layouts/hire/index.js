@@ -4,9 +4,10 @@ import NavbarLogin from "../../components/navbar/navbarLogin";
 import Hiring from "./components/hiring";
 
 const HiringPeople = ({ data }) => {
+  
   return (
     <>
-      {profile_id ? <NavbarLogin/> : <Navbar /> }
+      <NavbarLogin/>
       <Hiring data={data} />
       <Footer />
     </>

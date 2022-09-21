@@ -5,7 +5,7 @@ import NavbarLogin from './navbarLogin'
 const Index = () => {
   return (
     <>
-        {isLogin ? <NavbarLogin />: <Navbar />}
+        {isLogin ? <NavbarLogin /> : <Navbar />}
     </>
   )
 }
