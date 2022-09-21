@@ -22,63 +22,63 @@ const GetProfileError = (error) => {
 }
 
 export const GetProfile = (
-  page = 1,
-  limit = 4,
-  order_by = 'skill_name',
-  sort = 'desc',
+	page = 1,
+	limit = 20,
+	order_by = 'profile_name',
+	sort = 'desc'
 ) => {
-  return (dispatch) => {
-    dispatch(GetProfileRequest())
-    axios({
-      method: 'GET',
-      url: `http://localhost:5000/api/v1/profile/sort?page=${page}&limit=${limit}&order_by=${order_by}&sort=${sort}`,
-    })
-      .then((res) => {
-        dispatch(GetProfileSuccess(res.data.data))
-      })
-      .catch((err) => {
-        dispatch(GetProfileError(err))
-      })
-  }
-}
+	return (dispatch) => {
+		dispatch(GetProfileRequest());
+		axios({
+			method: 'GET',
+			url: `http://localhost:5000/api/v1/profile/sort?page=${page}&limit=${limit}&order_by=${order_by}&sort=${sort}`,
+		})
+			.then((res) => {
+				dispatch(GetProfileSuccess(res.data.data));
+			})
+			.catch((err) => {
+				dispatch(GetProfileError(err));
+			});
+	};
+};
 
 //search
 const SearchProfileRequest = () => {
-  return {
-    type: 'SEARCH_PROFILE_REQUEST',
-  }
-}
+	return {
+		type: 'SEARCH_PROFILE_REQUEST',
+	};
+};
 
 const SearchProfileSuccess = (data) => {
-  return {
-    type: 'SEARCH_PROFILE_SUCCESS',
-    payload: data,
-  }
-}
+	return {
+		type: 'SEARCH_PROFILE_SUCCESS',
+		payload: data,
+	};
+};
 
 const SearchProfileError = (error) => {
-  return {
-    type: 'SEARCH_PROFILE_ERROR',
-    payload: error,
-  }
-}
+	return {
+		type: 'SEARCH_PROFILE_ERROR',
+		payload: error,
+	};
+};
 
 export const GetSearchProfile = (
-  limit = 4,
-  page = 1,
-  skill_location = 'indonesia',
+	limit = 20,
+	page = 1,
+	skill_location = 'indonesia'
 ) => {
-  return (dispatch) => {
-    dispatch(SearchProfileRequest())
-    axios({
-      method: 'GET',
-      url: `http://localhost:5000/api/v1/profile/search?page=${page}&limit=${limit}&skill_location=${skill_location}`,
-    })
-      .then((res) => {
-        dispatch(SearchProfileSuccess(res.data.data))
-      })
-      .catch((err) => {
-        dispatch(SearchProfileError(err))
-      })
-  }
-}
+	return (dispatch) => {
+		dispatch(SearchProfileRequest());
+		axios({
+			method: 'GET',
+			url: `http://localhost:5000/api/v1/profile/search?page=${page}&limit=${limit}&skill_location=${skill_location}`,
+		})
+			.then((res) => {
+				dispatch(SearchProfileSuccess(res.data.data));
+			})
+			.catch((err) => {
+				dispatch(SearchProfileError(err));
+			});
+	};
+};

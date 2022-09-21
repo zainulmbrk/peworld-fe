@@ -55,7 +55,7 @@ const AddSkillSuccess = (data) => {
 
 const AddSkillError = (error) => {
 	return {
-		type: 'ADD_SKILL_ERROR',
+		type: 'ADD_EXPERIENCE_ERROR',
 		payload: error,
 	};
 };
@@ -126,3 +126,4 @@ export const AddSkill = (profile_id, skill_name, token) => {
 		};
 	}
 };
+

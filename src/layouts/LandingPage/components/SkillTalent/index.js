@@ -5,10 +5,10 @@ const SkillTalent = () => {
   return (
     <div className="container">
       <div className={`${styles.skillTalent} row`}>
-        <div className={`${styles.left} col-md-6`}>
+        <div className={`${styles.left} col-md-6`} data-aos="fade-right" data-aos-delay="600">
             <h1>Skill Talent</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
-            <div className={styles.detailsBox}>
+            <p>Bahasa pemrograman terkini yang di kuasai oleh setiap developer</p>
+            <div className={styles.detailsBox} data-aos="fade-right" data-aos-delay="600">
                 <div className={styles.details}>
                     <span><img src="/icons/checkyellow.svg" alt="check" /></span>
                     Java
@@ -18,7 +18,7 @@ const SkillTalent = () => {
                     Golang
                 </div>
             </div>
-            <div className={styles.detailsBox}>
+            <div className={styles.detailsBox} data-aos="fade-right" data-aos-delay="700">
                 <div className={styles.details}>
                     <span><img src="/icons/checkyellow.svg" alt="check" /></span>
                     Kotlin
@@ -28,7 +28,7 @@ const SkillTalent = () => {
                     C++
                 </div>
             </div>
-            <div className={styles.detailsBox}>
+            <div className={styles.detailsBox} data-aos="fade-right" data-aos-delay="900">
                 <div className={styles.details}>
                     <span><img src="/icons/checkyellow.svg" alt="check" /></span>
                     PHP
@@ -38,7 +38,7 @@ const SkillTalent = () => {
                     Ruby
                 </div>
             </div>
-            <div className={styles.detailsBox}>
+            <div className={styles.detailsBox} data-aos="fade-right" data-aos-delay="1000">
                 <div className={styles.details}>
                     <span><img src="/icons/checkyellow.svg" alt="check" /></span>
                     Javascript
@@ -49,7 +49,7 @@ const SkillTalent = () => {
                 </div>
             </div>
         </div>
-        <div className={`${styles.right} col-md-6`}>
+        <div className={`${styles.right} col-md-6`} data-aos="fade-left" data-aos-delay="1400">
           <img src="/images/img2.png" alt="image" />
         </div>
       </div>
