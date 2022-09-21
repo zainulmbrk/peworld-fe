@@ -5,10 +5,10 @@ import Hiring from './components/hiring'
 
 
 const HiringPeople = ({ data }) => {
+  
   return (
     <>
-
-      <NavbarLogin />
+      <NavbarLogin/>
       <Hiring data={data} />
       <Footer />
     </>
