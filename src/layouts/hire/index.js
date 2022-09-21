@@ -1,7 +1,8 @@
-import Footer from "../../components/footer";
-import Navbar from "../../components/navbar/navbar";
-import NavbarLogin from "../../components/navbar/navbarLogin";
-import Hiring from "./components/hiring";
+
+import Footer from '../../components/footer'
+import NavbarLogin from '../../components/navbar/navbarLogin'
+import Hiring from './components/hiring'
+
 
 const HiringPeople = ({ data }) => {
   
@@ -11,7 +12,7 @@ const HiringPeople = ({ data }) => {
       <Hiring data={data} />
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default HiringPeople;
+export default HiringPeople
