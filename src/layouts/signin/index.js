@@ -22,7 +22,7 @@ const SigninLayout = () => {
         Cookie.set("profile_role", res.data.data.profile_role)
         Cookie.set("profile_email", res.data.data.profile_email)
         router.push('/')
-      }).catch((err) => {
+      }).catch((err) => { 
         toast.error(err.response.data.message)
       })
   }
