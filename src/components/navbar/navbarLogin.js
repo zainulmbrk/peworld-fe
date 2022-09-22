@@ -5,6 +5,9 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { MdOutlineNotifications, MdOutlineEmail } from "react-icons/md";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router"
+import 'react-toastify/dist/ReactToastify.css';
+import { HiOutlineUser } from 'react-icons/hi'
+import { BiLogOutCircle } from 'react-icons/bi'
 
 const NavbarLogin = () => {
 	const router = useRouter();
@@ -50,7 +53,7 @@ const NavbarLogin = () => {
 									className={styles.icon}
 									onClick={() => router.push(`/notification/${profile_id}`)}
 								/>
-								<div
+								{/* <div
 									className={
 										toggle
 											? `${styles.notifBox} ${styles.active}`
@@ -80,7 +83,7 @@ const NavbarLogin = () => {
 										</div>
 									</div>
 									<h2>SEE MORE</h2>
-								</div>
+								</div> */}
 							</div>
 
 							<div className={styles.navlink}>
@@ -111,6 +114,7 @@ const NavbarLogin = () => {
 														className={styles.link}
 														onClick={RouteProfilePekerja}
 													>
+														<HiOutlineUser className={styles.icon}/>
 														Profile
 													</div>
 												</>
@@ -120,6 +124,7 @@ const NavbarLogin = () => {
 														className={styles.link}
 														onClick={RouteProfilePerekrut}
 													>
+														<HiOutlineUser className={styles.icon}/>
 														Profile
 													</div>
 												</>
@@ -128,6 +133,7 @@ const NavbarLogin = () => {
 
 											<Link href='/'>
 												<div className={styles.link} onClick={handleLogout}>
+													<BiLogOutCircle className={styles.icon}/>
 													Logout
 												</div>
 											</Link>

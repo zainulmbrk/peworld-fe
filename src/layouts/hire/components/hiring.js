@@ -4,6 +4,10 @@ import { MdOutlineLocationOn, MdOutlineMail } from 'react-icons/md'
 import { TbPhone } from 'react-icons/tb'
 import { useState } from 'react'
 import Cookies from 'js-cookie'
+import Head from 'next/head'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 const Hiring = ({ data }) => {
   const results = data.data
   const tampungskill = results[0].skill.split(',');
@@ -25,7 +29,7 @@ const Hiring = ({ data }) => {
 		})
 			.then((res) => {
 				if (res.data.data) {
-					alert('pesan sudah terkirim');
+					toast.success('Pesan sudah terkirim')
 				}
 			})
 			.catch((error) => {
@@ -38,6 +42,9 @@ const Hiring = ({ data }) => {
 
 	return (
 		<>
+		<Head>
+			<title>Hire</title>
+		</Head>
 			<div className={styles.wrapPage}>
 				<div className='container'>
 					<div className='row'>
@@ -74,13 +81,11 @@ const Hiring = ({ data }) => {
 											</div>
 											<div className={styles.profileSkills}>
 												<h2>Skills</h2>
-												<div className='flex-wrap col d-flex'>
+												<div className={`${styles.skillBox}`}>
 													{tampungskill?.map((item, index) => {
 														return (
 															<>
-																<div className={`${styles.skillBox} me-3`}>
 																	<div className={styles.skillName}>{item}</div>
-																</div>
 															</>
 														);
 													})}
@@ -92,9 +97,14 @@ const Hiring = ({ data }) => {
 							})}
 						</div>
 						<div className={`${styles.msg} col-md-8`}>
-							<div className={styles.header}>
-								<h5>Hubungi Lous Tomlinson</h5>
-							</div>
+							{results.map((item)=> {
+								return (
+								<div className={styles.header}>
+									<h5>Hubungi {item.profile_name}</h5>
+								</div>
+
+								)
+							})}
 							<div className={styles.subject}>
 								<p>
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
@@ -133,6 +143,7 @@ const Hiring = ({ data }) => {
 					</div>
 				</div>
 			</div>
+			<ToastContainer autoClose={2000} />
 		</>
 	);
 }

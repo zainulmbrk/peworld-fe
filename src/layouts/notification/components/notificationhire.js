@@ -1,9 +1,10 @@
 import styles from './Notification.module.scss'
 import { FiSearch } from 'react-icons/fi'
-import { HiOutlineLocationMarker } from 'react-icons/hi'
+import { BsClock } from 'react-icons/bs'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
+import moment from 'moment'
 
 const NotificationHire = ({ data }) => {
   const results = data.data
@@ -20,11 +21,11 @@ const NotificationHire = ({ data }) => {
       </div>
       <div className={styles.contentFilter}>
         <div className="container">
-          <div className={styles.filter}>
+          {/* <div className={styles.filter}>
             <div className={styles.search}>
               <input
                 type="search"
-                placeholder="Search for any skill"
+                placeholder="Search for company"
                 onChange={(event) => setSearch(event.target.value)}
               />
               <FiSearch className={styles.icon} />
@@ -72,7 +73,7 @@ const NotificationHire = ({ data }) => {
             <div className={styles.btnSearch}>
               <button className="btn">Search</button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={styles.cardContent}>
@@ -88,8 +89,9 @@ const NotificationHire = ({ data }) => {
                     <div className={styles.image}>
                       <Image
                         src={`http://localhost:5000/uploads/${item.profile_picture}`}
-                        width={50}
-                        height={50}
+                        width={120}
+                        height={120}
+                        style={{borderRadius: '50%'}}
                       />
                     </div>
                     <div className={styles.info}>
@@ -100,30 +102,29 @@ const NotificationHire = ({ data }) => {
                           <span>{item.profile_job_type}</span>
                         </h5> */}
                       </div>
-
                       <div className={styles.location}>
                         <span>
-                          <HiOutlineLocationMarker className={styles.icon} />
+                          <BsClock className={styles.icon} />
                         </span>
-                        Jakarta
+                        {moment(item.created_at).endOf('day').fromNow(item.updated_at)} ago
                       </div>
                       <div className={styles.skills}>
                         {`${item.notification_from_name} `}
                         {item.notification_message}
                       </div>
                     </div>
-                    <div className={styles.btnProfile}>
+                    {/* <div className={styles.btnProfile}>
                       <Link href="#">
                         <button>See Profile</button>
                       </Link>
-                    </div>
+                    </div> */}
                   </div>
                 </>
               )
             })}
-            <div className={styles.horizontalLine}>
+            {/* <div className={styles.horizontalLine}>
               <div className={styles.hline}></div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

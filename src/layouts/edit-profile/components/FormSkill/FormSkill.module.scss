@@ -25,6 +25,43 @@
     }
   }
 
+  .skillArea {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 2em;
+    flex-wrap: wrap;
+
+    button {
+      outline: none;
+      border: none;
+      padding: 0.6em 1em;
+      border-radius: 5px;
+      font-size: 14px;
+      background: rgba(251, 175, 23, 0.73);
+      border: 2px solid var(--secondary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+
+      .buttonPanel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 2em;
+        margin-right: -0.8em;
+        gap: 3px;
+        transition: 0.3s ease-in-out;
+
+        .btnIcon {
+          .icon {
+            font-size: 16px;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
   .companyForm {
     display: flex;
     flex-direction: column;

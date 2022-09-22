@@ -32,7 +32,7 @@ const SigninLayout = () => {
   return (
     <>
       <Head>
-        <title>Sign In - Peworld</title>
+        <title>Masuk - Peworld</title>
       </Head>
       <div className={`${styles.signinLayout} row`}>
         <div className={`${styles.left} col-md-6`}>

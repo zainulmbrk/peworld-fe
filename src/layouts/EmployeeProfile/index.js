@@ -11,6 +11,8 @@ import { GetExperience } from '../../redux/actions/experience';
 import { useEffect } from 'react';
 import Image from 'next/image';
 import NavbarLogin from '../../components/navbar/navbarLogin';
+import Head from 'next/head'
+
 const EmployeeProfileLayout = ({ data }) => {
 	console.log(data, 'ini data lo gaess');
 	const dispatch = useDispatch();
@@ -26,6 +28,9 @@ const EmployeeProfileLayout = ({ data }) => {
 	const [toggle, setToggle] = useState(true);
 	return (
 		<>
+			<Head>
+				<title>Profile - Employee</title>
+			</Head>
 			<NavbarLogin />
 			<div className={styles.profileLayout}>
 				<div className='container'>
