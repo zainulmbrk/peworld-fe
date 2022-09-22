@@ -10,6 +10,7 @@ import {
 } from '../../../../redux/actions/skill';
 import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
+import { MdEdit, MdOutlineDelete } from 'react-icons/md'
 import { useEffect } from 'react';
 const FormSkill = (dataskill) => {
 	const dispatch = useDispatch();
@@ -57,6 +58,41 @@ const FormSkill = (dataskill) => {
 					<div className={styles.hline}></div>
 				</div>
 
+				<div className={styles.skillArea}>
+					{resultskill?.map((item, index) => {
+						return (
+							<>
+								<button>
+									{item.skill_name}
+									<div className={styles.buttonPanel}>
+										<div className={styles.btnIcon} data-bs-toggle='modal'
+												data-bs-target='#editSkill'
+												onClick={(e) => {
+													setskillname((prevState) => ({
+														...prevState,
+														skill_name: item.skill_name,
+														skill_id: item.skill_id,
+													}));
+												}}>
+												<MdEdit className={styles.icon}/>
+										</div>
+										<div className={styles.btnIcon} onClick={() => {
+													handledelete(
+														profile_id,
+														item.skill_id,
+														token,
+														item.skill_name
+													);
+												}}>
+												<MdOutlineDelete className={styles.icon}/>
+										</div>
+									</div>
+								</button>
+							</>
+						);
+					})}
+				</div>
+
 				<div className={styles.companyForm}>
 					<input
 						type='text'
@@ -69,48 +105,7 @@ const FormSkill = (dataskill) => {
 						}}
 					/>
 				</div>
-				<div className='col d-flex flex-wrap justify-content-betweem '>
-					{resultskill?.map((item, index) => {
-						return (
-							<>
-								<a className=' btn btn-light me-1 mb-2 col-sm-12 col-md-5 d-flex '>
-									<div className='col-12 d-flex'>
-										<div className='col-6 pt-2'>{item.skill_name}</div>
-										<div className='col-6 d-flex text-danger skill-edit'>
-											<button
-												className='btn btn-outline-success me-2 skill col-6'
-												data-bs-toggle='modal'
-												data-bs-target='#editSkill'
-												onClick={(e) => {
-													setskillname((prevState) => ({
-														...prevState,
-														skill_name: item.skill_name,
-														skill_id: item.skill_id,
-													}));
-												}}
-											>
-												Edit
-											</button>
-											<button
-												className='btn btn-outline-danger skill col-6'
-												onClick={() => {
-													handledelete(
-														profile_id,
-														item.skill_id,
-														token,
-														item.skill_name
-													);
-												}}
-											>
-												Delete
-											</button>
-										</div>
-									</div>
-								</a>
-							</>
-						);
-					})}
-				</div>
+				
 				<div className={styles.btnSaveSkill}>
 					<button
 						onClick={() => {

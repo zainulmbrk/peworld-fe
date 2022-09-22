@@ -8,6 +8,8 @@ import {
 	EditExperience,
 	AddExperience,
 } from '../../../../redux/actions/experience';
+import moment from "moment/moment";
+import { RiDeleteBin6Line, RiEditLine } from 'react-icons/ri'
 const FormExperience = (data) => {
 	const dispatch = useDispatch();
 	const profile_id = Cookies.get('profile_id');
@@ -54,6 +56,7 @@ const FormExperience = (data) => {
 		),
 			window.location.reload();
 	};
+	
 
 	return (
 		<>
@@ -67,31 +70,15 @@ const FormExperience = (data) => {
 				{experience?.map((item, index) => {
 					return (
 						<>
-							<div className='col-12 card border-dark p-2 mb-3'>
-								<div className='col-12 d-flex'>
-									<div className='text-danger'> Company = &nbsp; </div>
-									{item.experience_company}
+							<div className={styles.expArea}>
+								<div className={styles.expInfo}>
+									<div className={styles.compName}>{item.experience_position}</div>
+									<div className={styles.pos}>{item.experience_company}</div>
+									<div className={styles.dateExp}>{moment(item.experience_date_start).format('MMM YYYY')} - {moment(item.experience_date_end).format('MMM YYYY')} • {moment(item.experience_date_start).startOf('day').fromNow(item.experience_date_end)}</div>
+									<div className={styles.desc}>{item.experience_description}</div>
 								</div>
-								<div className='col-12 d-flex'>
-									<div className='text-danger'> Posisi = &nbsp; </div>
-									{item.experience_position}
-								</div>
-								<div className='col-12 d-flex'>
-									<div className='text-danger'> From = &nbsp;</div>
-									{item.experience_date_start.slice(0, 10)}
-								</div>
-								<div className='col-12 d-flex'>
-									<div className='text-danger'> Until = &nbsp;</div>
-									{item.experience_date_end.slice(0, 10)}
-								</div>
-								<div className='col-12 d-flex'>
-									<div className='text-danger'> Description = &nbsp;</div>
-									{item.experience_description}
-								</div>
-								<div className='col d-flex mt-3'>
-									<button
-										className='col-3 btn btn-outline-success me-4 '
-										data-bs-toggle='modal'
+								<div className={styles.expPanel}>
+									<button className={styles.expEdit} data-bs-toggle='modal'
 										data-bs-target='#editExperience'
 										onClick={(e) => {
 											setdataexperience((prevState) => ({
@@ -106,25 +93,18 @@ const FormExperience = (data) => {
 												...prevState,
 												experience_id: item.experience_id,
 											}));
-										}}
-									>
-										Edit
-									</button>
-									<button
-										className='col-3  btn btn-outline-danger '
-										onClick={() => {
+										}}><RiEditLine className={styles.icon}/></button>
+									<button className={styles.expDelete} onClick={() => {
 											handledelete(
 												profile_id,
 												item.experience_id,
 												item.experience_company
 											),
 												console.log(item, 'ini itemnya');
-										}}
-									>
-										Delete
-									</button>
+										}}><RiDeleteBin6Line className={styles.icon}/></button>
 								</div>
 							</div>
+							<div className={styles.horizontal}></div>
 						</>
 					);
 				})}

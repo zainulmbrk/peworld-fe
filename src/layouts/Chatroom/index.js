@@ -88,7 +88,7 @@ const ChatroomLayout = () => {
                     </div>
                     <div className={styles.chatroomBoxContent}>
                       <div className={styles.textContent}>
-                        <p>GAJADI MAKASIH!!!</p>
+                        <p>Okay thank you</p>
                         <div className={styles.statusInfo}>
                           <BsCheckAll className={`${styles.statusIcon}`} />
                           02.14 PM

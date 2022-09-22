@@ -44,9 +44,7 @@ const ProfileDetailsLayout = ({ data }) => {
 									{item.profile_phone_number}
 								</p>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Vestibulum erat orci, mollis nec gravida sed, ornare quis
-									urna. Curabitur eu lacus fringilla, vestibulum risus at.
+									{item.profile_description}
 								</p>
 								{role == 'pekerja' ? (
 									<>

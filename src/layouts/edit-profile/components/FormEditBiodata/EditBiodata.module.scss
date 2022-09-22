@@ -30,6 +30,11 @@
     .companyForm {
       display: flex;
       flex-direction: column;
+      
+      .inputType {
+        height: 100%;
+        font-weight: 500;
+      }
 
       .socialMedia {
         width: 100%;

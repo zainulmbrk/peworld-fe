@@ -8,7 +8,6 @@ import { FiGithub, FiGitlab } from 'react-icons/fi';
 import { BsInstagram } from 'react-icons/bs';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 const ProfileDetailsLayoutEdit = ({ data }) => {
@@ -38,6 +37,7 @@ const ProfileDetailsLayoutEdit = ({ data }) => {
 								<h4>{item.profile_name}</h4>
 								<h3>{item.profile_job}</h3>
 								<h5>{item.profile_job_type}</h5>
+								<h5>{item.profile_birth_date}</h5>
 								<p>
 									<span>
 										<MdOutlineLocationOn className={styles.profileIcon} />
@@ -50,10 +50,8 @@ const ProfileDetailsLayoutEdit = ({ data }) => {
 									</span>
 									{item.profile_phone_number}
 								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Vestibulum erat orci, mollis nec gravida sed, ornare quis
-									urna. Curabitur eu lacus fringilla, vestibulum risus at.
+								<p style={{marginTop: '2em'}}>
+									{item.profile_description}
 								</p>
 								{role == 'pekerja' && asPath == `/editprofile/${profile_id}` ? (
 									<></>
@@ -78,17 +76,17 @@ const ProfileDetailsLayoutEdit = ({ data }) => {
 							</div>
 							<div className={`${styles.profileSkills}`}>
 								<h2>Skills</h2>
+								<div className={`${styles.skillBox}`}>
 								{tampungskill?.map((item, index) => {
 									return (
 										<>
-											<div className={`${styles.skillBox}`}>
 												<div className={`${styles.skillName}`}>
 													{item.skill_name}
 												</div>
-											</div>
 										</>
 									);
 								})}
+								</div>
 							</div>
 							<div className={styles.profileSocial}>
 								<p>

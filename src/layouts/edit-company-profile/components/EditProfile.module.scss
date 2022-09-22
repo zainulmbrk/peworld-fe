@@ -34,6 +34,26 @@
           flex-direction: column;
           justify-content: center;
 
+          .editImage {
+            text-align: center;
+            position: absolute;
+            left: 21em;
+            top: 20.5em;
+
+            .icon {
+              font-size: 3em;
+              cursor: pointer;
+              background: #5e50a1;
+              border-radius: 50%;
+              padding: 8px;
+              color: #fff;
+
+              &:hover {
+                background: #392e72;
+              }
+            }
+          }
+
           .imgProfileWrapper{
             width: 40vh;
             height: 40vh;

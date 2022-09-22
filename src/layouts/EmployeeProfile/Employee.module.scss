@@ -25,7 +25,7 @@
       column-gap: 2em;
 
       h3 {
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 600;
         color: rgba(175, 174, 174, 0.795);
         cursor: pointer;
@@ -36,9 +36,9 @@
         &::after {
           content: "";
           display: block;
-          width: 85%;
+          width: 80%;
           margin: auto;
-          padding-top: 5px;
+          padding-top: 10px;
           border-bottom: 3px solid var(--primary);
           margin-bottom: -11px;
         }

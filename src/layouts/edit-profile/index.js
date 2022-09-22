@@ -5,6 +5,8 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import NavbarLogin from '../../components/navbar/navbarLogin';
 import { useEffect } from 'react';
+import Head from 'next/head'
+
 const EditEmployeeProfile = (data, dataskill) => {
 	const router = useRouter();
 	const profile_id = Cookies.get('profile_id');
@@ -25,6 +27,9 @@ const EditEmployeeProfile = (data, dataskill) => {
 	}, []);
 	return (
 		<>
+			<Head>
+				<title>Edit Profile - Employee</title>
+			</Head>
 			{profile_id ? (
 				<>
 					<NavbarLogin />

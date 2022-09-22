@@ -23,10 +23,73 @@
       margin-bottom: 1em;
     }
   }
+
+  .expArea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .expInfo {
+      .compName {
+        font-size: 24px;
+        font-weight: 600;
+      }
+      .pos {
+        font-size: 18px;
+        font-weight: 400;
+        padding: 0.2em 0;
+      }
+      .dateExp {
+        font-size: 14px;
+        color: rgb(156, 156, 156);
+      }
+      .desc {
+        font-size: 16px;
+        padding: 0.5em 0;
+        font-weight: 500;
+      }
+    }
+    .expPanel {
+      display: flex;
+
+      button {
+        margin: 0 0.2em;
+        padding: 5px;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        background: rgb(22, 22, 236);
+
+        &:hover {
+          background: rgb(13, 13, 147);
+        }
+
+        &:nth-child(2) {
+          background: rgb(242, 10, 10);
+
+          &:hover {
+            background: rgb(166, 10, 10);
+          }
+        }
+      }
+
+      .icon {
+        font-size: 20px;
+        color: #fff;
+      }
+    }
+  }
+  .horizontal {
+    width: 100%;
+    height: 1px;
+    background-color: lightgrey;
+    margin: 1em 0;
+  }
+
   .companyExperience {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 4em;
     // flex-direction: column;
     .formCompany {
       display: flex;
@@ -61,7 +124,7 @@
       display: flex;
       flex-direction: column;
       width: 45%;
-      
+
       label {
         font-size: 14px;
         font-weight: 500;
@@ -128,7 +191,7 @@
   }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   .cardFormExperience {
     .title {
       p {

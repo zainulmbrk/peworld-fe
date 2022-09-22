@@ -7,9 +7,8 @@ import Cookies from 'js-cookie'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import axios from '../../../utils/axios'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
-
+import { MdAdd } from 'react-icons/md'
 
 const EditCompanyProfile = () => {
   const router = useRouter()
@@ -63,7 +62,7 @@ const EditCompanyProfile = () => {
     }
   }
   const ruteBack = () => {
-    router.push('/companyprofile')
+    router.back()
   }
   const inputFile = useRef(null);
   const onClickInput = () => {
@@ -72,9 +71,6 @@ const EditCompanyProfile = () => {
   console.log(formAddData.profile_picture)
   return (
     <>
-      <Head>
-        <title>Edit Profile Company</title>
-      </Head>
       <div className={styles.wrapPage}>
         <div className={styles.wrapHead}></div>
         {dataCompany.length > 0 ? dataCompany.map((company, index) => {
@@ -88,9 +84,8 @@ const EditCompanyProfile = () => {
                         <img src={formAddData.profile_picture ? `${formAddData.profile_picture.name}` : `http://localhost:5000/uploads/${company.profile_picture}`} alt='profile' className={styles.imgProfileWrapper} />
                       </picture>
                       <input type="file" onChange={(e) => setFormAddData(prevState => ({ ...prevState, profile_picture: e.target.files[0] }))} name="image" id="image" ref={inputFile} hidden />
-                      <div className="hover-pointer text-center" onClick={() => onClickInput()}>
-                        <HiPencil />
-                        Edit
+                      <div className={styles.editImage} onClick={() => onClickInput()}>
+                        <MdAdd className={styles.icon}/>
                       </div>
                     </div>
                     <div className={styles.companyName}>

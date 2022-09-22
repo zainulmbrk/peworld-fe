@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import NavbarLogin from '../../components/navbar/navbarLogin';
+import Head from 'next/head'
+
 const Homepage = () => {
 	const router = useRouter();
 	const profile_id = Cookies.get('profile_id');
@@ -18,6 +20,9 @@ const Homepage = () => {
 	console.log(profile_id, 'ini profile id nya');
 	return (
 		<>
+			<Head>
+				<title>Home</title>
+			</Head>
 			{profile_id && profile_role == 'perekrut' ? (
 				<>
 					<NavbarLogin />

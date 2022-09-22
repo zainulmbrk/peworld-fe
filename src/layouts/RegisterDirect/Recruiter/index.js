@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from "next/router"
 import axios from "../../../utils/axios"
+import Head from 'next/head'
 
 const RecruiterLayout = () => {
   const router = useRouter()
@@ -24,61 +25,66 @@ const RecruiterLayout = () => {
     setFormRegister({ ...formRegister, [e.target.name]: e.target.value })
   }
   return (
-    <div className={`${styles.recruiterLayout} row`}>
-      <div className={`${styles.left} col-md-6`}>
-        <div className={styles.logo}>
-          <Link href="/#">
-            <img src="/logo/logo.svg" alt="logo" />
-          </Link>
-          <Link href='/direct/employee'><button>Pekerja</button></Link>
+    <>
+      <Head>
+        <title>Daftar - Perekrut</title>
+      </Head>
+      <div className={`${styles.recruiterLayout} row`}>
+        <div className={`${styles.left} col-md-6`}>
+          <div className={styles.logo}>
+            <Link href="/#">
+              <img src="/logo/logo.svg" alt="logo" />
+            </Link>
+            <Link href='/direct/employee'><button>Pekerja</button></Link>
+          </div>
+          <h1>Halo, Pewpeople</h1>
+          <p>Lengkapi data diri anda</p>
+          <form>
+            <label>Nama</label>
+            <br />
+            <input type="text" name='profile_name' placeholder="Masukan nama lengkap" onChange={handleChangeText} />
+            <br />
+            <label>Email</label>
+            <br />
+            <input type="text" name="profile_email" placeholder="Masukan email" onChange={handleChangeText} />
+            <br />
+            <label>Perusahaan</label>
+            <br />
+            <input type="text" name='profile_company' placeholder="Masukan nama perusahaan" onChange={handleChangeText} />
+            <br />
+            <label>Bidang perusahaan</label>
+            <br />
+            <input type="text" name='profile_sub_company' placeholder="Bidang perusahaan anda" onChange={handleChangeText} />
+            <br />
+            <label>No. Handphone</label>
+            <br />
+            <input type="text" name='profile_phone_number' placeholder="Masukan no handphone" onChange={handleChangeText} />
+            <br />
+            <label>Kata Sandi</label>
+            <br />
+            <input type="password" name='profile_password' placeholder="Masukan kata sandi" onChange={handleChangeText} />
+            <br />
+            <label>Konfirmasi kata sandi</label>
+            <br />
+            <input type="password" name='profile_password_confirm' placeholder="Konfirmasi kata sandi anda" onChange={handleChangeText} />
+            <br />
+            <button onClick={handleSubmit}>Daftar</button>
+            <h5>Anda sudah punya akun?<Link href='/signin'> Masuk disini</Link></h5>
+          </form>
         </div>
-        <h1>Halo, Pewpeople</h1>
-        <p>Lengkapi data diri anda</p>
-        <form>
-          <label>Nama</label>
-          <br />
-          <input type="text" name='profile_name' placeholder="Masukan nama lengkap" onChange={handleChangeText} />
-          <br />
-          <label>Email</label>
-          <br />
-          <input type="text" name="profile_email" placeholder="Masukan email" onChange={handleChangeText} />
-          <br />
-          <label>Perusahaan</label>
-          <br />
-          <input type="text" name='profile_company' placeholder="Masukan nama perusahaan" onChange={handleChangeText} />
-          <br />
-          <label>Bidang perusahaan</label>
-          <br />
-          <input type="text" name='profile_sub_company' placeholder="Bidang perusahaan anda" onChange={handleChangeText} />
-          <br />
-          <label>No. Handphone</label>
-          <br />
-          <input type="text" name='profile_phone_number' placeholder="Masukan no handphone" onChange={handleChangeText} />
-          <br />
-          <label>Kata Sandi</label>
-          <br />
-          <input type="password" name='profile_password' placeholder="Masukan kata sandi" onChange={handleChangeText} />
-          <br />
-          <label>Konfirmasi kata sandi</label>
-          <br />
-          <input type="password" name='profile_password_confirm' placeholder="Konfirmasi kata sandi anda" onChange={handleChangeText} />
-          <br />
-          <button onClick={handleSubmit}>Daftar</button>
-          <h5>Anda sudah punya akun?<Link href='/signin'> Masuk disini</Link></h5>
-        </form>
-      </div>
-      <div className={`${styles.right} col-md-6`}>
-        <div className={styles.title}>
-          <p>Daftar sebagai pekerja disini</p>
-          <Link href="/direct/employee">
-            <button>Pekerja</button>
-          </Link>
+        <div className={`${styles.right} col-md-6`}>
+          <div className={styles.title}>
+            <p>Daftar sebagai pekerja disini</p>
+            <Link href="/direct/employee">
+              <button>Pekerja</button>
+            </Link>
+          </div>
+          <div className={styles.rightBg}></div>
+          <img src="/logo/recruiter.svg" alt="logo" />
         </div>
-        <div className={styles.rightBg}></div>
-        <img src="/logo/recruiter.svg" alt="logo" />
+        <ToastContainer autoClose={2000} />
       </div>
-      <ToastContainer autoClose={2000} />
-    </div>
+    </>
   )
 }
 

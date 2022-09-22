@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import EditCompanyProfile from "./components/editProfile";
 import NavbarLogin from "../../components/navbar/navbarLogin";
 import Footer from "../../components/footer";
+import Head from 'next/head'
 
 const CompanyProfiles = ({ data }) => {
     const [Refetch, setRefetch] = useState();
@@ -13,6 +14,9 @@ const CompanyProfiles = ({ data }) => {
         router.push('/')
     }
     return (<>
+        <Head>
+            <title>Edit Profile - Company</title>
+        </Head>
         <NavbarLogin />
         <EditCompanyProfile />
         <Footer />
