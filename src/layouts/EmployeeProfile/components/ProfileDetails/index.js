@@ -22,7 +22,7 @@ const ProfileDetailsLayout = ({ data }) => {
 							<div className={styles.profileImage} key={item.profile_id}>
 								<img
 									className='rounded-circle'
-									src={`http://localhost:5000/uploads/${item.profile_picture}`}
+									src={`https://peworld-be.vercel.app/uploads/${item.profile_picture}`}
 									width={'150'}
 									height={'150'}
 								/>

@@ -28,7 +28,7 @@ export const GetSingleProfile = (profile_id) => {
 			dispatch(GetSingleProfileRequest());
 			axios({
 				method: 'GET',
-				url: `http://localhost:5000/api/v1/profile?profile_id=${profile_id}`,
+				url: `https://peworld-be.vercel.app/api/v1/profile?profile_id=${profile_id}`,
 			})
 				.then((res) => {
 					dispatch(GetSingleProfileSuccess(res.data));

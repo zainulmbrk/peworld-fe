@@ -25,7 +25,7 @@ export const GetProfile = () => {
     dispatch(GetProfileRequest());
     axios({
       method: "GET",
-      url: "http://localhost:5000/api/v1//profile/sort?page=1&limit=4&order_by=profile_job_type&sort=desc",
+      url: "https://peworld-be.vercel.app/api/v1//profile/sort?page=1&limit=4&order_by=profile_job_type&sort=desc",
     })
       .then((res) => {
         dispatch(GetProfileSuccess(res.data));

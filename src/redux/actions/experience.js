@@ -86,7 +86,7 @@ export const DeleteExperience = (profile_id, experience_id, token) => {
 			dispatch(DeleteExperienceRequest());
 			axios({
 				method: 'DELETE',
-				url: `http://localhost:5000/api/v1/experience/delete?profile_id=${profile_id}&experience_id=${experience_id}`,
+				url: `https://peworld-be.vercel.app/api/v1/experience/delete?profile_id=${profile_id}&experience_id=${experience_id}`,
 			})
 				.then((res) => {
 					dispatch(DeleteExperienceSuccess(res.data));
@@ -103,7 +103,7 @@ export const EditExperience = (profile_id, experience_id, data) => {
 			dispatch(EditExperienceRequest());
 			axios({
 				method: 'PATCH',
-				url: `http://localhost:5000/api/v1/experience/update?profile_id=${profile_id}&experience_id=${experience_id}`,
+				url: `https://peworld-be.vercel.app/api/v1/experience/update?profile_id=${profile_id}&experience_id=${experience_id}`,
 				data: data,
 			})
 				.then((res) => {
@@ -128,7 +128,7 @@ export const AddExperience = (
 			dispatch(AddExperienceRequest());
 			axios({
 				method: 'POST',
-				url: `http://localhost:5000/api/v1/experience?profile_id=${profile_id}`,
+				url: `https://peworld-be.vercel.app/api/v1/experience?profile_id=${profile_id}`,
 				data: {
 					experience_company: experience_company,
 					experience_position: experience_position,
@@ -152,7 +152,7 @@ export const GetExperience = (profile_id) => {
 			dispatch(GetExperienceRequest());
 			axios({
 				method: 'GET',
-				url: `http://localhost:5000/api/v1/experience/id?profile_id=${profile_id}`,
+				url: `https://peworld-be.vercel.app/api/v1/experience/id?profile_id=${profile_id}`,
 			})
 				.then((res) => {
 					dispatch(GetExperienceSuccess(res.data));

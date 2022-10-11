@@ -13,16 +13,16 @@ const EditProfiles = (data, dataskill) => {
 export async function getServerSideProps(context) {
 	console.log(context.params.editprofile, 'ini context');
 	const res = await fetch(
-		`http://localhost:5000/api/v1/profile?profile_id=${context.params.editprofile}`
+		`https://peworld-be.vercel.app/api/v1/profile?profile_id=${context.params.editprofile}`
 	);
 	const res2 = await fetch(
-		`http://localhost:5000/api/v1/skill?profile_id=${context.params.editprofile}`
+		`https://peworld-be.vercel.app/api/v1/skill?profile_id=${context.params.editprofile}`
 	);
 	const res3 = await fetch(
-		`http://localhost:5000/api/v1/portofolio?profile_id=${context.params.editprofile}`
+		`https://peworld-be.vercel.app/api/v1/portofolio?profile_id=${context.params.editprofile}`
 	);
 	const res4 = await fetch(
-		`http://localhost:5000/api/v1/experience/id?profile_id=${context.params.editprofile}`
+		`https://peworld-be.vercel.app/api/v1/experience/id?profile_id=${context.params.editprofile}`
 	);
 	const data = await res.json();
 	const dataskill = await res2.json();

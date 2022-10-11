@@ -28,7 +28,7 @@ const ProfileDetailsLayoutEdit = ({ data }) => {
 								<img
 									className='bg-lightrounded-circle'
 									// loader={myLoader(item.product_picture)}
-									src={`http://localhost:5000/uploads/${item.profile_picture}`}
+									src={`https://peworld-be.vercel.app/uploads/${item.profile_picture}`}
 									width={'300'}
 									height={'300'}
 								/>
@@ -50,7 +50,7 @@ const ProfileDetailsLayoutEdit = ({ data }) => {
 									</span>
 									{item.profile_phone_number}
 								</p>
-								<p style={{marginTop: '2em'}}>
+								<p style={{ marginTop: '2em' }}>
 									{item.profile_description}
 								</p>
 								{role == 'pekerja' && asPath == `/editprofile/${profile_id}` ? (
@@ -58,7 +58,7 @@ const ProfileDetailsLayoutEdit = ({ data }) => {
 								) : (
 									<>
 										{role == 'pekerja' &&
-										asPath != `/editprofile/${profile_id}` ? (
+											asPath != `/editprofile/${profile_id}` ? (
 											<>
 												<Link href={`/editprofile/${profile_id}`}>
 													<button>Edit Profile</button>
@@ -77,15 +77,15 @@ const ProfileDetailsLayoutEdit = ({ data }) => {
 							<div className={`${styles.profileSkills}`}>
 								<h2>Skills</h2>
 								<div className={`${styles.skillBox}`}>
-								{tampungskill?.map((item, index) => {
-									return (
-										<>
+									{tampungskill?.map((item, index) => {
+										return (
+											<>
 												<div className={`${styles.skillName}`}>
 													{item.skill_name}
 												</div>
-										</>
-									);
-								})}
+											</>
+										);
+									})}
 								</div>
 							</div>
 							<div className={styles.profileSocial}>

@@ -88,10 +88,10 @@ const NotificationHire = ({ data }) => {
                   >
                     <div className={styles.image}>
                       <Image
-                        src={`http://localhost:5000/uploads/${item.profile_picture}`}
+                        src={`https://peworld-be.vercel.app/uploads/${item.profile_picture}`}
                         width={120}
                         height={120}
-                        style={{borderRadius: '50%'}}
+                        style={{ borderRadius: '50%' }}
                       />
                     </div>
                     <div className={styles.info}>

@@ -66,7 +66,7 @@ export const DeleteSkill = (profile_id, skill_id, token) => {
 			dispatch(DeleteSkillRequest());
 			axios({
 				method: 'DELETE',
-				url: `http://localhost:5000/api/v1/skill?profile_id=${profile_id}&skill_id=${skill_id}`,
+				url: `https://peworld-be.vercel.app/api/v1/skill?profile_id=${profile_id}&skill_id=${skill_id}`,
 				headers: {
 					authorization: `Bearer ${token}`,
 				},
@@ -86,7 +86,7 @@ export const EditSkill = (profile_id, skill_id, token, skill_name) => {
 			dispatch(EditSkillRequest());
 			axios({
 				method: 'PATCH',
-				url: `http://localhost:5000/api/v1/skill?profile_id=${profile_id}&skill_id=${skill_id}`,
+				url: `https://peworld-be.vercel.app/api/v1/skill?profile_id=${profile_id}&skill_id=${skill_id}`,
 				data: {
 					skill_name: skill_name,
 				},
@@ -109,7 +109,7 @@ export const AddSkill = (profile_id, skill_name, token) => {
 			dispatch(AddSkillRequest());
 			axios({
 				method: 'POST',
-				url: `http://localhost:5000/api/v1/skill?profile_id=${profile_id}&skill_name=${skill_name}`,
+				url: `https://peworld-be.vercel.app/api/v1/skill?profile_id=${profile_id}&skill_name=${skill_name}`,
 				data: {
 					skill_name: skill_name,
 				},

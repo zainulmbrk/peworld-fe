@@ -10,19 +10,19 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const Home = () => {
-  const router = useRouter()
-  const dispatch = useDispatch()
+	const router = useRouter()
+	const dispatch = useDispatch()
 
-  let tampungskill = []
-  let tampungsplit = []
+	let tampungskill = []
+	let tampungsplit = []
 
-  const data = useSelector((state) => state.profile)
-  console.log(data?.results[0]?.skill, 'jsdh')
-  for (let i = 0; i < data?.results?.length; i++) {
-    tampungskill[i] = data.results[i].skill
-    tampungsplit[i] = tampungskill[i].split(',')
-  }
-  const [sort, setSort] = useState({ limit: 20 });
+	const data = useSelector((state) => state.profile)
+	console.log(data?.results[0]?.skill, 'jsdh')
+	for (let i = 0; i < data?.results?.length; i++) {
+		tampungskill[i] = data.results[i].skill
+		tampungsplit[i] = tampungskill[i].split(',')
+	}
+	const [sort, setSort] = useState({ limit: 20 });
 	useEffect(() => {
 		dispatch(GetProfile());
 	}, [sort]);
@@ -116,7 +116,7 @@ const Home = () => {
 											<div className={styles.image}>
 												<Image
 													className='rounded-circle '
-													src={`http://localhost:5000/uploads/${item.profile_picture}`}
+													src={`https://peworld-be.vercel.app/uploads/${item.profile_picture}`}
 													width={'150'}
 													height={'150'}
 												/>

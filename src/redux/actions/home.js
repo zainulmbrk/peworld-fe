@@ -2,23 +2,23 @@ import axios from 'axios'
 
 //sort
 const GetProfileRequest = () => {
-  return {
-    type: 'GET_PROFILE_REQUEST',
-  }
+	return {
+		type: 'GET_PROFILE_REQUEST',
+	}
 }
 
 const GetProfileSuccess = (data) => {
-  return {
-    type: 'GET_PROFILE_SUCCESS',
-    payload: data,
-  }
+	return {
+		type: 'GET_PROFILE_SUCCESS',
+		payload: data,
+	}
 }
 
 const GetProfileError = (error) => {
-  return {
-    type: 'GET_PROFILE_ERROR',
-    payload: error,
-  }
+	return {
+		type: 'GET_PROFILE_ERROR',
+		payload: error,
+	}
 }
 
 export const GetProfile = (
@@ -31,7 +31,7 @@ export const GetProfile = (
 		dispatch(GetProfileRequest());
 		axios({
 			method: 'GET',
-			url: `http://localhost:5000/api/v1/profile/sort?page=${page}&limit=${limit}&order_by=${order_by}&sort=${sort}`,
+			url: `https://peworld-be.vercel.app/api/v1/profile/sort?page=${page}&limit=${limit}&order_by=${order_by}&sort=${sort}`,
 		})
 			.then((res) => {
 				dispatch(GetProfileSuccess(res.data.data));
@@ -72,7 +72,7 @@ export const GetSearchProfile = (
 		dispatch(SearchProfileRequest());
 		axios({
 			method: 'GET',
-			url: `http://localhost:5000/api/v1/profile/search?page=${page}&limit=${limit}&skill_location=${skill_location}`,
+			url: `https://peworld-be.vercel.app/api/v1/profile/search?page=${page}&limit=${limit}&skill_location=${skill_location}`,
 		})
 			.then((res) => {
 				dispatch(SearchProfileSuccess(res.data.data));

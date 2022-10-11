@@ -28,7 +28,7 @@ export const GetPortofolio = (profile_id) => {
 			dispatch(GetPortofolioRequest());
 			axios({
 				method: 'GET',
-				url: `http://localhost:5000/api/v1/portofolio?profile_id=${profile_id}`,
+				url: `https://peworld-be.vercel.app/api/v1/portofolio?profile_id=${profile_id}`,
 			})
 				.then((res) => {
 					dispatch(GetPortofolioSuccess(res.data));
@@ -67,7 +67,7 @@ export const DeletePortofolio = (profile_id, portofolio_id, token) => {
 			dispatch(DeletePortofolioRequest());
 			axios({
 				method: 'DELETE',
-				url: `http://localhost:5000/api/v1/portofolio?profile_id=${profile_id}&portofolio_id=${portofolio_id}`,
+				url: `https://peworld-be.vercel.app/api/v1/portofolio?profile_id=${profile_id}&portofolio_id=${portofolio_id}`,
 				headers: {
 					authorization: `Bearer ${token}`,
 				},

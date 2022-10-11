@@ -24,7 +24,7 @@ const CompanyProfile = ({ data }) => {
                     <picture>
                       <Image
                         className="rounded-circle"
-                        src={`http://localhost:5000/uploads/${item.profile_picture}`}
+                        src={`https://peworld-be.vercel.app/uploads/${item.profile_picture}`}
                         width={'100'}
                         height={'100'}
                       />

@@ -84,7 +84,7 @@ const FormPortofolio = (data) => {
 										<img
 											className='col-12 '
 											// loader={myLoader(item.product_picture)}
-											src={`http://localhost:5000/uploads/${item.portofolio_picture}`}
+											src={`https://peworld-be.vercel.app/uploads/${item.portofolio_picture}`}
 											width={'100'}
 											height={'100'}
 										/>
@@ -150,13 +150,13 @@ const FormPortofolio = (data) => {
 										type='text'
 										className='form-control'
 										id='exampleInputEmail1'
-										// value={formEditData.title}
-										// onChange={(e) => {
-										//   setFormEditData((prevState) => ({
-										//     ...prevState,
-										//     title: e.target.value,
-										//   }));
-										// }}
+									// value={formEditData.title}
+									// onChange={(e) => {
+									//   setFormEditData((prevState) => ({
+									//     ...prevState,
+									//     title: e.target.value,
+									//   }));
+									// }}
 									/>
 								</div>
 							</div>

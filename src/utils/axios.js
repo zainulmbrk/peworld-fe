@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookie from "js-cookie";
 
 const axiosApiIntances = axios.create({
-  baseURL: `http://localhost:5000/api/v1`,
+  baseURL: `https://peworld-be.vercel.app/api/v1`,
 });
 
 // Add a request interceptor

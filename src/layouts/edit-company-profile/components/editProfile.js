@@ -81,11 +81,11 @@ const EditCompanyProfile = () => {
                   <div className={styles.cardData} >
                     <div className={styles.imgProfile}>
                       <picture>
-                        <img src={formAddData.profile_picture ? `${formAddData.profile_picture.name}` : `http://localhost:5000/uploads/${company.profile_picture}`} alt='profile' className={styles.imgProfileWrapper} />
+                        <img src={formAddData.profile_picture ? `${formAddData.profile_picture.name}` : `https://peworld-be.vercel.app/uploads/${company.profile_picture}`} alt='profile' className={styles.imgProfileWrapper} />
                       </picture>
                       <input type="file" onChange={(e) => setFormAddData(prevState => ({ ...prevState, profile_picture: e.target.files[0] }))} name="image" id="image" ref={inputFile} hidden />
                       <div className={styles.editImage} onClick={() => onClickInput()}>
-                        <MdAdd className={styles.icon}/>
+                        <MdAdd className={styles.icon} />
                       </div>
                     </div>
                     <div className={styles.companyName}>

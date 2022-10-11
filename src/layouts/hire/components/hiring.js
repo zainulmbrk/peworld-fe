@@ -9,8 +9,8 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 const Hiring = ({ data }) => {
-  const results = data.data
-  const tampungskill = results[0].skill.split(',');
+	const results = data.data
+	const tampungskill = results[0].skill.split(',');
 	let from_profile_id = Cookies.get('profile_id');
 	let to_profile_id = results[0].profile_id;
 	console.log(from_profile_id, to_profile_id, 'ini gus');
@@ -22,7 +22,7 @@ const Hiring = ({ data }) => {
 		event.preventDefault();
 		axios({
 			method: 'POST',
-			url: `http://localhost:5000/api/v1/notification/hire?from_profile_id=${from_profile_id}&to_profile_id=${to_profile_id}`,
+			url: `https://peworld-be.vercel.app/api/v1/notification/hire?from_profile_id=${from_profile_id}&to_profile_id=${to_profile_id}`,
 			headers: {
 				authorization: `Bearer ${token}`,
 			},
@@ -42,9 +42,9 @@ const Hiring = ({ data }) => {
 
 	return (
 		<>
-		<Head>
-			<title>Hire</title>
-		</Head>
+			<Head>
+				<title>Hire</title>
+			</Head>
 			<div className={styles.wrapPage}>
 				<div className='container'>
 					<div className='row'>
@@ -55,7 +55,7 @@ const Hiring = ({ data }) => {
 										<div className={styles.detailsLayout} key={item.profile_id}>
 											<div className={styles.profileImage}>
 												<img
-													src={`http://localhost:5000/uploads/${item.profile_picture}`}
+													src={`https://peworld-be.vercel.app/uploads/${item.profile_picture}`}
 													alt='profile'
 												/>
 											</div>
@@ -85,7 +85,7 @@ const Hiring = ({ data }) => {
 													{tampungskill?.map((item, index) => {
 														return (
 															<>
-																	<div className={styles.skillName}>{item}</div>
+																<div className={styles.skillName}>{item}</div>
 															</>
 														);
 													})}
@@ -97,11 +97,11 @@ const Hiring = ({ data }) => {
 							})}
 						</div>
 						<div className={`${styles.msg} col-md-8`}>
-							{results.map((item)=> {
+							{results.map((item) => {
 								return (
-								<div className={styles.header}>
-									<h5>Hubungi {item.profile_name}</h5>
-								</div>
+									<div className={styles.header}>
+										<h5>Hubungi {item.profile_name}</h5>
+									</div>
 
 								)
 							})}

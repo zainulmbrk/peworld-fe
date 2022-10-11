@@ -14,7 +14,7 @@ const Landingpage = () => {
 // 	let profile_id = Cookies.get('profile_id');
 
 // 	const res = await fetch(
-// 		`http://localhost:5000/api/v1/profile?profile_id=${profile_id}`,
+// 		`https://peworld-be.vercel.app/api/v1/profile?profile_id=${profile_id}`,
 // 		{
 // 			method: 'GET',
 // 			headers: {

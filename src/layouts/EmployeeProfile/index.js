@@ -63,7 +63,7 @@ const EmployeeProfileLayout = ({ data }) => {
 														<div className={styles.portoImg}>
 															<img
 																className=''
-																src={`http://localhost:5000/uploads/${item.portofolio_picture}`}
+																src={`https://peworld-be.vercel.app/uploads/${item.portofolio_picture}`}
 																width={'250'}
 																height={'300'}
 															/>

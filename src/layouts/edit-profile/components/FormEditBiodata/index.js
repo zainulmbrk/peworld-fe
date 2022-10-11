@@ -12,7 +12,7 @@ const FormEditBiodata = (data) => {
 	const resultdata = data.data.data.data.data.data[0];
 	const dispatch = useDispatch();
 	const [Refetch, setRefetch] = useState();
-	const [ formEditData, setFormEditData ] = useState({})
+	const [formEditData, setFormEditData] = useState({})
 
 	const formData = new FormData()
 	formData.append('profile_name', formEditData.profile_name)
@@ -34,27 +34,27 @@ const FormEditBiodata = (data) => {
 		const id = Cookies.get('profile_id')
 		const token = Cookies.get('token')
 		try {
-		  const result = await axios({
-			method: 'PATCH',
-			data: formData,
-			url: `http://localhost:5000/api/v1/profile/pekerja?profile_id=${id}`,
-			headers: {
-			  authorization: `Bearer ${token}`,
-			},
-		  })
-		  if (result.data.success) {
-			toast.success('Successfully Updated')
-			setRefetch(!Refetch)
-		  } else {
-			toast.error('Failed, Try Again')
-		  }
+			const result = await axios({
+				method: 'PATCH',
+				data: formData,
+				url: `https://peworld-be.vercel.app/api/v1/profile/pekerja?profile_id=${id}`,
+				headers: {
+					authorization: `Bearer ${token}`,
+				},
+			})
+			if (result.data.success) {
+				toast.success('Successfully Updated')
+				setRefetch(!Refetch)
+			} else {
+				toast.error('Failed, Try Again')
+			}
 		} catch (err) {
-		  // console.log(err)
-		  toast.error(err.response.data.message)
+			// console.log(err)
+			toast.error(err.response.data.message)
 		}
-	  }
+	}
 
-	  console.log(resultdata.profile_job_type, 'awekowakeoawkea')
+	console.log(resultdata.profile_job_type, 'awekowakeoawkea')
 
 	return (
 		<>
@@ -93,7 +93,7 @@ const FormEditBiodata = (data) => {
 						/>
 					</div> */}
 					<div className={styles.companyForm}>
-						<label>Nomor Handphone <span style={{fontStyle: 'italic', fontSize: '12px'}}>(12 angka)</span></label>
+						<label>Nomor Handphone <span style={{ fontStyle: 'italic', fontSize: '12px' }}>(12 angka)</span></label>
 						<input
 							type='text'
 							placeholder='Masukan nomor handphone'
@@ -150,7 +150,7 @@ const FormEditBiodata = (data) => {
 					</div>
 					<div className={styles.companyForm}>
 						<label htmlFor="formFile" className="form-label">Upload profile picture</label>
-  						<input className={`${styles.inputType} form-control`} type="file" id="formFile" onChange={(e) => setFormEditData(prevState => ({ ...prevState, profile_picture: e.target.files[0] }))}/>
+						<input className={`${styles.inputType} form-control`} type="file" id="formFile" onChange={(e) => setFormEditData(prevState => ({ ...prevState, profile_picture: e.target.files[0] }))} />
 					</div>
 					<div className={styles.companyForm}>
 						<label>Deskripsi singkat</label>
